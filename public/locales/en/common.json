@@ -1,0 +1,150 @@
+
+{
+   "menus": [
+      {
+         "id" : 1,
+         "text" : "National",
+         "submenu" : [
+            {
+               "id": 11,
+               "text" : "Politics"
+            },
+            {
+               "id": 12,
+               "text" : "Law and Crime"
+            },
+            {
+               "id": 13,
+               "text" : "Incidents"
+            }
+         ]
+      },
+      {
+         "id" : 2,
+         "text" : "International",
+         "submenu" : [
+            {
+               "id": 21,
+               "text" : "Asean"
+            },
+            {
+               "id": 22,
+               "text" : "Asean Pacifik"
+            },
+            {
+               "id": 23,
+               "text" : "East Middle"
+            },
+            {
+               "id": 24,
+               "text" : "European America"
+            }
+         ]
+      },
+      {
+         "id" : 3,
+         "text" : "Economy",
+         "submenu" : [
+            {
+               "id": 31,
+               "text" : "Finance"
+            },
+            {
+               "id": 32,
+               "text" : "Energy"
+            },
+            {
+               "id": 33,
+               "text" : "Business"
+            }
+         ]
+      },
+      {
+         "id" : 4,
+         "text" : "Sports",
+         "submenu" : [
+            {
+               "id": 41,
+               "text" : "Football"
+            },
+            {
+               "id": 42,
+               "text" : "MotoGP"
+            },
+            {
+               "id": 43,
+               "text" : "Badminton"
+            },
+            {
+               "id": 44,
+               "text" : "Sea Games"
+            }
+         ]
+      },
+      {
+         "id" : 5,
+         "text" : "Technology",
+         "submenu" : [
+            {
+               "id": 51,
+               "text" : "Technology Information"
+            },
+            {
+               "id": 52,
+               "text" : "Science"
+            },
+            {
+               "id": 53,
+               "text" : "Telekommunication"
+            },
+            {
+               "id": 54,
+               "text" : "Automotive"
+            }
+         ]
+      },
+      {
+         "id" :6,
+         "text" : "Entertainment",
+         "submenu" : [
+            {
+               "id": 61,
+               "text" : "Movie"
+            },
+            {
+               "id": 62,
+               "text" : "Music"
+            },
+            {
+               "id": 63,
+               "text" : "Celebrity"
+            },
+            {
+               "id": 64,
+               "text" : "Culture"
+            }
+         ]
+      }
+   ],
+   "populer": "Most Populer News",
+   "terbaru" : "Latest News",
+   "utama" : "Main News",
+   "sorotan": "Hightlight",
+   "kategori" : "Category",
+   "widgettab" : {
+      "submenu" : "Good",
+      "submenu2" : "Relate",
+      "submenu3" : "Nice"
+   },
+   "blog" : "News Blog",
+   "bagikan" : "Most Shared",
+   "error" : {
+      "p" : "Sorry, Page not found",
+      "p2" : "But don't worry, you can find many other things on our homepage.",
+      "a" : "Back to home" 
+   },
+   "berita": "News",
+   "postingan" : "Latest News",
+   "arsip" : "Archive",
+   "notfound": "Sorry, Data not found"
+}

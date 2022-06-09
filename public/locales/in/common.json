@@ -1,0 +1,150 @@
+
+{
+   "menus": [
+      {
+         "id" : 1,
+         "text" : "Nasional",
+         "link": "/nasional",
+         "submenu" : [
+            {
+               "id": 11,
+               "text" : "Politik"
+            },
+            {
+               "id": 12,
+               "text" : "Hukum dan Kriminal"
+            },
+            {
+               "id": 13,
+               "text" : "Peristiwa"
+            }
+         ]
+      },
+      {
+         "id" : 2,
+         "text" : "Internasional",
+         "submenu" : [
+            {
+               "id": 21,
+               "text" : "Asean"
+            },
+            {
+               "id": 22,
+               "text" : "Asia Pasifik"
+            },
+            {
+               "id": 23,
+               "text" : "Timur Tengah"
+            },
+            {
+               "id": 24,
+               "text" : "Eropa Amerika"
+            }
+         ]
+      },
+      {
+         "id" : 3,
+         "text" : "Ekonomi",
+         "submenu" : [
+            {
+               "id": 31,
+               "text" : "Keuangan"
+            },
+            {
+               "id": 32,
+               "text" : "Energi"
+            },
+            {
+               "id": 33,
+               "text" : "Bisnis"
+            }
+         ]
+      },
+      {
+         "id" : 4,
+         "text" : "Olahraga",
+         "submenu" : [
+            {
+               "id": 41,
+               "text" : "Sepakbola"
+            },
+            {
+               "id": 42,
+               "text" : "MotoGP"
+            },
+            {
+               "id": 43,
+               "text" : "Bulutangkis"
+            },
+            {
+               "id": 44,
+               "text" : "Sea Games"
+            }
+         ]
+      },
+      {
+         "id" : 5,
+         "text" : "Teknologi",
+         "submenu" : [
+            {
+               "id": 51,
+               "text" : "Teknologi Informasi"
+            },
+            {
+               "id": 52,
+               "text" : "Sains"
+            },
+            {
+               "id": 53,
+               "text" : "Telekomunikatif"
+            },
+            {
+               "id": 54,
+               "text" : "Otomotif"
+            }
+         ]
+      },
+      {
+         "id" :6,
+         "text" : "Hiburan",
+         "submenu" : [
+            {
+               "id": 61,
+               "text" : "Film"
+            },
+            {
+               "id": 62,
+               "text" : "Musik"
+            },
+            {
+               "id": 63,
+               "text" : "Seleb"
+            },
+            {
+               "id": 64,
+               "text" : "Seni Budaya"
+            }
+         ]
+      }
+   ],
+   "populer": "Berita Terpopuler",
+   "terbaru" : "Berita Terbaru",
+   "utama" : "Berita Utama",
+   "sorotan": "Sorotan",
+   "kategori" : "Kategori",
+   "widgettab" : {
+      "submenu" : "Bagus",
+      "submenu2" : "Beuh",
+      "submenu3" : "Mantap"
+   },
+   "blog" : "Berita Blog",
+   "bagikan" : "Dibagikan",
+   "error" : {
+      "p" : "Maaf, halaman tidak ditemukan",
+      "p2" : "Tapi jangan khawatir, kamu dapat menemukan banyak hal lainnya di halaman beranda kami.",
+      "a" : "Kembali ke Beranda" 
+   },
+   "berita": "Berita",
+   "postingan" : "Berita Terbaru",
+   "arsip": "Arsip"
+}

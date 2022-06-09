@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+html, body {
+  font-family: "Poppins", sans-serif;
+}
+
+@layer components {
+  .container {
+    @apply w-full lg:w-[1100px] mx-auto px-2
+  }
+  .bg-main-gradient {
+    @apply bg-gradient-to-r from-red-900 to-red-600 dark:from-slate-700 dark:to-slate-700
+  }
+  .title {
+    @apply bg-sky-500 text-white font-semibold text-sm py-1 px-5 lg:text-xl
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(255, 171, 60, 0.8);
+  width: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(255, 116, 10);
+}
