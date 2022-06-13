@@ -6,7 +6,7 @@ import Skeleton from 'react-loading-skeleton'
 
 export default function BeritaVideoList({stuff, skeleton}) {
   return (
-    <Link href={`/berita/${skeleton ? "skeleton" : stuff.id}/${skeleton ? "skeleton" : stuff.title}`}>
+    <Link href={`${skeleton ? "skeleton" : stuff.url}`}>
         <div className="text-left p-5 border-sky-500 border-b-2 cursor-pointer group">
             <div className="flex items-center">
                 {skeleton ? <Skeleton width={30} height={30} circle={true}/> : 
@@ -18,7 +18,7 @@ export default function BeritaVideoList({stuff, skeleton}) {
                 </div>
             </div>
 
-            <h1 className=" text-sm font-semibold text-gray-600 mt-2 lg:text-xl group-hover:underline dark:text-white">{skeleton ? <Skeleton count={3}/> : stuff.title}</h1>
+            <h1 className=" text-sm font-semibold text-gray-600 mt-2 lg:text-sm group-hover:underline dark:text-white">{skeleton ? <Skeleton count={3}/> : stuff.url}</h1>
         </div>
     </Link>
   )

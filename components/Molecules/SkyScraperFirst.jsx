@@ -22,7 +22,7 @@ export default function SkyScraperFirst({stuff, skeleton}) {
         <div className="flex mt-5 gap-3">
           {skeleton ? <Skeleton width={50}/> :
             <span className='flex items-center'>
-                <FontAwesomeIcon icon={faEye} className="text-orange-500 opacity-70 dark:opacity-100 mr-2"></FontAwesomeIcon>
+                <FontAwesomeIcon icon={faEye} className="text-sky-500 opacity-70 dark:opacity-100 mr-2"></FontAwesomeIcon>
                 <small className="text-xs text-gray-500 dark:text-gray-400">{stuff.view}</small>
             </span>
           }

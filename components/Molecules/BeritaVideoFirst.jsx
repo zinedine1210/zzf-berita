@@ -6,8 +6,10 @@ import Skeleton from 'react-loading-skeleton'
 
 export default function BeritaVideoFirst({stuff, skeleton}) {
   return (
-        <div className="w-full lg:w-2/3 bg-white relative">
-            <iframe width="710" height="500" src="https://www.youtube-nocookie.com/embed/9RTLdG4ZMlA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div className="w-full lg:w-[730px] bg-white relative">
+          {skeleton ? <Skeleton height={500} width={730}/> :
+            <iframe width="730" height="500" className='w-full h-[300px] lg:w-[730px] lg:h-[500px]' src={skeleton ? "" : stuff.url} title={stuff.url} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          }
             
         </div>
   )

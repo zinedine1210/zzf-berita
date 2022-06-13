@@ -1,18 +1,23 @@
 import React from 'react'
-import Head from 'next/head'
+import Seo from "../../components/seo"
 import TopBar from '../Organism/TopBar'
 import Navbar from '../Organism/Navbar'
 import Footer from "../Organism/Footer"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
-export default function Layout({children, title, lang}) {
+
+
+export default function Layout({children, title, lang, description}) {
   return (
       <>
-        <Head>
-            <title>Siap Pak Pol | {title}</title>
-        </Head>
+      <Seo 
+        title={title}
+        description={description}
+      />
 
         <main>
-            <div className="w-full bg-gray-200 dark:bg-slate-700">
+            <div className="w-full bg-gray-200 dark:bg-slate-800">
                 <div className='container'>
                     <TopBar />
                 </div>
@@ -23,20 +28,26 @@ export default function Layout({children, title, lang}) {
 
             <div className="bg-main-gradient">
                 <div className="container py-2 relative">
-                    <Navbar />
-
+                    <Navbar bahasa={lang}/>
+                    <div className='hidden w-full' id='search'>
+                        <form className='w-full flex items-center justify-between mt-2 bg-white dark:text-white'>
+                            <input type="text" className='w-full py-2 focus:outline-none px-5' placeholder={lang("cari")}/>
+                            <button className="bg-transparent"><FontAwesomeIcon icon={faSearch} className="px-5 text-gray-500 hover:text-black text-2xl lg:text-xl bg-transparent" /></button>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <div className="container">
-                {/* Banner */}
-                <img src="/images/145ae4e5-c5fe-468c-9378-398493e88141.jpg" className='my-2' alt="Banner" />
-            </div>
+            
 
-            {children}
+            <div className="bg-white dark:bg-slate-800 pb-24">
+                {children}
+            </div>
             
         </main>
 
-        <Footer />
+        <div className="bg-main-gradient dark:bg-slate-800">
+            <Footer />
+        </div>
       </>
   )
 }

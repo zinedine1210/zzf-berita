@@ -3,148 +3,199 @@
    "menus": [
       {
          "id" : 1,
-         "text" : "National",
-         "submenu" : [
-            {
-               "id": 11,
-               "text" : "Politics"
-            },
-            {
-               "id": 12,
-               "text" : "Law and Crime"
-            },
-            {
-               "id": 13,
-               "text" : "Incidents"
-            }
-         ]
+         "text" : "Law & Crime"
       },
       {
          "id" : 2,
-         "text" : "International",
-         "submenu" : [
-            {
-               "id": 21,
-               "text" : "Asean"
-            },
-            {
-               "id": 22,
-               "text" : "Asean Pacifik"
-            },
-            {
-               "id": 23,
-               "text" : "East Middle"
-            },
-            {
-               "id": 24,
-               "text" : "European America"
-            }
-         ]
+         "text" : "Social"
       },
       {
          "id" : 3,
-         "text" : "Economy",
-         "submenu" : [
-            {
-               "id": 31,
-               "text" : "Finance"
-            },
-            {
-               "id": 32,
-               "text" : "Energy"
-            },
-            {
-               "id": 33,
-               "text" : "Business"
-            }
-         ]
+         "text" : "Incident"
       },
       {
          "id" : 4,
-         "text" : "Sports",
-         "submenu" : [
-            {
-               "id": 41,
-               "text" : "Football"
-            },
-            {
-               "id": 42,
-               "text" : "MotoGP"
-            },
-            {
-               "id": 43,
-               "text" : "Badminton"
-            },
-            {
-               "id": 44,
-               "text" : "Sea Games"
-            }
-         ]
+         "text" : "Community Building"
       },
       {
          "id" : 5,
-         "text" : "Technology",
+         "text" : "Work Unit",
          "submenu" : [
             {
                "id": 51,
-               "text" : "Technology Information"
+               "text" : "OPERATOR"
             },
             {
                "id": 52,
-               "text" : "Science"
+               "text" : "PLANNER"
             },
             {
                "id": 53,
-               "text" : "Telekommunication"
+               "text" : "HUMAN RESOURCE"
             },
             {
                "id": 54,
-               "text" : "Automotive"
+               "text" : "LOGISTICS"
+            },
+            {
+               "id": 55,
+               "text" : "SPKT"
+            },
+            {
+               "id": 56,
+               "text" : "SUPERVISOR"
+            },
+            {
+               "id": 57,
+               "text" : "SI PROPAM"
+            },
+            {
+               "id": 58,
+               "text" : "SI HUMAS"
+            },
+            {
+               "id": 59,
+               "text" : "SI KUM"
+            },
+            {
+               "id": 511,
+               "text" : "SI TIK"
             }
+         
          ]
       },
       {
-         "id" :6,
-         "text" : "Entertainment",
+         "id" : 6,
+         "text" : "Police Line",
          "submenu" : [
             {
                "id": 61,
-               "text" : "Movie"
+               "text" : "Polsek Tambun"
             },
             {
                "id": 62,
-               "text" : "Music"
+               "text" : "Polsek Cikarang"
             },
             {
                "id": 63,
-               "text" : "Celebrity"
+               "text" : "Polsek Kedung Waringin"
             },
             {
                "id": 64,
-               "text" : "Culture"
+               "text" : "Polsek Pebayuran"
+            },
+            {
+               "id": 65,
+               "text" : "Polsek Sukatani"
+            },
+            {
+               "id": 66,
+               "text" : "Polsek Babelan"
+            },
+            {
+               "id": 67,
+               "text" : "Polsek Tarumajaya"
+            },
+            {
+               "id": 68,
+               "text" : "Polsek Serang Baru"
             }
+         
          ]
+      },
+      {
+         "id" : 7,
+         "text" : "Video"
+      },
+      {
+         "id" : 8,
+         "text" : "Application"
+      },
+      
+      {
+         "id" : 9,
+         "text" : "Service",
+         "submenu" : [
+            {
+               "id": 91,
+               "text" : "SIM Keliling Polres Metro Bekasi"
+            },
+            {
+               "id": 92,
+               "text" : "SKCK"
+            },
+            {
+               "id": 93,
+               "text" : "Izin Keramaian"
+            },
+            {
+               "id": 94,
+               "text" : "Pengawalan Jalan"
+            },
+            {
+               "id": 95,
+               "text" : "Pengamanan Objek Khusus"
+            },
+            {
+               "id": 96,
+               "text" : "SPKT"
+            },
+            {
+               "id": 97,
+               "text" : "BPKB / STNK"
+            },
+            {
+               "id": 98,
+               "text" : "SP2HP"
+            }
+         
+         ]
+      },
+      {
+         "id" : 10,
+         "text" : "Contact"
       }
    ],
-   "populer": "Most Populer News",
-   "terbaru" : "Latest News",
-   "utama" : "Main News",
-   "sorotan": "Hightlight",
-   "kategori" : "Category",
+   "category" : [
+      {
+         "text" : "Law & Crime",
+         "cid" : 1
+      },
+      {
+         "text" : "Social",
+         "cid" : 2
+      },
+      {
+         "text" : "Incident",
+         "cid" : 3
+      },
+      {
+         "text" : "Community Building",
+         "cid" : 4
+      }
+   ],
+   "populer": "Berita Terpopuler",
+   "cari" : "Search...",
+   "terbaru" : "Berita Terbaru",
+   "terkini" : "Latest News",
+   "utama" : "Berita Utama",
+   "sorotan": "Sorotan",
+   "kategori" : "Kategori",
+   "job" : "Job Descriptions",
+   "nocontent" : "No Content Available",
    "widgettab" : {
-      "submenu" : "Good",
-      "submenu2" : "Relate",
-      "submenu3" : "Nice"
+      "submenu" : "NEWS",
+      "submenu2" : "ARTICLES",
+      "submenu3" : "GENERAL"
    },
-   "blog" : "News Blog",
-   "bagikan" : "Most Shared",
+   "blog" : "Berita Blog",
+   "bagikan" : "Dibagikan",
    "error" : {
-      "p" : "Sorry, Page not found",
-      "p2" : "But don't worry, you can find many other things on our homepage.",
-      "a" : "Back to home" 
+      "p" : "Maaf, halaman tidak ditemukan",
+      "p2" : "Tapi jangan khawatir, kamu dapat menemukan banyak hal lainnya di halaman beranda kami.",
+      "a" : "Kembali ke Beranda" 
    },
-   "berita": "News",
-   "postingan" : "Latest News",
-   "arsip" : "Archive",
-   "notfound": "Sorry, Data not found"
+   "berita": "Berita",
+   "postingan" : "Berita Terbaru",
+   "arsip": "Arsip"
 }

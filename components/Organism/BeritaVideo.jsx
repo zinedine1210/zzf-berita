@@ -1,6 +1,6 @@
 
 import React, {useState, useEffect} from 'react'
-import axios from 'axios'
+import CollectionYoutube from '../../repositories/CollectionYoutube'
 import BeritaVideoFirst from '../Molecules/BeritaVideoFirst'
 import BeritaVideoList from '../Molecules/BeritaVideoList'
 
@@ -9,14 +9,15 @@ export default function BeritaVideo({total}) {
 
 
     const getData = () => {
-        axios.get(`https://zzfnews.herokuapp.com/api/posts?category=Teknologi&_sort=informasi.like&_order=desc&_limit=${total}`)
-        .then(res => {
+        CollectionYoutube.getAllYoutube({count:5}).then(res => {
+            console.log(res.data);
             setData(res.data)
         })
     }
 
     useEffect(() => {
         getData()
+        
     }, [])
 
 
@@ -33,7 +34,7 @@ export default function BeritaVideo({total}) {
               }
 
 
-              <div className="w-full lg:w-1/3 max-h-full bg-white dark:bg-slate-800 overflow-hidden hover:overflow-scroll">
+              <div className="w-full lg:w-[350px] max-h-full bg-white dark:bg-slate-800 overflow-hidden hover:overflow-y-scroll">
                   
                   {data ? data.slice(1).map((item, id) => {
                       return <BeritaVideoList stuff={item} key={id} skeleton={false} />

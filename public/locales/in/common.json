@@ -3,139 +3,219 @@
    "menus": [
       {
          "id" : 1,
-         "text" : "Nasional",
-         "link": "/nasional",
-         "submenu" : [
-            {
-               "id": 11,
-               "text" : "Politik"
-            },
-            {
-               "id": 12,
-               "text" : "Hukum dan Kriminal"
-            },
-            {
-               "id": 13,
-               "text" : "Peristiwa"
-            }
-         ]
+         "text" : "Hukum Kriminal",
+         "link" : "/kategori/1?page=1&category=HUKUM-KRIMINAL"
       },
       {
          "id" : 2,
-         "text" : "Internasional",
-         "submenu" : [
-            {
-               "id": 21,
-               "text" : "Asean"
-            },
-            {
-               "id": 22,
-               "text" : "Asia Pasifik"
-            },
-            {
-               "id": 23,
-               "text" : "Timur Tengah"
-            },
-            {
-               "id": 24,
-               "text" : "Eropa Amerika"
-            }
-         ]
+         "text" : "Sosial",
+         "link" : "/kategori/2?page=1&category=SOSIAL"
       },
       {
          "id" : 3,
-         "text" : "Ekonomi",
-         "submenu" : [
-            {
-               "id": 31,
-               "text" : "Keuangan"
-            },
-            {
-               "id": 32,
-               "text" : "Energi"
-            },
-            {
-               "id": 33,
-               "text" : "Bisnis"
-            }
-         ]
+         "text" : "Peristiwa",
+         "link" : "/kategori/3?page=1&category=PERISTIWA"
+         
       },
       {
          "id" : 4,
-         "text" : "Olahraga",
-         "submenu" : [
-            {
-               "id": 41,
-               "text" : "Sepakbola"
-            },
-            {
-               "id": 42,
-               "text" : "MotoGP"
-            },
-            {
-               "id": 43,
-               "text" : "Bulutangkis"
-            },
-            {
-               "id": 44,
-               "text" : "Sea Games"
-            }
-         ]
+         "text" : "Pembinaan Masyarakat",
+         "link" : "/kategori/4?page=1&category=PEMBINAAN-MASYARAKAT"
       },
       {
          "id" : 5,
-         "text" : "Teknologi",
+         "link": "/",
+         "text" : "Satker",
          "submenu" : [
             {
                "id": 51,
-               "text" : "Teknologi Informasi"
+               "text" : "BAG OPS",
+               "link" : "/satker/BAG-OPS?name=Bagian-Operasional"
             },
             {
                "id": 52,
-               "text" : "Sains"
+               "text" : "BAG REN",
+               "link" : "/satker/BAG-REN?name=Bagian-Perencanaan"
+               
             },
             {
                "id": 53,
-               "text" : "Telekomunikatif"
+               "text" : "BAG SDM",
+               "link" : "/satker/BAG-SDM?name=Bagian-Sumber-Daya-Manusia"
             },
             {
                "id": 54,
-               "text" : "Otomotif"
+               "text" : "BAG LOG",
+               "link" : "/satker/BAG-LOG?name=Bagian-Logistik"
+            },
+            {
+               "id": 55,
+               "text" : "SPKT",
+               "link" : "/satker/SPKT?name=Sentra-Pelayanan-Kepolisian-Terpadu"
+
+            },
+            {
+               "id": 56,
+               "text" : "SI WAS",
+               "link" : "/satker/SI-WAS?name=Seksi-Pengawasan"
+            },
+            {
+               "id": 57,
+               "text" : "SI PROPAM",
+               "link" : "/satker/SI-PROPAM?name=Seksi-Profesi-dan-Pengamanan"
+            },
+            {
+               "id": 58,
+               "text" : "SI HUMAS",
+               "link" : "/satker/SI-HUMAS?name=Seksi-Hubungan-Masyarakat"
+            },
+            {
+               "id": 59,
+               "text" : "SI KUM",
+               "link" : "/satker/SI-KUM?name=Seksi-Hukum"
+            },
+            {
+               "id": 511,
+               "text" : "SI TIK",
+               "link" : "/satker/Seksi-Teknologi-Informasi-Komunikasi"
             }
+         
          ]
       },
       {
-         "id" :6,
-         "text" : "Hiburan",
+         "id" : 6,
+         "text" : "Polsek Jajaran",
+         "link": "/",
          "submenu" : [
             {
                "id": 61,
-               "text" : "Film"
+               "text" : "Polsek Tambun",
+               "link": "/polsek-jajaran/Polsek-Tambun"
             },
             {
                "id": 62,
-               "text" : "Musik"
+               "text" : "Polsek Cikarang",
+               "link": "/polsek-jajaran/Polsek-Cikarang"
             },
             {
                "id": 63,
-               "text" : "Seleb"
+               "text" : "Polsek Kedung Waringin",
+               "link": "/polsek-jajaran/Polsek-Kedung-Waringin"
             },
             {
                "id": 64,
-               "text" : "Seni Budaya"
+               "text" : "Polsek Pebayuran",
+               "link": "/polsek-jajaran/Polsek-Pebayuran"
+            },
+            {
+               "id": 65,
+               "text" : "Polsek Sukatani",
+               "link": "/polsek-jajaran/Polsek-Sukatani"
+            },
+            {
+               "id": 66,
+               "text" : "Polsek Babelan",
+               "link": "/polsek-jajaran/Polsek-Babelan"
+            },
+            {
+               "id": 67,
+               "text" : "Polsek Tarumajaya",
+               "link": "/polsek-jajaran/Polsek-Tarumajaya"
+            },
+            {
+               "id": 68,
+               "text" : "Polsek Serang Baru",
+               "link": "/polsek-jajaran/Polsek-Serang-Baru"
             }
+         
          ]
+      },
+      {
+         "id" : 7,
+         "text" : "Vidio",
+         "link": "/vidio"
+      },
+      {
+         "id" : 8,
+         "text" : "Aplikasi",
+         "link": "https://play.google.com/store/apps/details?id=id.go.polri.bekasikabupaten.cikarang_presisi.cikarang_presisi"
+      },
+      
+      {
+         "id" : 9,
+         "text" : "Layanan",
+         "link" : "/",
+         "submenu" : [
+            {
+               "id": 91,
+               "text" : "Call Center",
+               "link": "/layanan/Call-Center"
+            },
+            {
+               "id": 92,
+               "text" : "SKCK",
+               "link": "/layanan/SKCK"
+            },
+            {
+               "id": 93,
+               "text" : "Izin Keramaian",
+               "link": "/layanan/Izin-Keramaian"
+            },
+            {
+               "id": 94,
+               "text" : "Pengawalan Jalan",
+               "link": "/layanan/Pengawalan-Jalan"
+            },
+            {
+               "id": 95,
+               "text" : "Pengamanan Objek Khusus",
+               "link" : "/layanan/Pengamanan-Objek-Khusus"
+            },
+            {
+               "id": 96,
+               "text" : "SPKT",
+               "link" : "/layanan/SPKT"
+            }
+         
+         ]
+      },
+      {
+         "id" : 10,
+         "text" : "Kontak",
+         "link": "/kontak"
       }
    ],
+   "category" : [
+      {
+         "text" : "Hukum Kriminal",
+         "cid" : 1
+      },
+      {
+         "text" : "Sosial",
+         "cid" : 2
+      },
+      {
+         "text" : "Peristiwa",
+         "cid" : 3
+      },
+      {
+         "text" : "Pembinaan Masyarakat",
+         "cid" : 4
+      }
+   ],
+   "cari" : "Cari Disini...",
    "populer": "Berita Terpopuler",
+   "job" : "Uraian Tugas",
    "terbaru" : "Berita Terbaru",
+   "terkini" : "Berita Terkini",
    "utama" : "Berita Utama",
    "sorotan": "Sorotan",
    "kategori" : "Kategori",
+   "nocontent": "Tidak Ada Konten yang Tersedia",
    "widgettab" : {
-      "submenu" : "Bagus",
-      "submenu2" : "Beuh",
-      "submenu3" : "Mantap"
+      "submenu" : "BERITA",
+      "submenu2" : "ARTIKEL",
+      "submenu3" : "UMUM"
    },
    "blog" : "Berita Blog",
    "bagikan" : "Dibagikan",

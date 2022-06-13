@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import {TabContent, TabPane, Nav, NavItem, Fade} from 'reactstrap';
-import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 faArrowAltCircleRight,
@@ -13,7 +12,7 @@ import CollectionBerita from '../../repositories/CollectionBerita';
 const WidgetTabPane = ({arr, a_id, id, dark}) => {
     return (
         <Fade in={id === a_id}>
-            <div className=" mx-auto grid lg:grid-cols-2 grid-cols-1 justify-center gap-3">
+            <div className=" mx-auto grid lg:grid-rows-3 lg:gap-3 lg:grid-flow-col">
                 {arr ? arr.map((item, i) => (
                     <PostSlickList stuff={item} key={i} skeleton={false}/>
                 )) :

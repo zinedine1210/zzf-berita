@@ -5,44 +5,48 @@ import "../../node_modules/slick-carousel/slick/slick.css"
 // import ModalVideo from 'react-modal-video'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight, faCirclePlay, faPlay } from "@fortawesome/free-solid-svg-icons"
+import CollectionBerita from '../../repositories/CollectionBerita';
+import Skeleton from 'react-loading-skeleton';
+import moment from 'moment';
+import ReactMarkdown from 'react-markdown';
 
 
 
 
-const thumbs = ["https://source.unsplash.com/95x70?economy", "https://source.unsplash.com/95x70?national", "https://source.unsplash.com/95x70?international"];
+// const thumbs = ["https://source.unsplash.com/95x70?economy", "https://source.unsplash.com/95x70?national", "https://source.unsplash.com/95x70?international"];
 
 
-const postSlider = [
-    {
-        image: "https://source.unsplash.com/1460x1000?economy",
-        title: 'Japan’s virus success has puzzled the world. Is its luck running out?',
-        body: 'The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…',
-        category: 'TECHNOLOGY',
-        date: 'March 26, 2020',
-        link:"https://www.youtube.com/watch?v=KWxENcTAe1A"
-    },
-    {
-        image: "https://source.unsplash.com/1460x1000?international",
-        title: 'Japan’s virus success has puzzled the world. Is its luck running out?',
-        body: 'The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…',
-        category: 'TECHNOLOGY',
-        date: 'March 26, 2020',
-        link:"https://www.youtube.com/watch?v=OrBnP6DyukE"
-    },
-    {
-        image: "https://source.unsplash.com/1460x1000?national",
-        title: 'Copa America: Luis Suarez from devastated US America',
-        body: 'The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…',
-        category: 'TECHNOLOGY',
-        date: 'March 26, 2020',
-        link:"https://www.youtube.com/watch?v=-HyqafzN8ic"
-    }
-];
+// const postSlider = [
+//     {
+//         image: "https://source.unsplash.com/1460x1000?economy",
+//         title: 'Japan’s virus success has puzzled the world. Is its luck running out?',
+//         body: 'The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…',
+//         category: 'TECHNOLOGY',
+//         date: 'March 26, 2020',
+//         link:"https://www.youtube.com/watch?v=KWxENcTAe1A"
+//     },
+//     {
+//         image: "https://source.unsplash.com/1460x1000?international",
+//         title: 'Japan’s virus success has puzzled the world. Is its luck running out?',
+//         body: 'The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…',
+//         category: 'TECHNOLOGY',
+//         date: 'March 26, 2020',
+//         link:"https://www.youtube.com/watch?v=OrBnP6DyukE"
+//     },
+//     {
+//         image: "https://source.unsplash.com/1460x1000?national",
+//         title: 'Copa America: Luis Suarez from devastated US America',
+//         body: 'The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…',
+//         category: 'TECHNOLOGY',
+//         date: 'March 26, 2020',
+//         link:"https://www.youtube.com/watch?v=-HyqafzN8ic"
+//     }
+// ];
 
 function SampleNextArrow(props) {
     const {className, onClick} = props;
     return (
-        <div onClick={onClick} className={`${className} text-sky-500 text-4xl font-bold bg-gray-200 w-10 h-10 text-center hover:scale-75 hover:duration-200 hover:ease-out rounded-full float-right absolute top-5 right-0`}>
+        <div onClick={onClick} className={`${className} z-20 text-sky-500 text-4xl font-bold bg-gray-200 w-10 h-10 text-center hover:scale-75 hover:duration-200 hover:ease-out rounded-full float-right absolute top-5 right-0`}>
             <FontAwesomeIcon icon={faAngleRight}/>
         </div>
     );
@@ -51,7 +55,7 @@ function SampleNextArrow(props) {
 function SamplePrevArrow(props) {
     const {className, onClick} = props;
     return (
-        <div onClick={onClick} className={`${className} text-sky-500 text-4xl font-bold bg-gray-200 w-10 h-10 text-center hover:scale-75 hover:duration-200 hover:ease-out rounded-full float-left absolute top-5 left-0`}>
+        <div onClick={onClick} className={`${className} z-20 text-sky-500 text-4xl font-bold bg-gray-200 w-10 h-10 text-center hover:scale-75 hover:duration-200 hover:ease-out rounded-full float-left absolute top-5 left-0`}>
             <FontAwesomeIcon icon={faAngleLeft}/>
         </div>
     );
@@ -64,11 +68,18 @@ class VideoPostCarousel extends Component {
             nav1: null,
             nav2: null,
             vModal: false,
-            videoId: 'https://www.youtube.com/watch?v=_9DROSpYeZc'
+            videoId: 'https://www.youtube.com/watch?v=_9DROSpYeZc',
+            postSlider: [],
+            thumbs: []
         };
     }
 
     componentDidMount() {
+        CollectionBerita.getDataBerita({start:0, count:20, flag:"all", img:"t"}).then(res => {
+            this.setState({
+                postSlider: res.data
+            })
+        })
         this.setState({
             nav1: this.slider1,
             nav2: this.slider2
@@ -76,7 +87,6 @@ class VideoPostCarousel extends Component {
     }
 
     modalHandler = (value, link) => {
-        console.log(link);
         this.setState({
             vModal: value,
             videoId: link
@@ -90,7 +100,7 @@ class VideoPostCarousel extends Component {
         const navSettings = {
             nextArrow: <SampleNextArrow />,
             prevArrow: <SamplePrevArrow />,
-            slidesToShow: 2,
+            slidesToShow: 6,
             swipeToSlide: true,
             focusOnSelect: true,
             centerMode: true,
@@ -126,17 +136,16 @@ class VideoPostCarousel extends Component {
                             fade={true}
                             ref={slider => (this.slider1 = slider)}
                         >
-                            {postSlider.slice(0, 9).map((item, i) => (
+                            {this.state.postSlider.slice(0, 20).map((item, i) => (
                                 <div key={i} className="bg-black ">
                                     <div className="">
-                                        <img src={item.image} alt="thumb"/>
+                                        <img src={item._foto0} alt="thumb" className=''/>
                                     </div>
                                     <div className="absolute bottom-10 left-5 lg:left-10 text-white">
-                                        <h1 className='text-xs lg:text-xl '><span className='kotak-title'></span><span className='text-sky-500 font-main font-semibold'>{item.category}</span> | 14 mei 2020</h1>
-                                        <h4 className='lg:text-5xl text-sm font-semibold'><Link className="play_btn"
-                                                    href={`/berita/${item.id}/${item.title}`}>{item.title}</Link></h4>
+                                        <h1 className='text-xs lg:text-xl '><span className='kotak-title'></span><span className='text-sky-500 font-main font-semibold'>{item ? item.category_name_0 : <Skeleton />}</span> | {moment(new Date(item._cd.epoch_time * 1000)).local().format("DD MMMM YYYY")}</h1>
+                                        <Link href={`/berita/${item.id}/${item.judul}`}><h4 className='lg:text-2xl text-sm font-semibold cursor-pointer'>{item.judul}</h4></Link>
                                         <div className="space-10"/>
-                                        <p className="post-p text-xs lg:text-xl">{item.body}</p>
+                                        <p className="post-p text-xs lg:text-sm">{item.deskripsi.length > 200 ? <ReactMarkdown>{item.deskripsi.substring(0,200)+"..."}</ReactMarkdown> : <ReactMarkdown>{item.deskripsi}</ReactMarkdown>}</p>
                                     </div>
                                 </div>
                             ))}
@@ -149,9 +158,9 @@ class VideoPostCarousel extends Component {
                             {...navSettings}
                             className=""
                         >
-                            {thumbs.map((item, i) => (
+                            {this.state.postSlider.map((item, i) => (
                                 <div key={i} className="">
-                                    <img src={item} alt="" />
+                                    <img src={item._foto0} alt={item._foto0} className="w-[50px] lg:w-[100px]" />
                                 </div>
                             ))}
                         </Slider>

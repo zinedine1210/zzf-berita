@@ -7,37 +7,75 @@ import CollectionBerita from "../../repositories/CollectionBerita"
 import { useRouter } from 'next/router'
 
 
-export default function BeritaByKategori({ total, pagination, category, page}) {
+export default function BeritaByKategori({ total, pagination, category, page, title, tag}) {
     const router = useRouter()
-    const url = router.asPath
+    const url = router.pathname.replace('/[uid]', "")
     const [data, setData] = useState()
+    const [keyword, setKeyword] = useState(null)
     const [pagerList, setPagerList] = useState()
-
     
 
     useEffect(() => {
 
-        if(category){
-                // axios.get(`http://localhost:3004/posts?categoryId=${categoryId}&_limit=${total}&_sort=informasi.read&_order=desc&_page=${page}`)
-                // .then(res => {
-                //     setData(res.data)
-                // })
+        if(tag & category){
+            setKeyword(`&category=${category}&tag=${tag}`)
+        }else if(tag){
+            setKeyword(`&tag=${tag}`)
+        }else if(category){
+            setKeyword(`&category=${category}`)
+        }else{
+            ""
+        }
 
-                CollectionBerita.getDataBerita({start:0, img:"thumb", flag:"all", count:total, category:category})
+        if(category){
+
+                CollectionBerita.getDataBerita({start:0, img:"thumb", flag:"all", count:total, category:category, tag:tag})
                 .then(res => {
                     setData(res.data)
                 })
 
-                const setCountPage = Math.ceil(data / total)
+                const setCountPage = Math.ceil(data ? data.length / total : 0)
                 setPagerList(setCountPage)
 
+        }else{
+            CollectionBerita.getDataBerita({start:0, img:"thumb", flag:"all", count:total,tag:tag})
+                .then(res => {
+                    setData(res.data)
+                })
+
+                const setCountPage = Math.ceil(data ? data.length / total : 0)
+                setPagerList(setCountPage)
         }
         
-    }, [category])
+    }, [category, tag])
 
   return (
       <div className='w-full'>
-          
+                <h1 className="title">{data ? title:""}</h1>
+                <div className="text-sm breadcrumbs mb-5">
+                    <ul>
+                        <li className='dark:text-white'>
+                            <Link href={`/`}>
+                                <a>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-4 h-4 mr-2 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
+                                    Home
+                                </a>
+                            </Link>
+                        </li> 
+                        <li className='dark:text-white'>
+                            <Link href={`/kategori`}>
+                                <a>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-4 h-4 mr-2 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
+                                    Kategori
+                                </a>
+                            </Link>
+                        </li>
+                        <li className='dark:text-white'>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-4 h-4 mr-2 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
+                            {data ? title.toLowerCase() : ""}
+                        </li>
+                    </ul>
+                </div>
                 {data ? data.map((item, id) => {
                     return (
                     <ListPostByCategory stuff={item} key={id} skeleton={false}/>
@@ -45,7 +83,7 @@ export default function BeritaByKategori({ total, pagination, category, page}) {
                 }) : 
                 
                 [...Array(total)].map((item) => {
-                    return <ListPostByCategory stuff={null} key={item} skeleton={true}/>
+                    return <ListPostByCategory stuff={null} key={item} skeleton={true} query={keyword}/>
                 })
                 
                 
@@ -70,7 +108,7 @@ export default function BeritaByKategori({ total, pagination, category, page}) {
                 //     </button>
                 // </div>
 
-                <Pagination page={page} pagerList={pagerList} urlData={url}/>
+                <Pagination page={page} pagerList={pagerList} urlData={url} query={keyword}/>
                 :
 
                 <Link href={`/kategori/${data[0].category}?id=${categoryId}`}>

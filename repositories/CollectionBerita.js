@@ -215,3 +215,4 @@ class CollectionBerita {
 }
 
 export default new CollectionBerita();
+

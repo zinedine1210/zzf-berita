@@ -1,17 +1,20 @@
-import axios from 'axios'
+// import axios from 'axios'
 import React, {useState, useEffect} from 'react'
 import List from "../../components/Molecules/List"
+import CollectionBerita from "../../repositories/CollectionBerita"
 
 
-
-export default function Blog({kolom,total}) {
+export default function Blog({kolom,total, tag}) {
     const [data, setData] = useState()
     useEffect(() => {
-        axios.get(`http://localhost:3004/posts?_sort=informasi.read&_limit=${total}`)
+        CollectionBerita.getDataBerita({start:0, count:total, img:"t", flag:"all", tag:tag})
         .then(res => {
             setData(res.data)
         })
     }, [])
+
+
+    
   return (
       <div className="w-full">
 

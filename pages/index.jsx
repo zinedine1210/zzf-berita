@@ -13,7 +13,11 @@ export default function Home() {
   const {t} = useTranslation("common")
 
   return (
-    <Layout lang={t} title={"Home"}>
+    <Layout lang={t} title={"POLRES METRO BEKASI"} description="WEBSITE POLRES METRO BEKASI">
+      <div className="container">
+          {/* Banner */}
+          <img src="/images/145ae4e5-c5fe-468c-9378-398493e88141.jpg" className='py-2' alt="Banner" />
+      </div>
       <div className="container lg:flex gap-5">
         <div className="w-full lg:w-[730px] ">
           <VideoPostCarousel />

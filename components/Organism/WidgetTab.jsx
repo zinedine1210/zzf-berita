@@ -35,7 +35,7 @@ const WidgetTab = ({className, dark, bahasa, total}) => {
         if (activeTab !== tab){
             setActiveTab(tab)
             setData(null)
-
+ 
             getData()
         }
     };

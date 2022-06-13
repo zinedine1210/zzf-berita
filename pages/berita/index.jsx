@@ -1,19 +1,15 @@
 import React from 'react'
-import { useRouter } from 'next/router'
-import Layout from "../../components/Layouts/Layout"
+import ErrorPage from "../../components/Templates/ErrorPage"
 import { useTranslation } from 'next-i18next'
-import DetailPage from "../../components/Templates/DetailPage"
 
-export default function Category() {
+
+
+export default function index() {
   const {t} = useTranslation("common")
-    const router = useRouter()
-    const {id, page} = router.query
 
 
   return (
-      <Layout title={id} >
-          <DetailPage title={id} category={id} bahasa={t} page={page}/>
-      </Layout>
+      <ErrorPage bahasa={t} />
   )
 }
 

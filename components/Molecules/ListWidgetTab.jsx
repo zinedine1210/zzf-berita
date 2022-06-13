@@ -4,6 +4,8 @@ import moment from 'moment'
 import Skeleton from 'react-loading-skeleton'
 
 export default function ListWidgetTab({stuff, skeleton}) {
+    let jdl = stuff ? stuff.judul.replace(/\s+/g, '-'):""
+
   return (
     <div>
         <div className="flex gap-3 items-center justify-center mt-3 border-b-2 border-sky-500 border-dashed pb-2">
@@ -19,7 +21,7 @@ export default function ListWidgetTab({stuff, skeleton}) {
                     <Link href={`/kategori/${skeleton ? "skeleton" : stuff.category_name_0}`}><a className='text-sky-500 font-semibold uppercase'>{skeleton ? <Skeleton width={80} /> : stuff.category_name_0}</a></Link>
                     <a className='dark:text-gray-400'>{skeleton ? <Skeleton width={50} /> : moment(new Date(stuff._cd.epoch_time * 1000)).local().format('DD MMMM YYYY')}</a>
                 </div>
-                <h4 className='text-gray-500 dark:text-white text-xs lg:text-sm'><Link href={`/berita/${skeleton ? "skeleton" : stuff.id}/${skeleton ? "skeleton" :stuff.judul}`}>{skeleton ? <Skeleton height={50}/> : stuff.judul}</Link></h4>
+                <h4 className='text-gray-500 dark:text-white text-xs lg:text-sm'><Link href={`/berita/${skeleton ? "skeleton" : stuff.id}/${skeleton ? "skeleton" :jdl}?page=1`}>{skeleton ? <Skeleton height={50}/> : stuff.judul}</Link></h4>
             </div>
         </div>
         <div className="space-15"/>

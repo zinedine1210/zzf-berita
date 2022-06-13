@@ -5,7 +5,7 @@ import SkyScraperList from '../Molecules/SkyScraperList'
 import CollectionBerita from '../../repositories/CollectionBerita'
 
 export default function BeritaSkyscraper({total, category}) {
-    const [data, setData] =useState(null)
+    const [data, setData] = useState(null)
 
     useEffect(()=> {
         CollectionBerita.getDataBerita({start:0, count:total, category:category, flag:"all", img:"t"})

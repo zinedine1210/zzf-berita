@@ -16,7 +16,7 @@ html, body {
     @apply bg-gradient-to-r from-red-900 to-red-600 dark:from-slate-700 dark:to-slate-700
   }
   .title {
-    @apply bg-sky-500 text-white font-semibold text-sm py-1 px-5 lg:text-xl
+    @apply bg-sky-500 text-white font-semibold text-sm py-1 px-8 lg:text-xl inline-block mb-5
   }
 }
 
@@ -43,11 +43,11 @@ a {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(255, 171, 60, 0.8);
+  background: rgba(3, 179, 255, 0.8);
   width: 20px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(255, 116, 10);
+  background: rgba(3, 179, 255, 0.8);
 }
