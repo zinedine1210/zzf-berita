@@ -19,7 +19,6 @@ export default function SatuanFungsi() {
       CollectionSatuanFungsi.getOneSatuanFungsi({id:satuanfungsi, img:"thumb"})
       .then(res => {
         setData(res.data[0])
-        console.log(res.data);
       })
     }, [satuanfungsi])
     

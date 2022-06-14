@@ -1,47 +1,32 @@
 import React, {Component} from 'react';
 import Link from "next/link"
 import Slider from "react-slick";
-import "../../node_modules/slick-carousel/slick/slick.css"  
-// import ModalVideo from 'react-modal-video'
+import "../../node_modules/slick-carousel/slick/slick.css"
+import {connect} from "react-redux"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight, faCirclePlay, faPlay } from "@fortawesome/free-solid-svg-icons"
 import CollectionBerita from '../../repositories/CollectionBerita';
 import Skeleton from 'react-loading-skeleton';
 import moment from 'moment';
+import { setDataAll, setDataSlideUtama} from '../../store/actions';
 import ReactMarkdown from 'react-markdown';
+import lodash from "lodash"
 
 
+async function getSlideData(props){
+    if(props.dataSlideUtama.length !== 0){
+        return props.dataSlideUtama
+    }else{
+        const Response = await CollectionBerita.getDataBerita({start:0, count:20, flag:"Headline News", img:"t"})
+        let allData = props.dataAll
+        if(Response){
+            props.setDataSlideUtama(Response['data'])
+            // props.setDataAll(lodash.unionBy(allData, Response['data'], "id"))
+            return Response['data']
+        }
 
-
-// const thumbs = ["https://source.unsplash.com/95x70?economy", "https://source.unsplash.com/95x70?national", "https://source.unsplash.com/95x70?international"];
-
-
-// const postSlider = [
-//     {
-//         image: "https://source.unsplash.com/1460x1000?economy",
-//         title: 'Japan’s virus success has puzzled the world. Is its luck running out?',
-//         body: 'The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…',
-//         category: 'TECHNOLOGY',
-//         date: 'March 26, 2020',
-//         link:"https://www.youtube.com/watch?v=KWxENcTAe1A"
-//     },
-//     {
-//         image: "https://source.unsplash.com/1460x1000?international",
-//         title: 'Japan’s virus success has puzzled the world. Is its luck running out?',
-//         body: 'The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…',
-//         category: 'TECHNOLOGY',
-//         date: 'March 26, 2020',
-//         link:"https://www.youtube.com/watch?v=OrBnP6DyukE"
-//     },
-//     {
-//         image: "https://source.unsplash.com/1460x1000?national",
-//         title: 'Copa America: Luis Suarez from devastated US America',
-//         body: 'The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…',
-//         category: 'TECHNOLOGY',
-//         date: 'March 26, 2020',
-//         link:"https://www.youtube.com/watch?v=-HyqafzN8ic"
-//     }
-// ];
+    }
+}
 
 function SampleNextArrow(props) {
     const {className, onClick} = props;
@@ -69,16 +54,13 @@ class VideoPostCarousel extends Component {
             nav2: null,
             vModal: false,
             videoId: 'https://www.youtube.com/watch?v=_9DROSpYeZc',
-            postSlider: [],
-            thumbs: []
+            postSlider: []
         };
     }
 
     componentDidMount() {
-        CollectionBerita.getDataBerita({start:0, count:20, flag:"all", img:"t"}).then(res => {
-            this.setState({
-                postSlider: res.data
-            })
+        getSlideData(this.props).then(res => {
+            this.setState({postSlider:res})
         })
         this.setState({
             nav1: this.slider1,
@@ -160,7 +142,7 @@ class VideoPostCarousel extends Component {
                         >
                             {this.state.postSlider.map((item, i) => (
                                 <div key={i} className="">
-                                    <img src={item._foto0} alt={item._foto0} className="w-[50px] lg:w-[100px]" />
+                                    <img src={item._foto0} alt={item._foto0} className="w-[100px]" />
                                 </div>
                             ))}
                         </Slider>
@@ -175,4 +157,11 @@ class VideoPostCarousel extends Component {
     }
 }
 
-export default VideoPostCarousel;
+const MapStateToProps = state => {
+    return {
+        dataAll: state.meta.dataAll,
+        dataSlideUtama: state.meta.dataSlideUtama
+    }
+}
+
+export default connect(MapStateToProps, {setDataAll, setDataSlideUtama})(VideoPostCarousel);

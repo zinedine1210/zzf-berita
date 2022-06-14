@@ -8,6 +8,8 @@ faAngleLeft
 import Link from 'next/link';
 import CollectionBerita from '../../repositories/CollectionBerita';
 import ReactMarkdown from 'react-markdown';
+import { setDataTrending } from '../../store/actions';
+import {connect} from "react-redux"
 
 
 const WidgetTabPane = ({arr, a_id, id, dark}) => {
@@ -22,23 +24,31 @@ const WidgetTabPane = ({arr, a_id, id, dark}) => {
     )
 };
 
-const WidgetTranding = ({className, dark, title, total, kolom}) => {
+
+const WidgetTranding = ({className, dark, total, dataTrending, setDataTrending}) => {
     const [activeTab, setActiveTab] = useState(0);
     const [data, setData] = useState(null)
 
-    useEffect(() => {
-        CollectionBerita.getDataBerita({flag:"all", img:"t", count:total, start:0})
-        .then(res => {
-            setData(res.data)
-        })
+    const getDataTrending = () => {
+        if(dataTrending.length !== 0){
+            setData(dataTrending)
+        }else{
+            CollectionBerita.getDataBerita({flag:"all", img:"t", count:total, start:0})
+            .then(res => {
+                setData(res.data)
+                setDataTrending(res.data)
+            })
+        }
+    }
 
+    useEffect(() => {
+        getDataTrending()
     } , [])
 
     const upData = () => {
         if(activeTab < data.length - 1){
             setActiveTab(activeTab + 1)
         }
-    
     }
 
     const downData = () => {
@@ -79,4 +89,11 @@ const WidgetTranding = ({className, dark, title, total, kolom}) => {
     );
 };
 
-export default WidgetTranding;
+
+const MapStateToProps = state => {
+    return {
+        dataTrending: state.meta.dataTrending
+    }
+}
+
+export default connect(MapStateToProps, {setDataTrending})(WidgetTranding)

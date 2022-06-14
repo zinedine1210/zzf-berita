@@ -4,6 +4,10 @@ import { ThemeProvider } from 'next-themes'
 import 'react-loading-skeleton/dist/skeleton.css'
 
 
+import { wrapper, store } from "../store/store";
+import { Provider } from "react-redux";
+
+
 
 // FontAwesome
 import { config } from '@fortawesome/fontawesome-svg-core'
@@ -13,9 +17,11 @@ config.autoAddCss = false
 function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider attribute='class'>
-      <Component {...pageProps} />
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
     </ThemeProvider>
   )
 }
 
-export default appWithTranslation(MyApp)
+export default appWithTranslation(wrapper.withRedux(MyApp))

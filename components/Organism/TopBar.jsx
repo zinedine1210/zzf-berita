@@ -9,7 +9,7 @@ export default function TopBar() {
       <div className='w-full hidden lg:block py-1'>
           <div className="flex items-center justify-between gap-5">
               <div className='text-xs space-x-3 flex'>
-                  <h1 className='bg-main-gradient text-white font-semibold text-sm flex justify-center items-center px-3'>Tranding</h1>
+                  <h1 className='bg-main-gradient text-white font-semibold text-sm flex justify-center items-center px-3'>Trending</h1>
                   <WidgetTranding title="Tranding" total={5}/>
               </div>
 

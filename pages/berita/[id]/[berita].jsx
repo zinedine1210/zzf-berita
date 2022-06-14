@@ -16,7 +16,6 @@ export default function Berita() {
   useEffect(() => {
     CollectionBerita.getOneDataBerita({id:id, img:"t"})
     .then(res => {
-      console.log(res.data[0])
       setData(res.data[0])
     })
   }, [id])

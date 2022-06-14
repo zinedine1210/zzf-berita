@@ -11,7 +11,7 @@ export default function ListWidgetTab({stuff, skeleton}) {
         <div className="flex gap-3 items-center justify-center mt-3 border-b-2 border-sky-500 border-dashed pb-2">
             <div className="w-1/4">
                 <div className="overflow-hidden">
-                    <Link href="/">
+                    <Link href={`/berita/${skeleton ? "skeleton" : stuff.id}/${skeleton ? "skeleton" : jdl}`}>
                         {skeleton ? <Skeleton width={180} height={80}/> : <img src={stuff._foto0} alt="thumb"/>}
                     </Link>
                 </div>

@@ -6,6 +6,8 @@ faArrowAltCircleRight,
 faArrowAltCircleLeft
 } from "@fortawesome/free-solid-svg-icons"
 import PostSlickList from '../Molecules/PostSlickList';
+import {connect} from "react-redux"
+import {setDataLastPost} from "../../store/actions"
 import CollectionBerita from '../../repositories/CollectionBerita';
 
 
@@ -25,16 +27,27 @@ const WidgetTabPane = ({arr, a_id, id, dark}) => {
     )
 };
 
-const PostSlick = ({className, dark, title, total, kolom}) => {
+const PostSlick = ({className, dark, title, kolom, dataLastPost, total, setDataLastPost}) => {
     const [activeTab, setActiveTab] = useState(0);
     const [count, setCount] = useState(5)
     const [data, setData] = useState(null)
+    
+
+    const getDataLastPost = () => {
+        if(dataLastPost.length !== 0){
+            setData(dataLastPost)
+        }else{
+            CollectionBerita.getDataBerita({flag:"all", img:"t", count:total})
+            .then(res => {
+                setData(res.data)
+                setDataLastPost(res.data)
+            })
+        }
+    }
 
     useEffect(() => {
-        CollectionBerita.getDataBerita({flag:"all", img:"t", count:total})
-        .then(res => {
-            setData(res.data)
-        })
+
+        getDataLastPost()
 
     } , [])
 
@@ -82,4 +95,14 @@ const PostSlick = ({className, dark, title, total, kolom}) => {
     );
 };
 
-export default PostSlick;
+
+const MapStateToProps = state => {
+    return {
+        dataLastPost:state.meta.dataLastPost
+    }
+}
+
+
+
+
+export default connect(MapStateToProps, { setDataLastPost })(PostSlick);

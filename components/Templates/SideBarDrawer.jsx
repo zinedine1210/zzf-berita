@@ -74,12 +74,12 @@ export default function SideBarDrawer({children, bahasa}) {
 
                             <li className="rounded-sm">
                                 <label htmlFor="darkmode" className='flex justify-between hover:bg-transparent'>Dark Mode
-                                <input type="checkbox" class="toggle toggle-md" id='darkmode' onClick={() => setTheme(theme === "light" ? "dark" : "light")}/>
+                                <input type="checkbox" className="toggle toggle-md" id='darkmode' onClick={() => setTheme(theme === "light" ? "dark" : "light")}/>
                                 </label>
                             </li>
 
                             <li className="rounded-sm">
-                                <select class="select select-ghost w-full max-w-xs hover:bg-transparent hover:dark:text-white" onChange={() => settingsLanguage()}>
+                                <select className="select select-ghost w-full max-w-xs hover:bg-transparent hover:dark:text-white" onChange={() => settingsLanguage()}>
                                     <option className='text-orange-500 dark:text-slate-800' disabled selected>{language == "ind" ? "Bahasa Indonesia" : "Bahasa Inggris"}</option>
                                     {language == "ind" ?
                                     <option className='text-orange-500 dark:text-slate-800'>Bahasa Inggris</option>

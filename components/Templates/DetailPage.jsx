@@ -5,13 +5,13 @@ import WidgetTab from "../Organism/WidgetTab"
 import WidgetKategori from '../Organism/WidgetKategori'
 
 
-export default function DetailPage({title, bahasa, category, page, categoryId}) {
+export default function DetailPage({title, bahasa, category, page, tag}) {
 
   return (
     <main className="w-full">
         <div className='lg:flex gap-5 py-5'>
             <div className='w-full lg:w-[730px] mb-5 lg:mb-0'>
-                <BeritaByKategori total={6} pagination={true} category={category} page={page} title={title} categoryId={categoryId}/>
+                <BeritaByKategori count={5} pagination={true} category={category} page={page} title={title} tag={tag}/>
             </div>
             <div className="w-full lg:w-[350px]">
                 <FollowUs instagram={true} facebook={true} youtube={true} twitter={true} vimeo={true} telegram={true}/>

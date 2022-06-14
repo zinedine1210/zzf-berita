@@ -24,7 +24,7 @@ export default function Articles({stuff, skeleton}) {
             }
             <div className="flex flex-col items-start justify-between w-full md:flex-row md:items-center text-gray-400">
                 <div className="flex items-center md:space-x-2">
-                    <p className="text-sm"><span className='text-orange-500 font-semibold'>{skeleton ? <Skeleton width={50} height={10} inline={true}/> : stuff.category_name_0}</span> • {skeleton ? "" : moment(new Date(stuff._cd.epoch_time * 1000)).local().format("DD MMMM YYYY")}</p>
+                    <p className="text-sm"><span className='text-orange-500 font-semibold'>{skeleton ? <Skeleton width={50} height={10} inline={true}/> : stuff.category_name_0}</span> • { skeleton ? "" : moment(new Date(stuff._cd.epoch_time * 1000)).local().format("DD MMMM YYYY")}</p>
                 </div>
                 <p className="flex-shrink-0 mt-3 text-sm md:mt-0">
                     {skeleton ? <Skeleton width={30} height={30} circle={true} inline={true} /> :

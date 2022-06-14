@@ -4,23 +4,23 @@
       {
          "id" : 1,
          "text" : "Hukum Kriminal",
-         "link" : "/kategori/1?page=1&category=HUKUM-KRIMINAL"
+         "link" : "/kategori?page=1&category=HUKUM-KRIMINAL"
       },
       {
          "id" : 2,
          "text" : "Sosial",
-         "link" : "/kategori/2?page=1&category=SOSIAL"
+         "link" : "/kategori?page=1&category=SOSIAL"
       },
       {
          "id" : 3,
          "text" : "Peristiwa",
-         "link" : "/kategori/3?page=1&category=PERISTIWA"
+         "link" : "/kategori?page=1&category=PERISTIWA"
          
       },
       {
          "id" : 4,
          "text" : "Pembinaan Masyarakat",
-         "link" : "/kategori/4?page=1&category=PEMBINAAN-MASYARAKAT"
+         "link" : "/kategori?page=1&category=PEMBINAAN-MASYARAKAT"
       },
       {
          "id" : 5,
