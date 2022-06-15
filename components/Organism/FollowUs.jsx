@@ -8,6 +8,7 @@ import { faFacebook, faInstagram, faTelegram, faTwitter, faVimeo, faYoutube } fr
 export default function FollowUs({instagram, twitter, youtube, telegram, facebook, vimeo}) {
   return (
       <div className="w-full mb-5">
+          <h1 className="title">Ikuti Kami</h1>
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-1">
 
               {facebook ? 

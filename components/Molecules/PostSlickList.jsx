@@ -8,11 +8,25 @@ import Link from 'next/link'
 
 export default function PostSlickList({stuff, skeleton}) {
     let jdl = stuff ? stuff.judul.replace(/\s+/g, '-'):""
+    const gambar = () => {
+      if(stuff._video0 && stuff._video0 !== ""){
+        let splitData = stuff._video0.split("/")
+        let imgYtb = splitData[4]
+        return `https://img.youtube.com/vi/${imgYtb}/0.jpg`
+        
+      }else if(stuff._foto0){
+        return stuff._foto0
+      }else{
+        return "/images/default.jpg"
+      }
+    }
+
 
   return (
       <div className="w-full">
         {skeleton ? <Skeleton  height={200}/> :
-          <img src={stuff._foto0} alt="gambar berita" />
+          
+          <img src={gambar()} alt="gambar berita" />
         }
           <Link href={`/kategori?page=1&category=${skeleton ? "skeleton" :stuff.category_name_0}`}><small className='cursor-pointer text-xs lg:text-sm font-semibold uppercase hover:underline text-sky-500 flex justify-between'>{skeleton ? <Skeleton width={50} height={10}/> : stuff.category_name_0} <span className='text-gray-500 dark:text-white'><FontAwesomeIcon icon={faEye} className="mr-1"/>{skeleton ? <Skeleton width={10} height={10}/> : stuff.view }</span></small></Link>
           <Link href={`/berita/${skeleton ? "skeleton" : stuff.id}/${skeleton ? "skeleton" : jdl}`}>

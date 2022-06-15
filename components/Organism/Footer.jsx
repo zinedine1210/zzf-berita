@@ -7,7 +7,7 @@ export default function Footer() {
   return (
       <footer className="py-6 container mx-auto text-black dark:text-white">
             <div className="container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50">
-                <div className="grid lg:grid-cols-10 space-y-5">
+                <div className="grid lg:grid-cols-10 space-y-5 lg:space-y-0">
                     
                     <div className="col-span-6 text-center md:text-left md:col-span-2">
                         <p className="pb-1 text-lg text-white mb-3 font-semibold uppercase font-mono">Service</p>

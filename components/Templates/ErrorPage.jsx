@@ -22,7 +22,7 @@ export default function ErrorPage({bahasa}) {
 
                         <WidgetTab bahasa={bahasa("widgettab", {returnObjects:true})} total={5}/>
                         <div className="bg-white dark:bg-slate-800 rounded-lg shadow lg my-5">
-                            <MostShared title={bahasa("bagikan")} total={5}/>
+                            {/* <MostShared title={bahasa("bagikan")} total={5}/> */}
                         </div>
                     </div>
                 </div>

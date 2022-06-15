@@ -28,7 +28,7 @@ export default function Home() {
         </div>
       </div>
       
-      <div className="w-full bg-main-gradient mt-24 py-10">
+      <div className="w-full bg-main-gradient mt-6 py-10">
         <div className="container">
           <BeritaVideo total={10}/>
         </div>
@@ -40,7 +40,7 @@ export default function Home() {
       </div>
 
       <div className="container lg:flex gap-5">
-        <div className="w-full lg:w-[730px] ">
+        <div className="w-full lg:w-[730px]">
           <PostSlick total={25} kolom={5} title={"Berita Terbaru"}/>
         </div>
         <div className="lg:w-[350px] w-full">

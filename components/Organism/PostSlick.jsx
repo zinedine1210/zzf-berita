@@ -102,7 +102,4 @@ const MapStateToProps = state => {
     }
 }
 
-
-
-
 export default connect(MapStateToProps, { setDataLastPost })(PostSlick);

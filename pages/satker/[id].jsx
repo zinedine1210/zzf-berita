@@ -12,9 +12,9 @@ function SatuanFungsiPage(props) {
     const {t} = useTranslation("common")
     const {satuanfungsiName, satuanfungsi} = props
 
-    useEffect(() => {
-      console.log(props.dataSatuanFungsi, props.allData)
-    }, [satuanfungsi])
+    // useEffect(() => {
+    //   console.log(props.dataSatuanFungsi, props.allData)
+    // }, [satuanfungsi])
   return (
       <Layout lang={t} title={`${satuanfungsi}`} description={`Satuan Fungsi ${satuanfungsi} Polres Metro Bekasi`}>
           {props.dataSatuanFungsi ? 
@@ -39,6 +39,7 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async ({
     let findOne = allData.filter(res => res.title == satuanfungsi)
     let dataSatuanFungsi = []
     let redirect = null
+    console.log("ini dari redux=",allData)
     if(findOne.length !== 0 ){
         dataSatuanFungsi = findOne
     } else {
@@ -48,6 +49,7 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async ({
             responseData.data[0]['_foto0'] = responseData.data[0]['_foto0'].replace("thumb/", "")
             store.dispatch(setDataSatuanFungsi(lodash.concat(allData, responseData['data'])))
             dataSatuanFungsi = responseData['data']   
+            console.log("ini dari api =",responseData['data'])
         } else {
             redirect =  {
                 destination: '/404',
