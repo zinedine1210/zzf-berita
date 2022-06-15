@@ -2,7 +2,7 @@ import {
     IS_LOADING, RE_RENDERED, THROW_ERROR, THROW_SUCCESS, SETDARKMODE, 
     SETDATAUMUM, SETDATAALL, SETDATABERITA, SETDATAARTIKEL, SETDATATRENDING, 
     SETDATASLIDEUTAMA, SETDATAHEADLINE, SETDATALASTPOST, SETDATAMOSTVIEW, 
-    SETDATASATUANFUNGSI, SETDATACATEGORYPOLSEK, SETDATACATEGORYSATUANFUNGSI, SETDATAENDORSEMENT
+    SETDATASATUANFUNGSI, SETDATACATEGORYPOLSEK, SETDATACATEGORYSATUANFUNGSI, SETDATAENDORSEMENT, SETDATAVIDEO, SETDATASATUANPOLSEK
 } from "../constants";
 // import {toast} from "react-toastify";
 
@@ -22,10 +22,11 @@ dataHeadline: [],
 dataLastPost: [],
 dataMostView: [],
 dataSatuanFungsi: [],
+dataSatuanPolsek: [],
 dataCategoryPolsek: [],
 dataCategorySatuanFungsi: [],
-dataEndorsement: {},
-number:1
+dataVideo: [],
+dataEndorsement: {}
 };
 
 const metaReducer = (state = init, action) => {
@@ -37,6 +38,13 @@ switch (action.type) {
             error: action.payload
         }
     }
+    case SETDATASATUANPOLSEK:
+        return {
+            ...state,
+            dataSatuanPolsek: action.payload
+        }
+
+        
     case THROW_SUCCESS: {
         // toast.success(action.payload);
         return {
@@ -49,6 +57,11 @@ switch (action.type) {
             ...state,
             isLoading: action.payload
         };
+    case SETDATAVIDEO:
+        return {
+            ...state,
+            dataVideo: action.payload
+        }
     case RE_RENDERED:
         return {
             ...state,

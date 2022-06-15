@@ -1,10 +1,10 @@
 import React from 'react'
-import ErrorPage from "../../components/Templates/ErrorPage"
+import ErrorPage from "../components/Templates/ErrorPage"
 import { useTranslation } from 'next-i18next'
 
 
 
-export default function index() {
+export default function HalamanError() {
   const {t} = useTranslation("common")
 
 
@@ -16,12 +16,12 @@ export default function index() {
 
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-export async function getServerSideProps({ defaultLocale }) {
+export async function getServerSideProps({ locale }) {
 
 
   return {
     props: {
-      ...(await serverSideTranslations(defaultLocale, ['common'])),
+      ...(await serverSideTranslations(locale, ['common'])),
       // Will be passed to the page component as props
     },
   };

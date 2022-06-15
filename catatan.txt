@@ -1,3 +1,0 @@
-
-untuk membuat -
-let jdl = stuff ? stuff.judul.replace(/\s+/g, '-'):""

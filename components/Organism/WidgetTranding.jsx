@@ -64,13 +64,13 @@ const WidgetTranding = ({className, dark, total, dataTrending, setDataTrending})
                 <TabPane tabId={activeTab} ><WidgetTabPane dark={dark} a_id={activeTab} id={activeTab} arr={data ? data[activeTab] : false}/></TabPane>
             </TabContent>
             <Nav tabs className=''>
-                <div className='flex'>
+                <ul className='flex'>
                     <NavItem>
                     <button
                         onClick={() => downData()}
                         className="border border-white py-2 dark:border-slate-500 hover:scale-110 hover:duration-200 dark:text-slate-500 px-4"
                     >   
-                        <FontAwesomeIcon icon={faAngleLeft}/>
+                        <FontAwesomeIcon icon={faAngleLeft}/>   
                         </button>
                     </NavItem>
                     <NavItem>
@@ -82,7 +82,7 @@ const WidgetTranding = ({className, dark, total, dataTrending, setDataTrending})
 
                         </button>
                     </NavItem>
-                </div>
+                </ul>
             </Nav>
             
         </div>

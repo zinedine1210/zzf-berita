@@ -22,7 +22,7 @@ export default function Berita() {
 
   return (
     <Layout lang={t} title={beritaName} description={beritaName}>
-      <div className="container flex pt-10 gap-5">
+      <div className="container lg:flex pt-10 gap-5">
         <div className="w-full lg:w-[730px]">
           {data ? 
             <Article stuff={data} skeleton={false}/> : 

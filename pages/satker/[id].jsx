@@ -4,28 +4,21 @@ import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import CollectionSatuanFungsi from "../../repositories/CollectionSatuanFungsi"
 import SatuanFungsiList from '../../components/Molecules/SatuanFungsiList';
+import {wrapper} from "../../store/store"
+import {setDataSatuanFungsi} from "../../store/actions"
+import lodash from "lodash"
 
-
-export default function SatuanFungsi() {
+function SatuanFungsiPage(props) {
     const {t} = useTranslation("common")
-    const router = useRouter()
-    const {id, name} = router.query
-    const [data, setData] = useState(null)
-    const satuanfungsi = id.split("-").join(" ")
-    const satuanfungsiName = name.split("-").join(" ")
-
+    const {satuanfungsiName, satuanfungsi} = props
 
     useEffect(() => {
-      CollectionSatuanFungsi.getOneSatuanFungsi({id:satuanfungsi, img:"thumb"})
-      .then(res => {
-        setData(res.data[0])
-      })
+      console.log(props.dataSatuanFungsi, props.allData)
     }, [satuanfungsi])
-    
   return (
       <Layout lang={t} title={`${satuanfungsi}`} description={`Satuan Fungsi ${satuanfungsi} Polres Metro Bekasi`}>
-          {data ? 
-            <SatuanFungsiList skeleton={false} stuff={data} lang={t} title={satuanfungsiName}/>
+          {props.dataSatuanFungsi ? 
+            <SatuanFungsiList skeleton={false} stuff={props.dataSatuanFungsi[0]} lang={t} title={satuanfungsiName}/>
             :
             <SatuanFungsiList skeleton={true} stuff={null} lang={t} title={satuanfungsiName}/>
           }
@@ -33,12 +26,60 @@ export default function SatuanFungsi() {
   )
 }
 
+
+
+
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-export async function getServerSideProps({ locale }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ['common'])),
-      // Will be passed to the page component as props
-    },
-  };
-}
+
+export const getServerSideProps = wrapper.getServerSideProps((store) => async ({query, locale}) => {
+  
+  const satuanfungsi = query.id.split("-").join(" ")
+  const satuanfungsiName = query.name.split("-").join(" ")
+  let allData = store.getState().meta.dataSatuanFungsi
+    let findOne = allData.filter(res => res.title == satuanfungsi)
+    let dataSatuanFungsi = []
+    let redirect = null
+    if(findOne.length !== 0 ){
+        dataSatuanFungsi = findOne
+    } else {
+        let responseData = await CollectionSatuanFungsi.getOneSatuanFungsi({id:satuanfungsi, img:"thumb"})
+      
+        if(responseData['data'].length !== 0){
+            responseData.data[0]['_foto0'] = responseData.data[0]['_foto0'].replace("thumb/", "")
+            store.dispatch(setDataSatuanFungsi(lodash.concat(allData, responseData['data'])))
+            dataSatuanFungsi = responseData['data']   
+        } else {
+            redirect =  {
+                destination: '/404',
+                permanent: false,
+            }
+        }
+    }
+
+
+    if(dataSatuanFungsi.length !== 0){
+      return {
+        props: {
+          ...(await serverSideTranslations(locale, ['common'])),
+          // Will be passed to the page component as props
+          satuanfungsi,
+          allData,
+          dataSatuanFungsi,
+          satuanfungsiName
+        },
+      };
+
+    }else{
+      return {
+        redirect: {
+          destination: "/404",
+          permanent: false
+        }
+      }
+    }
+
+})
+
+
+
+export default SatuanFungsiPage

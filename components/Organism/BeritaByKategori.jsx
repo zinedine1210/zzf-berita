@@ -4,13 +4,14 @@ import ListPostByCategory from '../Molecules/ListPostByCategory'
 import Pagination from "../Pagination"
 import CollectionBerita from "../../repositories/CollectionBerita"
 import { useRouter } from 'next/router'
+import {setDataAll} from "../../store/actions"
+import {connect} from "react-redux"
+import lodash from "lodash"
 
 
-// async function getDataByKategori(){
-//     const responseData = await CollectionBerita.getDataBerita()
-// }
 
-function BeritaByKategori({ total, pagination, category, page, title, tag, count}) {
+function BeritaByKategori(props) {
+    const {page, title, tag, count, category, pagination} = props
     const router = useRouter()
     const url = router.pathname
     const [data, setData] = useState()
@@ -26,8 +27,6 @@ function BeritaByKategori({ total, pagination, category, page, title, tag, count
             }
         }
 
-        console.log(tag, category)
-
         if(tag & category){
             setKeyword(`&category=${category}&tag=${tag}`)
         }else if(tag){
@@ -38,15 +37,22 @@ function BeritaByKategori({ total, pagination, category, page, title, tag, count
             ""
         }
 
+        // let allData = props.dataAll
+        // let findOneData = allData.filter(res => res.category_name_0 === category)
 
+        // if(findOneData.length !== 0){
+        //     setData(findOneData)
+        // }else{
         CollectionBerita.getDataBerita({start:start, img:"thumb", flag:"all", count:count, category:category, tag:tag})
         .then(res => {
             setData(res.data)
+            // props.setDataAll(lodash.concat(allData, res.data, start))
             let setCountPage = Math.ceil(res.total_count / count)
             setPagerList(setCountPage)
         })
+        // }
 
-        
+        // console.log(allData);
     }, [category, tag, page])
 
   return (
@@ -82,7 +88,7 @@ function BeritaByKategori({ total, pagination, category, page, title, tag, count
                     )
                 }) : 
                 
-                [...Array(total)].map((item) => {
+                [...Array(count)].map((item) => {
                     return <ListPostByCategory stuff={null} key={item} skeleton={true} query={keyword}/>
                 })
                 
@@ -107,4 +113,11 @@ function BeritaByKategori({ total, pagination, category, page, title, tag, count
   )
 }
 
-export default BeritaByKategori
+
+const MapStateToProps = state => {
+    return {
+        dataAll: state.meta.dataAll
+    }
+}
+
+export default connect(MapStateToProps, {setDataAll})(BeritaByKategori)

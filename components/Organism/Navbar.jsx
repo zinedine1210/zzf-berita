@@ -14,12 +14,12 @@ export default function Navbar({bahasa}) {
 
 
     const settingsLanguage = () => {
-        if(language === "in"){
-            router.push("/", "/", {locale : "en"})
-            setLanguage("en")
+        if(language === "ind"){
+            router.push("/", "/", {locale : "eng"})
+            setLanguage("eng")
         }else{
-            router.push("/", "/", {locale : "in"})
-            setLanguage("in")
+            router.push("/", "/", {locale : "ind"})
+            setLanguage("ind")
         }
     }
     
@@ -30,19 +30,19 @@ export default function Navbar({bahasa}) {
         <div className="flex items-center justify-between text-white font-bold mx-2 lg:mx-0">
             <button className='lg:hidden' onClick={() => document.getElementById("navbar").classList.toggle("hidden")}><FontAwesomeIcon icon={faBars}/></button>
             
-            <ul className='lg:flex lg:relative lg:items-center lg:w-full lg:space-x-3 hidden lg:bg-transparent lg:h-0 bg-white w-3/4 fixed h-screen z-50 right-0 top-0 px-5 py-2 space-y-5 lg:space-y-0 lg:px-0 lg:py-2' id='navbar'>
+            <ul className='lg:flex lg:relative lg:items-center lg:w-full hidden lg:bg-transparent lg:h-0 bg-white w-3/4 fixed h-screen z-50 right-0 top-0 px-5 py-2 space-y-5 lg:space-y-0 lg:px-0 lg:py-2' id='navbar'>
                 <div className="flex lg:hidden justify-between">
                     <h1 className='text-black uppercase font-mono'>Metro Bekasi</h1>
                     <button onClick={() => document.getElementById("navbar").classList.toggle("hidden")} className='text-right lg:hidden'><FontAwesomeIcon icon={faXmark} className="text-black"/></button>
                 </div>
                 <hr />
                 {/* <Link href={"/coba"}><a className='text-sm lg:text-xs lg:font-semibold text-gray-600 font-thin block hover:bg-red-700 hover:underline hover:duration-300 hover:ease-in-out uppercase cursor-pointer lg:text-white '>Coba</a></Link> */}
-                <Link href={"/"}><li className='text-sm lg:text-xs lg:font-semibold text-gray-600 font-thin block hover:underline hover:duration-300 hover:ease-in-out uppercase cursor-pointer lg:text-white '>Home</li></Link>
+                <Link href={"/"}><li className='text-sm lg:text-xs mr-3 lg:font-semibold text-gray-600 font-thin block hover:underline hover:duration-300 hover:ease-in-out uppercase cursor-pointer lg:text-white '>Home</li></Link>
                 {bahasa("menus", {returnObjects:true}).map((item) => {
                     return (
                         <Link href={`${item.link}`} key={item.id}>
-                            <li className='group cursor-pointer text-sm lg:text-xs uppercase lg:text-white text-gray-600 font-thin lg:font-semibold hover:text-sky-500'>
-                                {item.text} {item.submenu ? <FontAwesomeIcon icon={faCaretDown} className="text-xs ml-1" /> : ""}
+                            <li className='group cursor-pointer mr-3 text-sm lg:text-xs uppercase lg:text-white text-gray-600 font-thin lg:font-semibold hover:text-sky-500'>
+                                {item.text} {item.submenu ? <FontAwesomeIcon icon={faCaretDown} className="text-xs" /> : ""}
                                 {item.submenu ? 
                                  <>
                                     <div className='hidden lg:inline-block'>
@@ -55,7 +55,7 @@ export default function Navbar({bahasa}) {
                                                 {item.submenu.map((sub) => {
                                                     return (
                                                         <Link href={`${sub.link}`} key={sub.id}>
-                                                            <a className='border-l-8 hover:border-red-800 w-56 text-xs hover:duration-500 hover:ease-in-out flex pl-5 font-semibold items-center'>{sub.text}</a>
+                                                            <span className='cursor-pointer border-l-8 hover:border-red-800 w-56 text-xs hover:duration-500 hover:ease-in-out flex pl-5 font-semibold items-center'>{sub.text}</span>
                                                         </Link>
                                                     )
                                                 })}
@@ -85,12 +85,12 @@ export default function Navbar({bahasa}) {
                 
             </ul>
             <div className="w-28 text-right flex justify-around items-center">
-                <span className='h-8 bg-white w-0.5'></span>
+                <span className='h-8 invisible lg:visible bg-white w-0.5'></span>
                 <button onClick={() => document.getElementById("search").classList.toggle("hidden")}><FontAwesomeIcon icon={faSearch} className="text-sm"/></button>
                 <label className="swap">
                     <input type="checkbox" onClick={() => settingsLanguage()}/>
-                    <div className={`${language == "in" ? "swap-on" : "swap-off"} dark:text-white font-bold font-main text-sm`}>ENG</div>
-                    <div className={`${language == "en" ? "swap-on" : "swap-off"} dark:text-white font-bold font-main text-sm`}>IND</div>
+                    <div className={`${language == "ind" ? "swap-on" : "swap-off"} dark:text-white font-bold font-main text-sm`}>ENG</div>
+                    <div className={`${language == "eng" ? "swap-on" : "swap-off"} dark:text-white font-bold font-main text-sm`}>IND</div>
                 </label>
                 <label className="swap swap-rotate">
                     <input type="checkbox" onClick={() => setTheme(theme === "light" ? "dark" : "light")}/>

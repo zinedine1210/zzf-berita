@@ -13,7 +13,7 @@ export default function Home() {
   const {t} = useTranslation("common")
 
   return (
-    <Layout lang={t} title={"POLRES METRO BEKASI"} description="WEBSITE POLRES METRO BEKASI">
+    <Layout lang={t} title={"Home"} description="WEBSITE POLRES METRO BEKASI">
       <div className="container">
           {/* Banner */}
           <img src="/images/145ae4e5-c5fe-468c-9378-398493e88141.jpg" className='py-2' alt="Banner" />
@@ -63,6 +63,6 @@ export async function getServerSideProps({ locale }) {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
       // Will be passed to the page component as props
-    },
+    }
   };
 }

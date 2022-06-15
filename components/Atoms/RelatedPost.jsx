@@ -10,12 +10,12 @@ export default function RelatedPost({stuff}) {
             {item ? item.map((item) => {
                 return (
                     <Link href={`/kategori?page=1&tag=${item.split(" ").join("-")}`}>
-                        <a rel="noopener noreferrer" className="px-3 py-1 rounded-sm hover:underline bg-sky-500 text-gray-900 dark:text-white">#{item}</a>
+                        <a rel="noopener noreferrer" className="px-3 py-1 my-1 rounded-sm hover:underline text-white bg-sky-500 dark:text-white">#{item}</a>
                     </Link>
                 )
             }) : ""}
         </div>
-        <div className="space-y-2 dark:text-white">
+        {/* <div className="space-y-2 dark:text-white">
             <h4 className="text-lg font-semibold">Related posts</h4>
             <ul className="ml-4 space-y-1 list-disc">
                 <li>
@@ -28,7 +28,7 @@ export default function RelatedPost({stuff}) {
                     <a rel="noopener noreferrer" href="#" className="hover:underline">Mauris nec urna volutpat, aliquam lectus sit amet</a>
                 </li>
             </ul>
-        </div>
+        </div> */}
     </div>
   )
 }

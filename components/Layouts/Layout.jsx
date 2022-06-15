@@ -45,7 +45,7 @@ export default function Layout({children, title, lang, description}) {
             
         </main>
 
-        <div className="bg-main-gradient dark:bg-slate-800">
+        <div className=" dark:bg-slate-700 bg-slate-800">
             <Footer />
         </div>
       </>

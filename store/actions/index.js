@@ -1,4 +1,4 @@
-import { DEFAULT, SETDARKMODE, SETDATAALL, SETDATABERITA, SETDATAARTIKEL, SETDATAUMUM, SETDATATRENDING,SETDATASLIDEUTAMA, SETDATAHEADLINE, SETDATALASTPOST, SETDATAMOSTVIEW, SETDATASATUANFUNGSI, SETDATACATEGORYPOLSEK, SETDATACATEGORYSATUANFUNGSI, SETDATAENDORSEMENT} from "../constants";
+import { DEFAULT, SETDARKMODE, SETDATAALL, SETDATABERITA, SETDATAARTIKEL, SETDATAUMUM, SETDATATRENDING,SETDATASLIDEUTAMA, SETDATAHEADLINE, SETDATALASTPOST, SETDATAMOSTVIEW, SETDATASATUANFUNGSI, SETDATACATEGORYPOLSEK, SETDATACATEGORYSATUANFUNGSI, SETDATAENDORSEMENT, SETDATAVIDEO, SETDATASATUANPOLSEK} from "../constants";
 
 export const defaultAction = () => dispatch => {
     dispatch({
@@ -19,6 +19,13 @@ export const setDataAll = (data) => dispatch => {
         payload: data
     })
 };
+
+export const setDataVideo = (data) => dispatch => {
+    dispatch({
+        type: SETDATAVIDEO,
+        payload: data
+    })
+}
 
 export const setDataBerita = (data) => dispatch => {
     dispatch({
@@ -75,6 +82,13 @@ export const setDataMostView = (data) => dispatch => {
         payload: data
     })
 };
+
+export const setDataSatuanPolsek = (data) => dispatch => {
+    dispatch({
+        type: SETDATASATUANPOLSEK,
+        payload: data
+    })
+}
 
 export const setDataSatuanFungsi = (data) => dispatch => {
     dispatch({
