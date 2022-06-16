@@ -1,4 +1,4 @@
-import { DEFAULT, SETDARKMODE, SETDATAALL, SETDATABERITA, SETDATAARTIKEL, SETDATAUMUM, SETDATATRENDING,SETDATASLIDEUTAMA, SETDATAHEADLINE, SETDATALASTPOST, SETDATAMOSTVIEW, SETDATASATUANFUNGSI, SETDATACATEGORYPOLSEK, SETDATACATEGORYSATUANFUNGSI, SETDATAENDORSEMENT, SETDATAVIDEO, SETDATASATUANPOLSEK} from "../constants";
+import { DEFAULT, SETDARKMODE, SETDATAALL, SETDATABERITA, SETDATAARTIKEL, SETDATAUMUM, SETDATATRENDING,SETDATASLIDEUTAMA, SETDATAHEADLINE, SETDATALASTPOST, SETDATAMOSTVIEW, SETDATASATUANFUNGSI, SETDATACATEGORYPOLSEK, SETDATACATEGORYSATUANFUNGSI, SETDATAENDORSEMENT, SETDATAVIDEO, SETDATASATUANPOLSEK, SETDATAPEMBINAAN, SETDATAPERISTIWA, SETDATASOSIAL, SETDATAHUKUM} from "../constants";
 
 export const defaultAction = () => dispatch => {
     dispatch({
@@ -61,6 +61,33 @@ export const setDataSlideUtama = (data) => dispatch => {
         payload: data
     })
 };
+
+export const setDataPembinaan = (data) => dispatch => {
+    dispatch({
+        type: SETDATAPEMBINAAN,
+        payload: data
+    })
+}
+
+export const setDataPeristiwa = (data) => dispatch => {
+    dispatch({
+        type: SETDATAPERISTIWA,
+        payload: data
+    })
+}
+
+export const setDataSosial = (data) => dispatch => {
+    dispatch({
+        type: SETDATASOSIAL,
+        payload: data
+    })
+}
+export const setDataHukum = (data) => dispatch => {
+    dispatch({
+        type: SETDATAHUKUM,
+        payload: data
+    })
+}
 
 export const setDataHeadline = (data) => dispatch => {
     dispatch({

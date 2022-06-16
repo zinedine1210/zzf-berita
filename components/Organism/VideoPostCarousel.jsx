@@ -119,8 +119,8 @@ class VideoPostCarousel extends Component {
                             ref={slider => (this.slider1 = slider)}
                         >
                             {this.state.postSlider.slice(0, 20).map((item, i) => (
-                                <div key={i} className="bg-black ">
-                                    <div className="">
+                                <div key={i} className="bg-gray-700">
+                                    <div className="h-[500px] overflow-hidden">
                                         <img src={item._foto0} alt="thumb" className=''/>
                                     </div>
                                     <div className="absolute bottom-10 left-5 lg:left-10 text-white">
@@ -141,8 +141,8 @@ class VideoPostCarousel extends Component {
                             className=""
                         >
                             {this.state.postSlider.map((item, i) => (
-                                <div key={i} className="">
-                                    <img src={item._foto0} alt={item._foto0} className="w-[100px]" />
+                                <div key={i} className="h-[60px] overflow-hidden">
+                                    <img src={item._foto0} alt={item._foto0} className="w-[200px]" />
                                 </div>
                             ))}
                         </Slider>

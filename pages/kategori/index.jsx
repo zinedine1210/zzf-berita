@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-import { useRouter } from 'next/router'
+import React from 'react'
 import Layout from '../../components/Layouts/Layout'
 import DetailPage from '../../components/Templates/DetailPage'
 import { useTranslation } from 'next-i18next'

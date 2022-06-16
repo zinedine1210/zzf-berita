@@ -1,11 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Seo from "../../components/seo"
 import TopBar from '../Organism/TopBar'
 import Navbar from '../Organism/Navbar'
 import Footer from "../Organism/Footer"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
-
+import SearchTop from '../Atoms/SearchTop'
 
 
 export default function Layout({children, title, lang, description}) {
@@ -29,12 +27,8 @@ export default function Layout({children, title, lang, description}) {
             <div className="bg-main-gradient">
                 <div className="container py-2 relative">
                     <Navbar bahasa={lang}/>
-                    <div className='hidden w-full' id='search'>
-                        <form className='w-full flex items-center justify-between mt-2 bg-white dark:text-white'>
-                            <input type="text" className='w-full py-2 focus:outline-none px-5' placeholder={lang("cari")}/>
-                            <button className="bg-transparent"><FontAwesomeIcon icon={faSearch} className="px-5 text-gray-500 hover:text-black text-2xl lg:text-xl bg-transparent" /></button>
-                        </form>
-                    </div>
+                    <SearchTop bahasa={lang}/>
+                    
                 </div>
             </div>
             

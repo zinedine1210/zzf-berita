@@ -141,7 +141,7 @@ const WidgetTab = (props) => {
                     </button>
                 </NavItem>
             </Nav>
-            <TabContent activeTab={activeTab} className="p-5">
+            <TabContent activeTab={activeTab} className="p-5 h-[450px] overflow-y-scroll">
                 <TabPane tabId='1' className={activeTab === "berita" ? "block" : "hidden"}><WidgetTabPane dark={props.dark} a_id={activeTab} id="1" total={props.total} arr={data ? data : null}/></TabPane>
                 <TabPane tabId='2' className={activeTab === "artikel" ? "block" : "hidden"}><WidgetTabPane dark={props.dark} a_id={activeTab} id="2" total={props.total} arr={data ? data : null}/></TabPane>
                 <TabPane tabId='3' className={activeTab === "umum" ? "block" : "hidden"}><WidgetTabPane dark={props.dark} a_id={activeTab} id="3" total={props.total} arr={data ? data : null}/></TabPane>

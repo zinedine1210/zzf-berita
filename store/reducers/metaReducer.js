@@ -2,7 +2,7 @@ import {
     IS_LOADING, RE_RENDERED, THROW_ERROR, THROW_SUCCESS, SETDARKMODE, 
     SETDATAUMUM, SETDATAALL, SETDATABERITA, SETDATAARTIKEL, SETDATATRENDING, 
     SETDATASLIDEUTAMA, SETDATAHEADLINE, SETDATALASTPOST, SETDATAMOSTVIEW, 
-    SETDATASATUANFUNGSI, SETDATACATEGORYPOLSEK, SETDATACATEGORYSATUANFUNGSI, SETDATAENDORSEMENT, SETDATAVIDEO, SETDATASATUANPOLSEK
+    SETDATASATUANFUNGSI, SETDATACATEGORYPOLSEK, SETDATACATEGORYSATUANFUNGSI, SETDATAENDORSEMENT, SETDATASOSIAL, SETDATAVIDEO, SETDATASATUANPOLSEK, SETDATAPERISTIWA, SETDATAHUKUM, SETDATAPEMBINAAN
 } from "../constants";
 // import {toast} from "react-toastify";
 
@@ -26,6 +26,10 @@ dataSatuanPolsek: [],
 dataCategoryPolsek: [],
 dataCategorySatuanFungsi: [],
 dataVideo: [],
+dataSosial: [],
+dataPembinaan: [],
+dataPeristiwa: [],
+dataHukum: [],
 dataEndorsement: {}
 };
 
@@ -137,6 +141,26 @@ switch (action.type) {
             ...state,
             dataEndorsement: action.payload
         };
+    case SETDATASOSIAL:
+        return{
+            ...state,
+            dataSosial: action.payload
+        }
+    case SETDATAPERISTIWA:
+        return{
+            ...state,
+            dataPeristiwa: action.payload
+        }
+    case SETDATAHUKUM:
+        return{
+            ...state,
+            dataHukum: action.payload
+        }
+    case SETDATAPEMBINAAN:
+        return{
+            ...state,
+            dataPembinaan: action.payload
+        }
     default:
         return state;
 }
