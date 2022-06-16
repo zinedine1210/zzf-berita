@@ -11,12 +11,25 @@ import moment from 'moment'
 export default function ListPostByCategory({stuff, skeleton}) {
     let jdl = stuff ? stuff.judul.replace(/\s+/g, '-'):""
 
+    const gambar = () => {
+      if(stuff._video0 && stuff._video0 !== ""){
+        let splitData = stuff._video0.split("/")
+        let imgYtb = splitData[4]
+        return `https://img.youtube.com/vi/${imgYtb}/0.jpg`
+        
+      }else if(stuff._foto0){
+        return stuff._foto0
+      }else{
+        return "/images/default.jpg"
+      }
+    }
+
   return (
       <>
             <div className="flex gap-5 lg:card lg:card-side py-3 lg:py-0">
                 <figure className=''>
                     {skeleton ? <Skeleton width={250} height={250}/> : 
-                    <img src={skeleton ? <Skeleton /> : stuff._foto0} alt="Gambar berita" className='w-[150px] lg:w-[300px]' />
+                        <img src={skeleton ? <Skeleton /> : gambar()} alt="Gambar berita" className='w-[150px] lg:w-[300px]' />
                     }
                 </figure>
                 <div className="lg:card-body w-3/4">

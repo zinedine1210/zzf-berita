@@ -2,7 +2,7 @@ import {
     IS_LOADING, RE_RENDERED, THROW_ERROR, THROW_SUCCESS, SETDARKMODE, 
     SETDATAUMUM, SETDATAALL, SETDATABERITA, SETDATAARTIKEL, SETDATATRENDING, 
     SETDATASLIDEUTAMA, SETDATAHEADLINE, SETDATALASTPOST, SETDATAMOSTVIEW, 
-    SETDATASATUANFUNGSI, SETDATACATEGORYPOLSEK, SETDATACATEGORYSATUANFUNGSI, SETDATAENDORSEMENT, SETDATASOSIAL, SETDATAVIDEO, SETDATASATUANPOLSEK, SETDATAPERISTIWA, SETDATAHUKUM, SETDATAPEMBINAAN
+    SETDATASATUANFUNGSI, SETDATACATEGORYPOLSEK, SETDATACATEGORYSATUANFUNGSI, SETDATAENDORSEMENT, SETDATASOSIAL, SETDATAVIDEO, SETDATASATUANPOLSEK, SETDATAPERISTIWA, SETDATAHUKUM, SETDATAPEMBINAAN, SETTOTALCOUNT
 } from "../constants";
 // import {toast} from "react-toastify";
 
@@ -26,11 +26,12 @@ dataSatuanPolsek: [],
 dataCategoryPolsek: [],
 dataCategorySatuanFungsi: [],
 dataVideo: [],
-dataSosial: [],
-dataPembinaan: [],
-dataPeristiwa: [],
-dataHukum: [],
-dataEndorsement: {}
+dataSosial: {},
+dataPembinaan: {},
+dataPeristiwa: {},
+dataHukum: {},
+dataEndorsement: {},
+totalcountpage: 0
 };
 
 const metaReducer = (state = init, action) => {
@@ -48,6 +49,11 @@ switch (action.type) {
             dataSatuanPolsek: action.payload
         }
 
+    case SETTOTALCOUNT:
+        return {
+            ...state, 
+            totalcountpage: action.payload
+        }
         
     case THROW_SUCCESS: {
         // toast.success(action.payload);

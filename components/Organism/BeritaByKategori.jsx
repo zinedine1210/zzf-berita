@@ -4,22 +4,15 @@ import ListPostByCategory from '../Molecules/ListPostByCategory'
 import Pagination from "../Pagination"
 import CollectionBerita from "../../repositories/CollectionBerita"
 import { useRouter } from 'next/router'
-import {setDataAll, setDataPeristiwa, setDataPembinaan, setDataHukum, setDataSosial } from "../../store/actions"
+import {setDataAll, setDataPeristiwa, setDataPembinaan, setDataHukum, setDataSosial, setTotalCount } from "../../store/actions"
 import {connect} from "react-redux"
 
-async function getDataByKategori(cat, tag){
-    const responseData = await CollectionBerita.getDataBerita({start:0, category:cat, img:"t",flag:"all"})
-    if(responseData){
-        return responseData['data']
-    }
-}
-
-async function getDataByTag(tag, start, category) {
-    const responseData = await CollectionBerita.getDataBerita({start:start,category:category,count:5, img:"t",flag:"all", tag:tag})
+async function getDataByKategori(cat, start, count){
+    const responseData = await CollectionBerita.getDataBerita({start:start,count:count, category:cat, img:"t",flag:"all"})
     if(responseData){
         return {
-            data : responseData['data'],
-            total : responseData['total_count']
+            totalcount : responseData.total_count,
+            data: responseData.data
         }
     }
 }
@@ -31,8 +24,37 @@ function BeritaByKategori(props) {
     const [data, setData] = useState(null)
     const [keyword, setKeyword] = useState(null)
     const [pagerList, setPagerList] = useState()
-    const [totalcount, setTotalcount] = useState(0)
+    const [total, setTotal] = useState(null)
     
+    const getDataBerita = (category, start, count) => {
+        getDataByKategori(category, start, count).then(res => {
+            // dapatkan total data yang ada
+            setTotal(res.totalcount)
+            let object = {
+                [page]:{
+                    "category" : res.data,
+                    "tag": [],
+                    "category_tag":[]
+                }
+            }
+
+            
+            setData(res.data)
+            if(category === "SOSIAL"){
+                const dataSosial = props.dataSosial
+                props.setDataSosial(Object.assign(dataSosial, object))
+            }else if(category === "HUKUM KRIMINAL"){
+                const dataHukum = props.dataHukum
+                props.setDataHukum(Object.assign(dataHukum, object))
+            }else if(category === "PERISTIWA"){
+                const dataPeristiwa = props.dataPeristiwa
+                props.setDataPeristiwa(Object.assign(dataPeristiwa, object))
+            }else if(category === "PEMBINAAN MASYARAKAT"){
+                const dataPembinaan = props.dataPembinaan
+                props.setDataPembinaan(Object.assign(dataPembinaan, object))
+            }
+        })
+    }
 
     useEffect(() => {
         let start = 0
@@ -42,84 +64,69 @@ function BeritaByKategori(props) {
             }
         }
 
+        console.log(total);
         
         if(tag & category){
             setKeyword(`&category=${category}&tag=${tag}`)
-            getDataByTag(tag, start, category).then(res => {
-                setData(res.data)
-                setTotalcount(res.total)
-            })
+            // getDataByTag(tag, start, category).then(res => {
+            //     setData(res.data)
+            //     setTotalcount(res.total)
+            // })
         }else if(tag){
-            setKeyword(`&tag=${tag}`)
-            getDataByTag(tag,start,null ).then(res => {
-                setData(res.data)
-                setTotalcount(res.total)
-            })
+
         }else if(category){
             setKeyword(`&category=${category}`)
             if(category === "SOSIAL"){
                 let allSosial = props.dataSosial
-                const ujung = start !== 0 ? start + 5 : 5
-                let findSosial = allSosial.slice(start, ujung)
-                
-                if(allSosial.length !== 0){
-                    setData(findSosial)
-                    setTotalcount(allSosial.length)
+
+                if(Object.keys(allSosial).length > 0 && allSosial.hasOwnProperty(page)){
+                    if(Object.keys(allSosial[page]).length > 0){
+                        setData(allSosial[page].category)
+                        console.log("redux");
+                    }else{
+                        console.log("ambil lagi");
+                        getDataBerita(category, start, count)
+                    }
                 }else{
-                    setData(null)
-                    getDataByKategori("SOSIAL").then(res => {
-                        props.setDataSosial(res)
-                        setTotalcount(res.length)
-                        setData(res.slice(start, ujung))
-                    })
+                    console.log("ambil");
+                    getDataBerita(category, start, count)
                 }
     
             }else if(category === "HUKUM KRIMINAL"){
                 let allHukum = props.dataHukum
-                const ujung = start !== 0 ? start + 5 : 5
-                let findHukum = allHukum.slice(start, ujung)
-                
-                
-                if(allHukum.length !== 0){
-                    setData(findHukum)
-                    setTotalcount(allHukum.length)
+
+                if(Object.keys(allHukum).length > 0 && allHukum.hasOwnProperty(page)){
+                    if(Object.keys(allHukum[page]).length > 0){
+                        setData(allHukum[page].category)
+                    }else{
+                        getDataBerita(category, start, count)
+                    }
                 }else{
-                    setData(null)
-                    getDataByKategori("HUKUM KRIMINAL").then(res => {
-                        props.setDataHukum(res)
-                        setTotalcount(res.length)
-                        setData(res.slice(start, ujung))
-                    })
+                    getDataBerita(category, start, count)
                 }
             }else if(category === "PERISTIWA"){
                 let allPeristiwa = props.dataPeristiwa
-                const ujung = start !== 0 ? start + 5 : 5
-                let findPeristiwa = allPeristiwa.slice(start, ujung)
-                if(allPeristiwa.length !== 0){
-                    setData(findPeristiwa)
-                    setTotalcount(allPeristiwa.length)
+
+                if(Object.keys(allPeristiwa).length > 0 && allPeristiwa.hasOwnProperty(page)){
+                    if(Object.keys(allPeristiwa[page]).length > 0){
+                        setData(allPeristiwa[page].category)
+                    }else{
+                        getDataBerita(category, start, count)
+                    }
                 }else{
-                    setData(null)
-                    getDataByKategori("PERISTIWA").then(res => {
-                        props.setDataPeristiwa(res)
-                        setTotalcount(res.length)
-                        setData(res.slice(start, ujung))
-                    })
+                    getDataBerita(category, start, count)
                 }
             }else if(category === "PEMBINAAN MASYARAKAT"){
                 let allPembinaan = props.dataPembinaan
-                const ujung = start !== 0 ? start + 5 : 5
-                let findPembinaan = allPembinaan.slice(start, ujung)
-                if(allPembinaan.length !== 0){
-                    setData(findPembinaan)
-                    setTotalcount(allPembinaan.length)
+
+                if(Object.keys(allPembinaan).length > 0 && allPembinaan.hasOwnProperty(page)){
+                    if(Object.keys(allPembinaan[page]).length > 0){
+                        setData(allPembinaan[page].category)
+                    }else{
+                        getDataBerita(category, start, count)
+                    }
                 }else{
-                    setData(null)
-                    getDataByKategori("PEMBINAAN MASYARAKAT").then(res => {
-                        props.setDataPembinaan(res)
-                        setTotalcount(res.length)
-                        setData(res.slice(start, ujung))
-                    })
+                    getDataBerita(category, start, count)
                 }
             }else{
                 setData([])
@@ -127,9 +134,11 @@ function BeritaByKategori(props) {
         }else{
             
         }
-        let setCountPage = Math.ceil(totalcount / 5)
+
+
+        let setCountPage = Math.ceil(total / count)
         setPagerList(setCountPage)
-    }, [category, tag, page, totalcount])
+    }, [category, tag, page, total])
     
     return (
       <div className='w-full'>
@@ -198,8 +207,9 @@ const MapStateToProps = state => {
         dataPembinaan : state.meta.dataPembinaan,
         dataSosial: state.meta.dataSosial,
         dataHukum: state.meta.dataHukum,
-        dataPeristiwa: state.meta.dataPeristiwa
+        dataPeristiwa: state.meta.dataPeristiwa,
+        totalcountpage: state.meta.totalcountpage
     }
 }
 
-export default connect(MapStateToProps, {setDataAll, setDataPeristiwa, setDataPembinaan, setDataHukum, setDataSosial})(BeritaByKategori)
+export default connect(MapStateToProps, {setDataAll, setDataPeristiwa, setDataPembinaan, setDataHukum, setDataSosial, setTotalCount})(BeritaByKategori)
