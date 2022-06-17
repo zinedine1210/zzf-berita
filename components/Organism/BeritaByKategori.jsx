@@ -7,8 +7,8 @@ import { useRouter } from 'next/router'
 import {setDataAll, setDataPeristiwa, setDataPembinaan, setDataHukum, setDataSosial, setTotalCount } from "../../store/actions"
 import {connect} from "react-redux"
 
-async function getDataByKategori(cat, start, count){
-    const responseData = await CollectionBerita.getDataBerita({start:start,count:count, category:cat, img:"t",flag:"all"})
+async function getDataByKategori(cat, start, count, tag){
+    const responseData = await CollectionBerita.getDataBerita({start:start,count:count, category:cat, tag:tag, img:"t",flag:"all"})
     if(responseData){
         return {
             totalcount : responseData.total_count,
@@ -26,23 +26,33 @@ function BeritaByKategori(props) {
     const [pagerList, setPagerList] = useState()
     const [total, setTotal] = useState(null)
     
-    const getDataBerita = (category, start, count) => {
-        getDataByKategori(category, start, count).then(res => {
+    const getDataBerita = (category, start, count, tag) => {
+        getDataByKategori(category, start, count, tag).then(res => {
             // dapatkan total data yang ada
-            setTotal(res.totalcount)
+            let dataCategory = null
+            let dataCategoryTag = null
+            if(category && tag){
+                dataCategoryTag = res.data
+            }else if(category){
+                dataCategory = res.data
+        }
+
             let object = {
                 [page]:{
-                    "category" : res.data,
-                    "tag": [],
-                    "category_tag":[]
-                }
+                    "category" : dataCategory,
+                    "category_tag":dataCategoryTag
+                },
+                total: res.totalcount
             }
 
-            
+            console.log(object);
+
+            setTotal(res.totalcount)
             setData(res.data)
             if(category === "SOSIAL"){
                 const dataSosial = props.dataSosial
                 props.setDataSosial(Object.assign(dataSosial, object))
+            
             }else if(category === "HUKUM KRIMINAL"){
                 const dataHukum = props.dataHukum
                 props.setDataHukum(Object.assign(dataHukum, object))
@@ -64,32 +74,28 @@ function BeritaByKategori(props) {
             }
         }
 
-        console.log(total);
         
-        if(tag & category){
-            setKeyword(`&category=${category}&tag=${tag}`)
-            // getDataByTag(tag, start, category).then(res => {
-            //     setData(res.data)
-            //     setTotalcount(res.total)
-            // })
-        }else if(tag){
+        if(category){
+            if(tag){
+                setKeyword(`&category=${category}&tag=${tag}`)
+            }else{
+                setKeyword(`&category=${category}`)
+            }
 
-        }else if(category){
-            setKeyword(`&category=${category}`)
+            setData(null)
+
             if(category === "SOSIAL"){
                 let allSosial = props.dataSosial
 
                 if(Object.keys(allSosial).length > 0 && allSosial.hasOwnProperty(page)){
                     if(Object.keys(allSosial[page]).length > 0){
                         setData(allSosial[page].category)
-                        console.log("redux");
+                        setTotal(allSosial['total'])
                     }else{
-                        console.log("ambil lagi");
-                        getDataBerita(category, start, count)
+                        getDataBerita(category, start, count, tag)
                     }
                 }else{
-                    console.log("ambil");
-                    getDataBerita(category, start, count)
+                    getDataBerita(category, start, count, tag)
                 }
     
             }else if(category === "HUKUM KRIMINAL"){
@@ -98,11 +104,12 @@ function BeritaByKategori(props) {
                 if(Object.keys(allHukum).length > 0 && allHukum.hasOwnProperty(page)){
                     if(Object.keys(allHukum[page]).length > 0){
                         setData(allHukum[page].category)
+                        setTotal(allHukum['total'])
                     }else{
-                        getDataBerita(category, start, count)
+                        getDataBerita(category, start, count, tag)
                     }
                 }else{
-                    getDataBerita(category, start, count)
+                    getDataBerita(category, start, count, tag)
                 }
             }else if(category === "PERISTIWA"){
                 let allPeristiwa = props.dataPeristiwa
@@ -110,11 +117,12 @@ function BeritaByKategori(props) {
                 if(Object.keys(allPeristiwa).length > 0 && allPeristiwa.hasOwnProperty(page)){
                     if(Object.keys(allPeristiwa[page]).length > 0){
                         setData(allPeristiwa[page].category)
+                        setTotal(allPeristiwa['total'])
                     }else{
-                        getDataBerita(category, start, count)
+                        getDataBerita(category, start, count, tag)
                     }
                 }else{
-                    getDataBerita(category, start, count)
+                    getDataBerita(category, start, count, tag)
                 }
             }else if(category === "PEMBINAAN MASYARAKAT"){
                 let allPembinaan = props.dataPembinaan
@@ -122,17 +130,25 @@ function BeritaByKategori(props) {
                 if(Object.keys(allPembinaan).length > 0 && allPembinaan.hasOwnProperty(page)){
                     if(Object.keys(allPembinaan[page]).length > 0){
                         setData(allPembinaan[page].category)
+                        setTotal(allPembinaan['total'])
                     }else{
-                        getDataBerita(category, start, count)
+                        getDataBerita(category, start, count, tag)
                     }
                 }else{
-                    getDataBerita(category, start, count)
+                    getDataBerita(category, start, count, tag)
                 }
             }else{
                 setData([])
             }
+
+        }else if(tag){
+            setKeyword(`&tag=${tag}`)
+            CollectionBerita.getDataBerita({start:start, count:count, tag:tag, img:"t", flag:"all"}).then(res => {
+                setData(res.data)
+                setTotal(res.total_count)
+            })
         }else{
-            
+
         }
 
 
@@ -147,18 +163,18 @@ function BeritaByKategori(props) {
                     <ul>
                         <li className='dark:text-white'>
                             <Link href={`/`}>
-                                <a>
+                                <span className='cursor-pointer flex'>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-4 h-4 mr-2 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
                                     Home
-                                </a>
+                                </span>
                             </Link>
                         </li> 
                         <li className='dark:text-white'>
                             <Link href={`/kategori`}>
-                                <a>
+                                <span className='cursor-pointer flex'>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-4 h-4 mr-2 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
                                     Kategori
-                                </a>
+                                </span>
                             </Link>
                         </li>
                         <li className='dark:text-white'>

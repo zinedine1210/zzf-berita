@@ -34,7 +34,7 @@ export default function search(props) {
     
   return (
     <Layout title={`Pencarian ${keyword}`} lang={t} description={`Hasil Pencarian untuk ${keyword}`}>
-        <div className="container py-5">
+        <div className="container py-5 lg:flex lg:gap-5">
             <div className="w-full lg:w-[730px]">
                 <div className='w-full'>
                 <h1 className="title uppercase">{keyword}</h1>
@@ -85,7 +85,10 @@ export default function search(props) {
             
       </div>
             </div>
-            <div className="w-full lg:w-[350px]"></div>
+            <div className="w-full lg:w-[350px]">
+                <FollowUs instagram={true} facebook={true} twitter={true} youtube={true}/>
+                <WidgetTab bahasa={t("widgettab", {returnObjects:true})} count={5}/>
+            </div>
         </div>
     </Layout>
   )
@@ -94,6 +97,8 @@ export default function search(props) {
 
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import CollectionBerita from '../repositories/CollectionBerita'
+import FollowUs from '../components/Organism/FollowUs'
+import WidgetTab from '../components/Organism/WidgetTab'
 
 export async function getServerSideProps({locale, query}){
     const keyword = query.keyword

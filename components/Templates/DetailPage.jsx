@@ -14,7 +14,7 @@ export default function DetailPage({title, bahasa, category, page, tag}) {
                 <BeritaByKategori count={5} pagination={true} category={category} page={page} title={title} tag={tag}/>
             </div>
             <div className="w-full lg:w-[350px]">
-                <FollowUs instagram={true} facebook={true} youtube={true} twitter={true} vimeo={true} telegram={true}/>
+                <FollowUs instagram={true} facebook={true} youtube={true} twitter={true}/>
 
                 <div className="bg-white rounded-lg shadow-lg my-5 dark:bg-slate-800">
                     <WidgetTab bahasa={bahasa("widgettab", {returnObjects:true})} total={8}/>

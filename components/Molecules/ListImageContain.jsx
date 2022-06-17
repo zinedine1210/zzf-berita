@@ -15,7 +15,7 @@ export default function ListImageContain({stuff, skeleton}) {
                 <h2 className="card-title">Trending</h2>
                 <p>{stuff.title}</p>
                 <div className="card-actions">
-                <Link href={`/berita/${stuff.id}/${stuff.title}`}><a className="btn bg-orange-600 text-white hover:bg-orange-700">Baca</a></Link>
+                <Link href={`/berita/${stuff.id}/${stuff.title}`}><span className="btn cursor-pointer bg-orange-600 text-white hover:bg-orange-700">Baca</span></Link>
                 </div>
             </div>
             </>

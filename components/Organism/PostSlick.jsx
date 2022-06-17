@@ -3,7 +3,11 @@ import {TabContent, TabPane, Nav, NavItem, Fade} from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 faArrowAltCircleRight,
-faArrowAltCircleLeft
+faArrowAltCircleLeft,
+faArrowRight,
+faArrowLeft,
+faAngleLeft,
+faAngleRight
 } from "@fortawesome/free-solid-svg-icons"
 import PostSlickList from '../Molecules/PostSlickList';
 import {connect} from "react-redux"
@@ -29,7 +33,7 @@ const WidgetTabPane = ({arr, a_id, id, dark}) => {
 
 const PostSlick = ({className, dark, title, kolom, dataLastPost, total, setDataLastPost}) => {
     const [activeTab, setActiveTab] = useState(0);
-    const [count, setCount] = useState(5)
+    const [count, setCount] = useState(kolom)
     const [data, setData] = useState(null)
     
 
@@ -68,25 +72,31 @@ const PostSlick = ({className, dark, title, kolom, dataLastPost, total, setDataL
     
     return (
         <div className={`w-full`}>
-            <Nav tabs className='flex justify-between py-5'>
+            <div className='flex items-center justify-between'>
                 <h1 className="title">{title}</h1>
-                <div className='flex'>
+                <Nav tabs className='flex justify-center gap-2'>
                     <NavItem>
-                    <button
-                        onClick={() => downData()}
-                    >   
-                        <FontAwesomeIcon icon={faArrowAltCircleLeft} className="text-sky-500 mx-1 text-xl lg:text-2xl hover:scale-125 hover:duration-300 hover:ease-in-out"/>
+                        <button
+                        aria-label='left'
+                            onClick={() => downData()}
+                            className="border flex items-center justify-center p-2 hover:scale-105 hover:duration-300 hover:ease-in-out"
+                        >   
+                        <FontAwesomeIcon icon={faAngleLeft} className="text-sky-500 mx-1 text-xl lg:text-2xl"/>
                         </button>
                     </NavItem>
                     <NavItem>
                         <button
+                        aria-label='right'
                             onClick={() => upData()}
+                            className="border flex items-center justify-center p-2 hover:scale-105 hover:duration-300 hover:ease-in-out"
                         >
-                            <FontAwesomeIcon icon={faArrowAltCircleRight} className="text-sky-500 mx-1 text-xl  lg:text-2xl hover:scale-125 hover:duration-300 hover:ease-in-out" />
+                            <FontAwesomeIcon icon={faAngleRight} className="text-sky-500 mx-1 text-xl  lg:text-2xl" />
                         </button>
                     </NavItem>
-                </div>
-            </Nav>
+                </Nav>
+
+
+            </div>
             <TabContent activeTab={activeTab} className="">
                 <TabPane tabId={activeTab} ><WidgetTabPane dark={dark} a_id={activeTab} id={activeTab} arr={data ? data.slice(activeTab, count ) : false}/></TabPane>
                 

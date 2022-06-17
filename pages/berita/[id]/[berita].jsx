@@ -31,7 +31,7 @@ export default function Berita() {
           <RelatedPost stuff={data ? data.tag : null}/>
         </div>
         <div className="w-full lg:w-[350px]">
-          <FollowUs instagram={true} facebook={true} youtube={true}/>
+          <FollowUs instagram={true} facebook={true} youtube={true} twitter={true}/>
           <WidgetTab bahasa={t("widgettab", {returnObjects:true})} total={6}/>
         </div>
       </div>

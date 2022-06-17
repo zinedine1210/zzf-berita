@@ -18,7 +18,7 @@ export default function ErrorPage({bahasa}) {
                     <div className='lg:w-[730px] w-full'>
                     </div>
                     <div className='w-full lg:w-[350px]'>
-                        <FollowUs instagram={true} facebook={true} youtube={true} twitter={true} vimeo={true} telegram={true}/>
+                        <FollowUs instagram={true} facebook={true} youtube={true} twitter={true}/>
 
                         <WidgetTab bahasa={bahasa("widgettab", {returnObjects:true})} total={5}/>
                         <div className="bg-white dark:bg-slate-800 rounded-lg shadow lg my-5">

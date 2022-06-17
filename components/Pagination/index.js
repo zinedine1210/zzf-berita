@@ -38,41 +38,41 @@ const Pagination = ({page, pagerList, urlData, query}) => {
             {
                     page > 1 ?
                     <Link href={`${urlData}?page=${1}${query ? query:""}`}>
-                        <a title="previous" type="button" className="inline-flex items-center justify-center w-8 h-8 py-0 border rounded-md shadow-md bg-orange-500 border-orange-200 dark:bg-gray-900 dark:border-gray-800">
+                        <span title="previous" type="button" className="cursor-pointer inline-flex items-center justify-center w-8 h-8 py-0 border rounded-md shadow-md bg-orange-500 border-orange-200 dark:bg-gray-900 dark:border-gray-800">
                             <FontAwesomeIcon icon={faBackward} />
-                        </a>
+                        </span>
                     </Link>:""
             }
             {
                     page > 1 ?
                     <Link href={`${urlData}?page=${page-1}${query ? query:""}`}>
-                        <a title="previous" type="button" className="inline-flex items-center justify-center w-8 h-8 py-0 border rounded-md shadow-md bg-orange-500 border-orange-200 dark:bg-gray-900 dark:border-gray-800">
+                        <span title="previous" type="button" className="cursor-pointer inline-flex items-center justify-center w-8 h-8 py-0 border rounded-md shadow-md bg-orange-500 border-orange-200 dark:bg-gray-900 dark:border-gray-800">
                             <FontAwesomeIcon icon={faCaretLeft} />
-                        </a>
+                        </span>
                     </Link>
                 :""
             }
             {
                 arrayPages && arrayPages.length > 0 ? arrayPages.map((e, i) => {
-                        return <a className="inline-flex items-center justify-center w-8 h-8 text-sm font-semibold border rounded shadow-md bg-orange-500 border-orange-200 dark:bg-gray-900 dark:text-violet-400 dark:border-violet-400" key={i}><Link href={`${urlData}?page=${e}${query ? query:""}`}><a className={`page-link ${page === e ? 'active':''}`}>{e}</a></Link></a>
+                        return <span className="cursor-pointer inline-flex items-center justify-center w-8 h-8 text-sm font-semibold border rounded shadow-md bg-orange-500 border-orange-200 dark:bg-gray-900 dark:text-violet-400 dark:border-violet-400" key={i}><Link href={`${urlData}?page=${e}${query ? query:""}`}><a className={`page-link ${page === e ? 'active':''}`}>{e}</a></Link></span>
                 }):''
             }
             {
                 page < pagerList ? 
 
                 <Link href={`${urlData}?page=${page+1}${query ? query:""}`}>
-                    <a title="previous" type="button" className="inline-flex items-center justify-center w-8 h-8 py-0 border rounded-md shadow-md bg-orange-500 border-orange-200 dark:bg-gray-900 dark:border-gray-800">
+                    <span title="previous" type="button" className="cursor-pointer inline-flex items-center justify-center w-8 h-8 py-0 border rounded-md shadow-md bg-orange-500 border-orange-200 dark:bg-gray-900 dark:border-gray-800">
                         <FontAwesomeIcon icon={faCaretRight} />
-                    </a>
+                    </span>
                 </Link>
                 :"" 
             }
             {
                 page < pagerList ?
                 <Link href={`${urlData}?page=${pagerList}${query ? query:""}`}>
-                    <a title="previous" type="button" className="inline-flex items-center justify-center w-8 h-8 py-0 border rounded-md shadow-md bg-orange-500 border-orange-200 dark:bg-gray-900 dark:border-gray-800">
+                    <span title="previous" type="button" className="cursor-pointer inline-flex items-center justify-center w-8 h-8 py-0 border rounded-md shadow-md bg-orange-500 border-orange-200 dark:bg-gray-900 dark:border-gray-800">
                         <FontAwesomeIcon icon={faBackward} className="rotate-180" />
-                    </a>
+                    </span>
                 </Link>
                     :""
             }

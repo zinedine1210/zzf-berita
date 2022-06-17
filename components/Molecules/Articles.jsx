@@ -29,22 +29,22 @@ export default function Articles({stuff, skeleton}) {
                 <p className="flex-shrink-0 mt-3 text-sm md:mt-0">
                     {skeleton ? <Skeleton width={30} height={30} circle={true} inline={true} /> :
                     <Link href={"/"}>
-                        <a className='mx-1'><FontAwesomeIcon icon={faTwitter} className="text-blue-500 text-2xl" /></a>
+                        <span className='mx-1 cursor-pointer'><FontAwesomeIcon icon={faTwitter} className="text-blue-500 text-2xl" /></span>
                     </Link>
                     }
                     {skeleton ? <Skeleton width={30} height={30} circle={true} inline={true} /> :
                     <Link href={"/"}>
-                        <a className='mx-1'><FontAwesomeIcon icon={faInstagramSquare} className="text-purple-600 text-2xl" /></a>
+                        <span className='mx-1 cursor-pointer'><FontAwesomeIcon icon={faInstagramSquare} className="text-purple-600 text-2xl" /></span>
                     </Link>
                     }
                     {skeleton ? <Skeleton width={30} height={30} circle={true} inline={true} /> :
                     <Link href={"/"}>
-                        <a className='mx-1'><FontAwesomeIcon icon={faFacebook} className="text-blue-900 text-2xl" /></a>
+                        <span className='mx-1 cursor-pointer'><FontAwesomeIcon icon={faFacebook} className="text-blue-900 text-2xl" /></span>
                     </Link>
                     }
                     {skeleton ? <Skeleton width={30} height={30} circle={true} inline={true} /> :
                     <Link href={"/"}>
-                        <a className='mx-1'><FontAwesomeIcon icon={faYoutube} className="text-red-700 text-2xl" /></a>
+                        <span className='mx-1 cursor-pointer'><FontAwesomeIcon icon={faYoutube} className="text-red-700 text-2xl" /></span>
                     </Link>
                     }
                 </p>
@@ -53,7 +53,7 @@ export default function Articles({stuff, skeleton}) {
 
         {/* main content */}
         <div className="text-gray-500 dark:text-gray-400">
-            <p><ReactMarkdown className='leading-relaxed'>{skeleton ? <Skeleton count={100}/> : stuff.deskripsi}</ReactMarkdown></p>
+            <section><ReactMarkdown className='leading-relaxed'>{skeleton ? <Skeleton count={100}/> : stuff.deskripsi}</ReactMarkdown></section>
         </div>
 
 

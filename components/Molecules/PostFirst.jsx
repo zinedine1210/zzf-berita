@@ -44,7 +44,7 @@ export default function PostFirst({stuff}) {
                     <img alt="" src="https://source.unsplash.com/100x100/?portrait" className="object-cover w-12 h-12 rounded-full shadow bg-gray-500" />
                     <div className="flex flex-col space-y-1">
                         <Link href={`/kategori/${stuff.category}`}>
-                        <a rel="noopener noreferrer" className="text-sm font-semibold text-orange-500">{stuff.category}</a>
+                            <span rel="noopener noreferrer" className="cursor-pointer text-sm font-semibold text-orange-500">{stuff.category}</span>
                         </Link>
                         <span className="text-xs text-gray-400">{stuff.upload}</span>
                     </div>

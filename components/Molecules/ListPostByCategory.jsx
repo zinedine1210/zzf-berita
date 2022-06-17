@@ -42,11 +42,11 @@ export default function ListPostByCategory({stuff, skeleton}) {
                         </div>
                     </div>
                     <h1 className="text-sm lg:text-[16px] font-semibold text-gray-700 dark:text-white">{skeleton ? <Skeleton /> : stuff.judul.length > 70 ? stuff.judul.substring(0, 70)+"..." : stuff.judul}</h1>
-                    <p className="text-gray-500 dark:text-gray-400 text-xs lg:text-sm">{skeleton ? <Skeleton height={50}/> : stuff.deskripsi.length > 130 ? <reactMarkdown>{stuff.deskripsi.substring(0, 130)}</reactMarkdown> : <reactMarkdown>{stuff.deskripsi}</reactMarkdown>}</p>
+                    <section className="text-gray-500 dark:text-gray-400 text-xs lg:text-sm">{skeleton ? <Skeleton height={50}/> : stuff.deskripsi.length > 130 ? <reactMarkdown>{stuff.deskripsi.substring(0, 130)}</reactMarkdown> : <reactMarkdown>{stuff.deskripsi}</reactMarkdown>}</section>
                     <span className="hidden lg:block">
                         {skeleton ? <Skeleton width={80} height={30}/> : 
                         <Link href={`/berita/${stuff.id}/${jdl}`}>
-                            <a className="hidden lg:block relative w-44 items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-sky-500 transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-white dark:bg-slate-800 group">
+                            <span className="cursor-pointer hidden lg:block relative w-44 items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-sky-500 transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-white dark:bg-slate-800 group">
                                 <span className="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-sky-500 group-hover:h-full"></span>
                                 <span className="absolute right-0 pr-4 duration-200 ease-out group-hover:translate-x-12">
                                 {/* <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg> */}
@@ -57,14 +57,14 @@ export default function ListPostByCategory({stuff, skeleton}) {
                                 <FontAwesomeIcon icon={faEye} className="text-white"></FontAwesomeIcon>
                                 </span>
                                 <span className="relative w-full text-left transition-colors duration-200 ease-in-out group-hover:text-white uppercase font-main font-semibold">Baca berita</span>
-                            </a>
+                            </span>
                         </Link>
                         }
                     </span>
                     <span className="lg:hidden mt-5">
                         {skeleton ? <Skeleton width={50}/> : 
                         <Link href={`/berita/${stuff.id}/${jdl}`}>
-                            <a className='text-sky-500 dark:text-white font-semibold mt-5'>Baca Berita</a>
+                            <span className='cursor-pointer text-sky-500 dark:text-white font-semibold mt-5'>Baca Berita</span>
                         </Link>
                         }
                     </span>

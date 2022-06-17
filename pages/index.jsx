@@ -6,7 +6,7 @@ import VideoPostCarousel from "../components/Organism/VideoPostCarousel"
 import FollowUs from "../components/Organism/FollowUs"
 import BeritaSkyscraper from "../components/Organism/BeritaSkyscraper"
 import { useTranslation } from "next-i18next";
-
+import Image from "next/image"
 
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
     <Layout lang={t} title={"Home"} description="WEBSITE POLRES METRO BEKASI">
       <div className="container">
           {/* Banner */}
-          <img src="/images/145ae4e5-c5fe-468c-9378-398493e88141.jpg" className='py-2' alt="Banner" />
+          <Image width={1200} height={260} src="/images/145ae4e5-c5fe-468c-9378-398493e88141.jpg" className='py-2' alt="Banner" />
       </div>
       <div className="container lg:flex gap-5">
         <div className="w-full lg:w-[730px] ">
@@ -41,7 +41,7 @@ export default function Home() {
 
       <div className="container lg:flex gap-5">
         <div className="w-full lg:w-[730px]">
-          <PostSlick total={25} kolom={5} title={"Berita Terbaru"}/>
+          <PostSlick total={24} kolom={6} title={"Berita Terkini"}/>
         </div>
         <div className="lg:w-[350px] w-full">
           <FollowUs instagram={true} facebook={true} youtube={true} twitter={true}/>

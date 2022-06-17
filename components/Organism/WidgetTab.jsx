@@ -8,8 +8,8 @@ import lodash from "lodash"
 
 
 
-async function getByTab(activeTab){
-    const response = await CollectionBerita.getDataBeritaByTag({tag:activeTab, img:"t", count:5})
+async function getByTab(activeTab, count){
+    const response = await CollectionBerita.getDataBeritaByTag({tag:activeTab, img:"t", count:count})
     if(response){
         setDataUmum(response['data'])
         return response['data']
@@ -44,7 +44,7 @@ const WidgetTab = (props) => {
             if(dataBerita.length !== 0){
                 setData(dataBerita)
             }else{
-                getByTab(activeTab).then(res => {
+                getByTab(activeTab, props.count).then(res => {
                     setData(res)
                     props.setDataBerita(res)
                     props.setDataAll(lodash.unionBy(allData, res, "id"))
@@ -54,7 +54,7 @@ const WidgetTab = (props) => {
             if(dataArtikel.length !== 0){
                 setData(dataArtikel)
             }else{
-                getByTab(activeTab).then(res => {
+                getByTab(activeTab, props.count).then(res => {
                     setData(res)
                     props.setDataArtikel(res)
                     props.setDataAll(lodash.unionBy(allData, res, "id"))
@@ -64,14 +64,14 @@ const WidgetTab = (props) => {
             if(dataUmum.length !== 0){
                 setData(dataUmum)
             }else{
-                getByTab(activeTab).then(res => {
+                getByTab(activeTab, props.count).then(res => {
                     setData(res)
                     props.setDataUmum(res)
                     props.setDataAll(lodash.unionBy(allData, res, "id"))
                 })
             }
         }
-    } , [])
+    } , [props.count])
     
 
     const toggle = tab => {
@@ -83,7 +83,7 @@ const WidgetTab = (props) => {
                 if(dataBerita.length !== 0){
                     setData(dataBerita)
                 }else{
-                    getByTab(tab).then(res => {
+                    getByTab(tab, props.count).then(res => {
                         setData(res)
                         props.setDataBerita(res)
                         props.setDataAll(lodash.unionBy(allData, res, "id"))
@@ -93,7 +93,7 @@ const WidgetTab = (props) => {
                 if(dataArtikel.length !== 0){
                     setData(dataArtikel)
                 }else{
-                    getByTab(tab).then(res => {
+                    getByTab(tab, props.count).then(res => {
                         setData(res)
                         props.setDataArtikel(res)
                         props.setDataAll(lodash.unionBy(allData, res, "id"))
@@ -103,7 +103,7 @@ const WidgetTab = (props) => {
                 if(dataUmum.length !== 0){
                     setData(dataUmum)
                 }else{
-                    getByTab(tab).then(res => {
+                    getByTab(tab, props.count).then(res => {
                         setData(res)
                         props.setDataUmum(res)
                         props.setDataAll(lodash.unionBy(allData, res, "id"))
@@ -118,6 +118,7 @@ const WidgetTab = (props) => {
             <Nav tabs className='tabs justify-center'>
                 <NavItem>
                     <button
+                    aria-label='berita'
                         className={`${activeTab === "berita" ? "tab-active dark:border-white" : ""} tab tab-bordered font-main font-semibold dark:text-white`}
                         onClick={() => toggle("berita")}
                     >   
@@ -126,6 +127,7 @@ const WidgetTab = (props) => {
                 </NavItem>
                 <NavItem>
                     <button
+                    aria-label='artikel'
                         className={`${activeTab === "artikel" ? "tab-active dark:border-white" : ""} tab tab-bordered font-main font-semibold dark:text-white`}
                         onClick={() => toggle("artikel")}
                     >
@@ -134,6 +136,7 @@ const WidgetTab = (props) => {
                 </NavItem>
                 <NavItem>
                     <button
+                    aria-label='umum'
                         className={`${activeTab === "umum" ? "tab-active dark:border-white" : ""} tab tab-bordered font-main font-semibold dark:text-white`}
                         onClick={() => toggle("umum")}
                     >

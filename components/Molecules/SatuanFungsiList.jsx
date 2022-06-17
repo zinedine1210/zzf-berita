@@ -50,7 +50,7 @@ export default function SatuanFungsiList({stuff, skeleton, lang, title}) {
               <img src="https://source.unsplash.com/360x480?police" alt="" className="mx-auto rounded-lg shadow-lg dark:bg-gray-500" />
             </div>
             <div>
-              <p className="mt-3 text-lg dark:text-gray-400"><ReactMarkdown className='lineHeight'>{skeleton ? <Skeleton count={5} height={5}/> : stuff.job_description }</ReactMarkdown></p>
+              <section className="mt-3 text-lg dark:text-gray-400"><ReactMarkdown className='lineHeight'>{skeleton ? <Skeleton count={5} height={5}/> : stuff.job_description }</ReactMarkdown></section>
               
             </div>
           </div>

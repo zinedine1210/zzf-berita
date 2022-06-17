@@ -17,7 +17,7 @@ export default function SorotanKeduaList({stuff, skeleton}) {
                 </div>
             </div>
             <h2 className="z-10 lg:p-5 p-2">
-                <Link href={`/berita/${stuff.id}/${stuff.title}`}><a rel="noopener noreferrer" className="text-xs lg:text-xl hover:underline text-gray-100 font-semibold">{stuff.title}</a></Link>
+                <Link href={`/berita/${stuff.id}/${stuff.title}`}><span rel="noopener noreferrer" className="cursor-pointer text-xs lg:text-xl hover:underline text-gray-100 font-semibold">{stuff.title}</span></Link>
                 
             </h2>
         </div>

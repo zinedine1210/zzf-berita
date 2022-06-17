@@ -33,7 +33,7 @@ function BeritaVideoList({stuff, changeVideo, skeleton, active}) {
         }
         <div className="flex absolute p-3 top-0 items-center justify-center mx-auto h-full">
           {data ? 
-            <button onClick={() => changeVideo()}><FontAwesomeIcon icon={faCirclePlay} className="text-white text-2xl lg:text-3xl"/></button>
+            <button onClick={() => changeVideo()} aria-label="button"><FontAwesomeIcon icon={faCirclePlay} className="text-white text-2xl lg:text-3xl"/></button>
             :<Skeleton width={24} height={24} circle={true}/>
           }
             <div className="ml-3">
@@ -74,7 +74,7 @@ export default function BeritaVideo({total}) {
 
             
             <div className="w-full lg:w-[730px] bg-white relative">
-                {active ? <iframe width="730" height="500" className='w-full h-[300px] lg:w-[730px] lg:h-[500px]' src={active ? active :""} title={data ? data.url : ""} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                {active ? <iframe width="730" height="500" className='w-full h-[300px] lg:w-[730px] lg:h-[500px]' src={active ? active :""} title={active ? active : ""} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                 : <div className="w-24 h-24 border-4 border-dashed rounded-full animate-spin border-red-500 dark:border-violet-400 absolute top-[200px] left-[320px]"></div>
                 }
                     

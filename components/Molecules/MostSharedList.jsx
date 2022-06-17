@@ -18,7 +18,7 @@ export default function MostSharedList({stuff, skeleton}) {
             <div className="w-3/4">
                 <div className="text-xs flex justify-between mb-2">
                     <Link href={`/kategori/${skeleton ? "skeleton" : stuff.category}`}><a className='text-orange-500 font-semibold uppercase'>{skeleton ? <Skeleton width={80}/> : stuff.category}</a></Link>
-                    <a>{skeleton ? <Skeleton width={30}/> :stuff.upload}</a>
+                    <span>{skeleton ? <Skeleton width={30}/> :stuff.upload}</span>
                 </div>
                 <h4 className='text-gray-600 dark:text-white'><Link href={`/berita/${skeleton ? "skeleton" :stuff.id}/${skeleton ? "skeleton" :stuff.title}`}>{skeleton ? <Skeleton count={2}/> :stuff.title}</Link></h4>
             </div>

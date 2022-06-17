@@ -31,7 +31,7 @@ dataPembinaan: {},
 dataPeristiwa: {},
 dataHukum: {},
 dataEndorsement: {},
-totalcountpage: 0
+dataTag: {}
 };
 
 const metaReducer = (state = init, action) => {

@@ -1,0 +1,13 @@
+{
+  "name": "Polres Metro Bekasi",
+  "short_name": "PMB",
+  "start_url": "/",
+  "display": "standalone",
+  "icons": [{
+    "src": "favicon.ico",
+    "sizes": "16x16",
+    "type": "image/png"
+  }],
+  "background_color": "#009933",
+  "theme_color": "#FFFFFF"
+}

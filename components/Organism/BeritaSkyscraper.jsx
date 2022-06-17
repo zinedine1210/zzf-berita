@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import axios from 'axios'
 import SkyScraperFirst from '../Molecules/SkyScraperFirst'
 import SkyScraperList from '../Molecules/SkyScraperList'
 import CollectionBerita from '../../repositories/CollectionBerita'
@@ -17,8 +16,9 @@ export default function BeritaSkyscraper({total, category}) {
 
   return (
       <div className="w-full">
+        <h1 className="title">Sedang Populer</h1>
 
-          <div className="w-full my-10">
+          <div className="w-full">
                 {data ? 
                 <SkyScraperFirst stuff={data[0]} skeleton={false}/>
             : <SkyScraperFirst stuff={null} skeleton={true} />}
