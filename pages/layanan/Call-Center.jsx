@@ -19,7 +19,7 @@ export default function CallCenter() {
                       </div>
                   </div>
                   <div className="w-full lg:w-[350px]">
-                      <img src="/images/16-PROGRAM-PRIORITAS-KAPOLRI (1).jpg" alt="Program Prioritas" className='mb-5' />
+                      <img src="/images/16-PROGRAM-PRIORITAS-KAPOLRI.webp" alt="Program Prioritas" className='mb-5' />
                         
                   </div>
               </div>

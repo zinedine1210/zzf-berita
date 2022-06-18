@@ -3,8 +3,8 @@ import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark, faEye, faShare } from "@fortawesome/free-solid-svg-icons"
 import Skeleton from "react-loading-skeleton"
-import reactMarkdown from 'react-markdown'
 import moment from 'moment'
+import Image from 'next/image'
 
 
 
@@ -20,7 +20,7 @@ export default function ListPostByCategory({stuff, skeleton}) {
       }else if(stuff._foto0){
         return stuff._foto0
       }else{
-        return "/images/default.jpg"
+        return "/images/default.webp"
       }
     }
 
@@ -29,15 +29,17 @@ export default function ListPostByCategory({stuff, skeleton}) {
             <div className="flex gap-5 lg:card lg:card-side py-3 lg:py-0">
                 <figure className=''>
                     {skeleton ? <Skeleton width={250} height={250}/> : 
-                        <img src={skeleton ? <Skeleton /> : gambar()} alt="Gambar berita" className='w-[150px] lg:w-[300px]' />
+                    <div className='w-[150px] lg:w-[300px] flex items-center'>
+                        <Image width={767} height={512} src={skeleton ? <Skeleton /> : gambar()} alt="Gambar berita" objectFit='contain' />
+                    </div>
                     }
                 </figure>
                 <div className="lg:card-body w-3/4">
-                    <div className="flex justify-between">
-                        <small className='text-xs lg:text-xs dark:text-gray-400'><span className='text-sky-500 font-semibold'><Link href={`/berita/${skeleton ? "skeleton" : stuff.category_name_0}?page=1`}><a>{skeleton ? <Skeleton width={200} height={10} /> :stuff.category_name_0}</a></Link></span>{skeleton ? "" : " | " + moment(new Date(stuff._cd.epoch_time * 1000)).local().format("DD MMMM YYYY")}</small>
-                        <div className="flex text-gray-400 gap-3 text-xs lg:text-sm">
-                            {skeleton ? <Skeleton width={20}/> : <FontAwesomeIcon icon={faBookmark}></FontAwesomeIcon>}
-                            {skeleton ? <Skeleton width={20}/> : <FontAwesomeIcon icon={faShare}></FontAwesomeIcon>}
+                    <div className="flex justify-between items-center">
+                        <small className='text-xs lg:text-xs dark:text-gray-400'><span className='text-sky-500 font-semibold'><Link href={`/kategori?page=1&category=${skeleton ? "skeleton" : stuff.category_name_0}`}><a>{skeleton ? <Skeleton width={200} height={10} /> :stuff.category_name_0}</a></Link></span>{skeleton ? "" : " | " + moment(new Date(stuff._cd.epoch_time * 1000)).local().format("DD MMMM YYYY")}</small>
+                        <div className="flex text-gray-400 gap-1 text-xs lg:text-sm items-center">
+                            {skeleton ? <Skeleton width={20}/> : <FontAwesomeIcon icon={faEye}></FontAwesomeIcon>}
+                            {skeleton ? "" : <h3 className='text-sm font-semibold'>{stuff.view}</h3>}
 
                         </div>
                     </div>

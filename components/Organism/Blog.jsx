@@ -25,7 +25,7 @@ export default function Blog({kolom,total, tag}) {
                         <List key={id} stuff={item} skeleton={false}/>
                     )
                 }) :
-                [...Array(total)].map(item => {
+                [...Array(total).keys()].map(item => {
                     return <List key={item} stuff={null} skeleton={true} />
                 })
                 }

@@ -7,7 +7,7 @@ export default function BeritaSkyscraper({total, category}) {
     const [data, setData] = useState(null)
 
     useEffect(()=> {
-        CollectionBerita.getDataBerita({start:0, count:total, category:category, flag:"all", img:"t"})
+        CollectionBerita.getDataBerita({start:0, count:total, category:category, flag:"all", img:"thumb"})
         .then(res => {
             setData(res.data)
         })
@@ -31,7 +31,7 @@ export default function BeritaSkyscraper({total, category}) {
                         <SkyScraperList stuff={item} key={id} skeleton={false}/>
                     )
                 }) : 
-                [...Array(total)].map((item) => {
+                [...Array(total).keys()].map((item) => {
                     return <SkyScraperList stuff={null} skeleton={true} key={item}/>
                 })
                 }

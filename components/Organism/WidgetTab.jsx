@@ -9,7 +9,7 @@ import lodash from "lodash"
 
 
 async function getByTab(activeTab, count){
-    const response = await CollectionBerita.getDataBeritaByTag({tag:activeTab, img:"t", count:count})
+    const response = await CollectionBerita.getDataBeritaByTag({tag:activeTab, img:"thumb", count:count})
     if(response){
         setDataUmum(response['data'])
         return response['data']
@@ -24,7 +24,7 @@ const WidgetTabPane = ({arr, a_id, id, total}) => {
                     <ListWidgetTab stuff={item} skeleton={false} key={i}/>
                     
                 )) :
-                    [...Array(total)].map((item) => {
+                    [...Array(total).keys()].map((item) => {
                         return <ListWidgetTab stuff={null} skeleton={true} key={item}/>
                     })
                 }

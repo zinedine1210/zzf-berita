@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight, faCirclePlay, faPlay } from "@fortawesome/free-solid-svg-icons"
 import CollectionBerita from '../../repositories/CollectionBerita';
 import Skeleton from 'react-loading-skeleton';
+import Image from 'next/image';
 import moment from 'moment';
 import { setDataAll, setDataSlideUtama} from '../../store/actions';
 import ReactMarkdown from 'react-markdown';
@@ -129,17 +130,15 @@ class VideoPostCarousel extends Component {
                                 }else if(item._foto0){
                                     return item._foto0
                                 }else{
-                                    return "/images/default.jpg"
+                                    return "/images/default.webp"
                                 }
                                 }
                                 return (
                                 <div key={i} className="bg-gray-700">
-                                    <div className="h-[250px] lg:h-[500px] overflow-hidden">
-                                        <img src={gambar()} alt="thumb" className=''/>
-                                    </div>
+                                    <Image src={gambar()} alt="thumb" width={767} height={550} objectFit="contain"/>
                                     <div className="absolute bottom-10 left-5 lg:left-10 text-white">
                                         <h1 className='text-xs lg:text-xl '><span className='kotak-title'></span><span className='text-sky-500 font-main font-semibold'>{item ? item.category_name_0 : <Skeleton />}</span> | {moment(new Date(item._cd.epoch_time * 1000)).local().format("DD MMMM YYYY")}</h1>
-                                        <Link href={`/berita/${item.id}/${item.judul}`}><h4 className='lg:text-2xl text-sm font-semibold cursor-pointer'>{item.judul}</h4></Link>
+                                        <Link href={`/berita/${item.id}/${item.judul}`}><span className='lg:text-2xl text-sm font-semibold cursor-pointer'>{item.judul}</span></Link>
                                         <div className="space-10"/>
                                         <section className="post-p text-xs lg:text-sm">{item.deskripsi.length > 200 ? <ReactMarkdown>{item.deskripsi.substring(0,200)+"..."}</ReactMarkdown> : <ReactMarkdown>{item.deskripsi}</ReactMarkdown>}</section>
                                     </div>
@@ -157,12 +156,25 @@ class VideoPostCarousel extends Component {
                             {...navSettings}
                             className=""
                         >
-                            {this.state.postSlider.map((item, i) => (
-
-                                <div key={i} className="h-[60px] overflow-hidden">
-                                    <img src={item._foto0} alt={item._foto0} className="w-[200px]" />
+                            {this.state.postSlider.map((item, i) => {
+                                const gambar = () => {
+                                if(item._video0 && item._video0 !== ""){
+                                    let splitData = item._video0.split("/")
+                                    let imgYtb = splitData[4]
+                                    return `https://img.youtube.com/vi/${imgYtb}/0.jpg`
+                                    
+                                }else if(item._foto0){
+                                    return item._foto0
+                                }else{
+                                    return "/images/default.webp"
+                                }
+                                }
+                                return (
+                                
+                                <div key={i}>
+                                    <Image width={300} height={200} src={gambar()} alt={gambar()} objectFit="contain" />
                                 </div>
-                            ))}
+                            )})}
                         </Slider>
                     </div>
                 </div>

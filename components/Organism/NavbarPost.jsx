@@ -21,7 +21,7 @@ export default function NavbarPost({title, categoryId}) {
                     <NavbarPostList stuff={item} key={id} skeleton={false}/>
                 )
             }) : 
-            [...Array(3)].map(item => {
+            [...Array(3).keys()].map(item => {
                 return <NavbarPostList stuff={null} key={item} skeleton={true} />
             })
             }

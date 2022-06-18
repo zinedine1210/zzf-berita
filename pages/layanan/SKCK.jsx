@@ -26,7 +26,7 @@ export default function SKCK() {
                       </div>
                   </div>
                   <div className="w-full lg:w-[350px]">
-                      <img src="/images/16-PROGRAM-PRIORITAS-KAPOLRI (1).jpg" alt="Program Prioritas" className='mb-5' />
+                      <img src="/images/16-PROGRAM-PRIORITAS-KAPOLRI.webp" alt="Program Prioritas" className='mb-5' />
                         <div className='bg-gray-200 space-x-3 mx-auto text-center'>
                             <button onClick={() => setTab("1")} className={`${tab == "1" ? "bg-sky-500 text-white" : "text-black"} text-sm px-2 py-2 font-semibold`}>Persyaratan</button>
                             <button onClick={() => setTab("2")} className={`${tab == "2" ? "bg-sky-500 text-white" : "text-black"} text-sm px-2 py-2 font-semibold`}>Perpanjangan</button>

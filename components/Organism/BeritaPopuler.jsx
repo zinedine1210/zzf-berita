@@ -33,7 +33,7 @@ export default function BeritaPopuler({total}) {
                 : 
                 <>
                   {
-                    [...Array(total)].map((item) => {
+                    [...Array(total).keys()].map((item) => {
                       return (
                         <ListPostImageLeft stuff={[]} key={item} skeleton={true}/>
                       )

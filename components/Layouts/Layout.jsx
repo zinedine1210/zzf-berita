@@ -4,6 +4,7 @@ import TopBar from '../Organism/TopBar'
 import Navbar from '../Organism/Navbar'
 import Footer from "../Organism/Footer"
 import SearchTop from '../Atoms/SearchTop'
+import Image from 'next/image'
 
 
 export default function Layout({children, title, lang, description}) {
@@ -20,7 +21,7 @@ export default function Layout({children, title, lang, description}) {
                     <TopBar />
                 </div>
                 <div className="bg-main-gradient text-center py-8 px-2 lg:py-8">
-                    <img src="/images/ede7a4a3-0756-4162-8414-cb6b1676a9fb.png" alt="Banner" className='block mx-auto' />
+                    <Image width={1140} height={157} src="/images/ede7a4a3-0756-4162-8414-cb6b1676a9fb.webp" alt="Banner" />
                 </div>
             </div>
 

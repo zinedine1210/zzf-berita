@@ -4,8 +4,10 @@ import ListPostByCategory from '../Molecules/ListPostByCategory'
 import Pagination from "../Pagination"
 import CollectionBerita from "../../repositories/CollectionBerita"
 import { useRouter } from 'next/router'
-import {setDataAll, setDataPeristiwa, setDataPembinaan, setDataHukum, setDataSosial, setTotalCount } from "../../store/actions"
+import {setDataAll, setDataPeristiwa, setDataPembinaan, setDataHukum, setDataSosial, setTotalCount, setTag } from "../../store/actions"
 import {connect} from "react-redux"
+import lodash from "lodash"
+
 
 async function getDataByKategori(cat, start, count, tag){
     const responseData = await CollectionBerita.getDataBerita({start:start,count:count, category:cat, tag:tag, img:"t",flag:"all"})
@@ -15,6 +17,8 @@ async function getDataByKategori(cat, start, count, tag){
             data: responseData.data
         }
     }
+
+    props.setDataAll(lodash.concat(allData, responseData['data']))
 }
 
 function BeritaByKategori(props) {
@@ -45,14 +49,13 @@ function BeritaByKategori(props) {
                 total: res.totalcount
             }
 
-            console.log(object);
+            const allData = props.dataAll
 
             setTotal(res.totalcount)
             setData(res.data)
             if(category === "SOSIAL"){
                 const dataSosial = props.dataSosial
                 props.setDataSosial(Object.assign(dataSosial, object))
-            
             }else if(category === "HUKUM KRIMINAL"){
                 const dataHukum = props.dataHukum
                 props.setDataHukum(Object.assign(dataHukum, object))
@@ -62,7 +65,12 @@ function BeritaByKategori(props) {
             }else if(category === "PEMBINAAN MASYARAKAT"){
                 const dataPembinaan = props.dataPembinaan
                 props.setDataPembinaan(Object.assign(dataPembinaan, object))
+            }else{
+
             }
+
+            props.setDataAll(lodash.concat(allData, res.data))
+
         })
     }
 
@@ -83,6 +91,7 @@ function BeritaByKategori(props) {
             }
 
             setData(null)
+
 
             if(category === "SOSIAL"){
                 let allSosial = props.dataSosial
@@ -115,6 +124,8 @@ function BeritaByKategori(props) {
                 let allPeristiwa = props.dataPeristiwa
 
                 if(Object.keys(allPeristiwa).length > 0 && allPeristiwa.hasOwnProperty(page)){
+                    console.log(Object.keys(allPeristiwa[page]));
+                    console.log(allPeristiwa);
                     if(Object.keys(allPeristiwa[page]).length > 0){
                         setData(allPeristiwa[page].category)
                         setTotal(allPeristiwa['total'])
@@ -123,6 +134,7 @@ function BeritaByKategori(props) {
                     }
                 }else{
                     getDataBerita(category, start, count, tag)
+                    console.log("ambil");
                 }
             }else if(category === "PEMBINAAN MASYARAKAT"){
                 let allPembinaan = props.dataPembinaan
@@ -143,12 +155,51 @@ function BeritaByKategori(props) {
 
         }else if(tag){
             setKeyword(`&tag=${tag}`)
-            CollectionBerita.getDataBerita({start:start, count:count, tag:tag, img:"t", flag:"all"}).then(res => {
-                setData(res.data)
-                setTotal(res.total_count)
-            })
-        }else{
+            let allTag = props.dataTag
+            console.log(allTag);
 
+
+            
+            if(Object.keys(allTag).length > 0 && allTag.hasOwnProperty(page)){
+                if(allTag[page].hasOwnProperty(tag)){
+                    setData(allTag[page][tag]['data'])
+                    setTotal(allTag[page][tag]['total'])
+                }else{
+                    CollectionBerita.getDataBerita({start:start, count:count, tag:tag, img:"t", flag:"all"}).then(res => {
+                        console.log(page);
+                        let object = {
+                            [tag]:{
+                                data:res.data,
+                                total:res.total_count
+                            }
+                        }
+                        
+                        const tagTambah = Object.assign(allTag[page], object)
+                        // console.log(allTag[page][tag] = object)
+                        props.setTag(tagTambah)
+                        setData(res.data)
+                        setTotal(res.total_count)
+                    })
+                }
+            }else{
+                CollectionBerita.getDataBerita({start:start, count:count, tag:tag, img:"t", flag:"all"}).then(res => {
+                    setData(res.data)
+                    let object = {
+                        [page]:{
+                            [tag]:{
+                                data:res.data,
+                                total:res.total_count
+                            }
+                        },
+                    }
+    
+                    props.setTag(Object.assign(allTag, object))
+                    setTotal(res.total_count)
+                })
+            }
+
+        }else{
+            console.log("tidak ada data");
         }
 
 
@@ -183,7 +234,8 @@ function BeritaByKategori(props) {
                         </li>
                     </ul>
                 </div>
-                {data ? data.length !== 0 ? data.map((item, id) => {
+                
+                {data ? data.length > 0 ? data.map((item, id) => {
                     return (
                     <ListPostByCategory stuff={item} key={id} skeleton={false}/>
                     )
@@ -191,7 +243,7 @@ function BeritaByKategori(props) {
 
                 <h1 className='border-red-500 border-2 text-center text-red-500 dark:text-sky-500 dark:border-sky-500 p-5 font-bold'>Konten Tidak Tersedia</h1> :
                 
-                [...Array(count)].map((item) => {
+                [...Array(count).keys()].map((item) => {
                     return <ListPostByCategory stuff={null} key={item} skeleton={true} query={keyword}/>
                 })
                 
@@ -224,8 +276,9 @@ const MapStateToProps = state => {
         dataSosial: state.meta.dataSosial,
         dataHukum: state.meta.dataHukum,
         dataPeristiwa: state.meta.dataPeristiwa,
-        totalcountpage: state.meta.totalcountpage
+        totalcountpage: state.meta.totalcountpage,
+        dataTag: state.meta.dataTag
     }
 }
 
-export default connect(MapStateToProps, {setDataAll, setDataPeristiwa, setDataPembinaan, setDataHukum, setDataSosial, setTotalCount})(BeritaByKategori)
+export default connect(MapStateToProps, {setDataAll, setDataPeristiwa, setDataPembinaan, setDataHukum, setDataSosial, setTotalCount, setTag})(BeritaByKategori)

@@ -11,16 +11,32 @@ faYoutube
 import Skeleton from 'react-loading-skeleton'
 import moment from 'moment'
 import { faEye } from '@fortawesome/free-solid-svg-icons'
+import Image from 'next/image'
 
 export default function Articles({stuff, skeleton}) {
+    const gambar = () => {
+      if(stuff._video0 && stuff._video0 !== ""){
+        let splitData = stuff._video0.split("/")
+        let imgYtb = splitData[4]
+        return `https://img.youtube.com/vi/${imgYtb}/0.jpg`
+        
+      }else if(stuff._foto0){
+        return stuff._foto0
+      }else{
+        return "/images/default.webp"
+      }
+    }
   return (
     <article className="space-y-8 text-gray-600">
         <div className="space-y-6">
             <h1 className="text-xl lg:text-3xl font-bold md:tracking-tight md:text-5xl dark:text-white">{skeleton ? <Skeleton height={50}/> : stuff.judul}</h1>
             
             <p className='text-xs lg:text-sm text-gray-500 dark:text-gray-400 flex justify-between uppercase'><span>{skeleton ? <Skeleton count={2}/> : stuff.nama}</span> <span><FontAwesomeIcon icon={faEye} className="mr-1" />{skeleton ? "" : stuff.view}</span></p>
-            {skeleton ? <Skeleton height={700}/> :
-            <img src={stuff._foto0} alt="Gambar berita" className='w-full' />
+            {skeleton ? <Skeleton height={767}/> :
+            <div className='my-2'>
+                <Image objectFit='contain' width={767} height={512} src={gambar()} alt="Gambar berita" />
+
+            </div>
             }
             <div className="flex flex-col items-start justify-between w-full md:flex-row md:items-center text-gray-400">
                 <div className="flex items-center md:space-x-2">

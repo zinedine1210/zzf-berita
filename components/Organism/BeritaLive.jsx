@@ -50,7 +50,7 @@ export default function BeritaLive({total}) {
                         data.map((item, id) => {
                             return <BeritaLiveListLeft stuff={item} key={id} skeleton={false}/>
                         }) :
-                        [...Array(total)].map(item => {
+                        [...Array(total).keys()].map(item => {
                             return <BeritaLiveListLeft stuff={null} key={item} skeleton={true} />
                         })
                         }
@@ -93,7 +93,7 @@ export default function BeritaLive({total}) {
                         return <BeritaLiveListRight stuff={item} key={id} skeleton={false}/>
                     })
                     :
-                    [...Array(total)].map(item => {
+                    [...Array(total).keys()].map(item => {
                         return <BeritaLiveListRight stuff={null} skeleton={true} key={item} />
                     })
                     }

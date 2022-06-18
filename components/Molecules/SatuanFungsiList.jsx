@@ -1,8 +1,8 @@
+import Image from 'next/image'
 import React from 'react'
 import Skeleton from 'react-loading-skeleton'
 import ReactMarkdown from 'react-markdown'
 import Blog from "../Organism/Blog"
-import FollowUs from "../Organism/FollowUs"
 
 export default function SatuanFungsiList({stuff, skeleton, lang, title}) {
   // console.log(stuff, skeleton, lang)
@@ -28,8 +28,8 @@ export default function SatuanFungsiList({stuff, skeleton, lang, title}) {
                           <p className='text-sm lg:text-sm dark:text-gray-300 text-gray-600'>{skeleton ? <Skeleton height={8} count={10}/> : stuff.content }</p>
                       </div>
 
-                      <div className="hidden lg:flex lg:w-1/2 lg:justify-center ">
-                          <img className="w-[200px] h-[200px] flex-shrink-0 object-cover bg-slate-700 lg:w-[300px] lg:h-[300px] p-10 rounded-full" src={skeleton ? <Skeleton /> : stuff._foto0} alt="Gambar logo" />
+                      <div className="bg-slate-700 rounded-full w-56 h-56 mx-auto flex items-center justify-center mt-10 lg:flex lg:w-1/2 lg:bg-transparent">
+                          <Image width={554} height={397} objectFit="contain" src={skeleton ? <Skeleton /> : stuff._foto0} alt="Gambar logo" />
                       </div>
                   </div>
               </div>
@@ -47,7 +47,7 @@ export default function SatuanFungsiList({stuff, skeleton, lang, title}) {
         <div className="container mt-10">
           <div className="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
             <div aria-hidden="true" className="mt-10 lg:mt-0">
-              <img src="https://source.unsplash.com/360x480?police" alt="" className="mx-auto rounded-lg shadow-lg dark:bg-gray-500" />
+              <Image src="https://source.unsplash.com/360x480?police" width={360} height={480} alt="Gambar polisi" className="mx-auto rounded-lg shadow-lg dark:bg-gray-500" />
             </div>
             <div>
               <section className="mt-3 text-lg dark:text-gray-400"><ReactMarkdown className='lineHeight'>{skeleton ? <Skeleton count={5} height={5}/> : stuff.job_description }</ReactMarkdown></section>

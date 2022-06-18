@@ -4,9 +4,10 @@ import Article from "../../../components/Molecules/Articles"
 import { useTranslation } from 'next-i18next'
 import FollowUs from "../../../components/Organism/FollowUs"
 import WidgetTab from "../../../components/Organism/WidgetTab"
+import { setDataAll } from '../../../store/actions'
 import RelatedPost from "../../../components/Atoms/RelatedPost"
-
-export default function Berita() {
+import lodash from "lodash"
+function Berita(props) {
   const router = useRouter()
   const {t} = useTranslation("common")
   const {id, berita} = router.query
@@ -14,10 +15,18 @@ export default function Berita() {
   const [data, setData] = useState(null)
 
   useEffect(() => {
-    CollectionBerita.getOneDataBerita({id:id, img:"t"})
-    .then(res => {
-      setData(res.data[0])
-    })
+    let allData = props.dataAll
+    let findOne = allData.filter(res => res.id == id)
+    if(allData.length > 0){
+      setData(findOne[0])
+    }else{
+      CollectionBerita.getOneDataBerita({id:id, img:"t"})
+      .then(res => {
+        props.setDataAll(lodash.concat(allData, res.data[0]))
+        setData(res.data[0])
+        console.log("ambil");
+      })
+    }
   }, [id])
 
   return (
@@ -32,7 +41,7 @@ export default function Berita() {
         </div>
         <div className="w-full lg:w-[350px]">
           <FollowUs instagram={true} facebook={true} youtube={true} twitter={true}/>
-          <WidgetTab bahasa={t("widgettab", {returnObjects:true})} total={6}/>
+          {/* <WidgetTab bahasa={t("widgettab", {returnObjects:true})} total={6}/> */}
         </div>
       </div>
     </Layout>
@@ -40,9 +49,18 @@ export default function Berita() {
 }
 
 
+const MapStateToProps = state => {
+  return {
+    dataAll: state.meta.dataAll
+  }
+}
+
+export default connect(MapStateToProps, {setDataAll})(Berita)
+
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Layout from '../../../components/Layouts/Layout'
 import CollectionBerita from '../../../repositories/CollectionBerita'
+import { connect } from 'react-redux'
 
 export async function getServerSideProps({ locale }) {
 

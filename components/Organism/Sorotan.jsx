@@ -27,7 +27,7 @@ export default function Sorotan({title, total}) {
                     )
                 })
                 :
-                [...Array(total)].map((item) => {
+                [...Array(total).keys()].map((item) => {
                     return <ListImageContain stuff={null} skeleton={true} key={item}/>
                 })
             }

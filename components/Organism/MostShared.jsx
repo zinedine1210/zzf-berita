@@ -17,7 +17,7 @@ const WidgetTabPane = ({arr, a_id, id, dark}) => {
                 {arr ? arr.map((item, i) => (
                     <MostSharedList stuff={item} key={i} skeleton={false}/>
                 )) :
-                    [...Array(10)].map((item) => {
+                    [...Array(10).keys()].map((item) => {
                         return <MostSharedList stuff={null} key={item} skeleton={true} />
                     })
                 }

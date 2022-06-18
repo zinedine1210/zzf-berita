@@ -28,7 +28,7 @@ export default function BlogBerita({total}) {
                         <BlogList stuff={item} key={id} skeleton={false}/>
                     )
                 }) :
-                [...Array(total)].map((item) => {
+                [...Array(total).keys()].map((item) => {
                     return <BlogList stuff={null} skeleton={true} />
                 })
                 }

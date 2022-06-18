@@ -72,7 +72,7 @@ export default function search(props) {
                     
                     :
 
-                    [...Array(5)].map(item => {
+                    [...Array(5).keys()].map(item => {
                         return <ListPostByCategory stuff={null} skeleton={true} key={item}/>
                     })
                     

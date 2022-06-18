@@ -23,7 +23,7 @@ export default function Archive({total}) {
                 <ArchiveList stuff={item} key={id} skeleton={false}/>
             )
         }) :
-        [...Array(total)].map((item) => {
+        [...Array(total).keys()].map((item) => {
             return <ArchiveList stuff={null} key={item} skeleton={true}/>
         })
         }

@@ -22,7 +22,7 @@ export default function SorotanKedua({total}) {
                     <SorotanKeduaList stuff={item} key={id} skeleton={false} />
                 )
             }) :
-                [...Array(total)].map((item) => {
+                [...Array(total).keys()].map((item) => {
                     return <SorotanKeduaList stuff={null} skeleton={true} key={item} />
                 })
             }

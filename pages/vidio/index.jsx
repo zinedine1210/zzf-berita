@@ -7,7 +7,8 @@ import CollectionYoutube from '../../repositories/CollectionYoutube'
 import Skeleton from 'react-loading-skeleton'
 import { setDataVideo } from '../../store/actions'
 import {connect} from "react-redux"
-
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
+import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 
 function Vidio(props) {
     const {t} = useTranslation("common")
@@ -34,12 +35,22 @@ function Vidio(props) {
                   <div className="w-full lg:w-[730px]">
                       <h1 className="title">Daftar Vidio</h1>
                       {data ? data.map((item, id) => {
+                        const splitData = item.url.split("/")
+                        const idYoutube = splitData[4]
+
                           return (
-                            <iframe style={{width:"100%", height:"350px"}} className="my-2" src={item.url} allowFullScreen></iframe>
-                              
+                            // <iframe style={{width:"100%", height:"350px"}} className="my-2" src={item.url} allowFullScreen></iframe>
+                            <div className='my-5'>
+                                <LiteYouTubeEmbed 
+                                id={idYoutube}
+                                // wrapperClass="my-2"
+                                key={id}
+                                />
+
+                            </div>
                           )
                       }) : 
-                      [...Array(5)].map((item) => {
+                      [...Array(5).keys()].map((item) => {
                           return (
                               <Skeleton height={350}/>
                           )

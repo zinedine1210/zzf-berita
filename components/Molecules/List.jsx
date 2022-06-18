@@ -3,13 +3,27 @@ import Link from 'next/link'
 import Skeleton from 'react-loading-skeleton'
 import moment from "moment"
 import ReactMarkdown from 'react-markdown'
+import Image from 'next/image'
 
 export default function List({stuff, skeleton}) {
+
+  const gambar = () => {
+      if(stuff._video0 && stuff._video0 !== ""){
+        let splitData = stuff._video0.split("/")
+        let imgYtb = splitData[4]
+        return `https://img.youtube.com/vi/${imgYtb}/0.jpg`
+        
+      }else if(stuff._foto0){
+        return stuff._foto0
+      }else{
+        return "/images/default.webp"
+      }
+    }
   return (
       <div className='mb-2 lg:mb-8 flex lg:block gap-2'>
             <div className="img overflow-hidden">
               {skeleton ? <Skeleton height={300}/> :
-                <img src={skeleton ? "" : stuff._foto0} alt="Gambar berita" className='w-[300px] lg:w-[300px]' />
+                <Image src={skeleton ? "/images/default.webp" : gambar()} alt="Gambar berita" width={767} height={512} />
               }
             </div>
             <div>

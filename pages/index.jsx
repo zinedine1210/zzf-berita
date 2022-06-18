@@ -16,7 +16,9 @@ export default function Home() {
     <Layout lang={t} title={"Home"} description="WEBSITE POLRES METRO BEKASI">
       <div className="container">
           {/* Banner */}
-          <Image width={1200} height={260} src="/images/145ae4e5-c5fe-468c-9378-398493e88141.jpg" className='py-2' alt="Banner" />
+          <div className="py-2">
+            <Image width={1200} height={260} src="/images/145ae4e5-c5fe-468c-9378-398493e88141.webp" className='py-2' alt="Banner" />
+          </div>
       </div>
       <div className="container lg:flex gap-5">
         <div className="w-full lg:w-[730px] ">
@@ -36,12 +38,15 @@ export default function Home() {
 
 
       <div className="container">
-          <img src="/images/8baf0cde-85f9-46e6-8553-0426c775eb61.jpg" alt="Iklan" className="my-2" />
+        <div className="my-2">
+          <Image src="/images/8baf0cde-85f9-46e6-8553-0426c775eb61.webp" alt="Iklan" width={1222} height={155} />
+
+        </div>
       </div>
 
       <div className="container lg:flex gap-5">
         <div className="w-full lg:w-[730px]">
-          <PostSlick total={24} kolom={6} title={"Berita Terkini"}/>
+          <PostSlick total={24} kolom={6} title={t("terkini")}/>
         </div>
         <div className="lg:w-[350px] w-full">
           <FollowUs instagram={true} facebook={true} youtube={true} twitter={true}/>

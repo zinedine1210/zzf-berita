@@ -27,7 +27,7 @@ export default function BeritaTerbaru({total}) {
               )
             })
             :
-            [...Array(total)].map((item) => {
+            [...Array(total).keys()].map((item) => {
               return <BeritaTerbaruList stuff={null} skeleton={true} key={item}/>
             })
             }

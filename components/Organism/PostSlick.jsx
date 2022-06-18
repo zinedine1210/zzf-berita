@@ -2,10 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {TabContent, TabPane, Nav, NavItem, Fade} from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-faArrowAltCircleRight,
-faArrowAltCircleLeft,
-faArrowRight,
-faArrowLeft,
 faAngleLeft,
 faAngleRight
 } from "@fortawesome/free-solid-svg-icons"
@@ -22,7 +18,7 @@ const WidgetTabPane = ({arr, a_id, id, dark}) => {
                 {arr ? arr.map((item, i) => (
                     <PostSlickList stuff={item} key={i} skeleton={false}/>
                 )) :
-                    [...Array(10)].map((item) => {
+                    [...Array(10).keys()].map((item) => {
                         return <PostSlickList stuff={null} key={item} skeleton={true} />
                     })
                 }
