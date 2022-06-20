@@ -5,10 +5,10 @@ import {
 import React from 'react'
 import { faFacebook, faInstagram, faTelegram, faTwitter, faVimeo, faYoutube } from '@fortawesome/free-brands-svg-icons'
 
-export default function FollowUs({instagram, twitter, youtube, telegram, facebook, vimeo}) {
+export default function FollowUs({instagram, twitter, youtube, telegram, facebook, vimeo, bahasa}) {
   return (
       <div className="w-full mb-5">
-          <h1 className="title">Ikuti Kami</h1>
+          <h1 className="title">{bahasa("follow")}</h1>
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-1">
 
               {facebook ? 

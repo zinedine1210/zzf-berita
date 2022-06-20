@@ -85,19 +85,34 @@
                "link":"/satker/SIUM?name=Seksi-Umum"
             },
             {
-               "id":511,
-               "text": "SIUM",
-               "link":"/satker/SIUM?name=Seksi-Umum"
+               "id":512,
+               "text": "SAT INTELKAM",
+               "link":"/satker/SAT-INTELKAM?name=Satuan-Intelijen-Keamanan"
             },
             {
-               "id":511,
-               "text": "SIUM",
-               "link":"/satker/SIUM?name=Seksi-Umum"
+               "id":513,
+               "text": "SAT RESKRIM",
+               "link":"/satker/SAT-RESKRIM?name=Satuan-Reserse-Kriminal"
             },
             {
-               "id":511,
-               "text": "SIUM",
-               "link":"/satker/SIUM?name=Seksi-Umum"
+               "id":514,
+               "text": "SAT NARKOBA",
+               "link":"/satker/SAT-NARKOBA?name=Satuan-Reserse-Narkoba-Psikotropika-dan-Obat-Berbahaya"
+            },
+            {
+               "id":515,
+               "text": "SAT BINMAS",
+               "link":"/satker/SAT-BINMAS?name=Satuan-Pembinaan-Masyarakat"
+            },
+            {
+               "id":516,
+               "text": "SAT SAMAPTA",
+               "link":"/satker/SAT-SAMAPTA?name=Satuan-Samapta"
+            },
+            {
+               "id":517,
+               "text": "SAT LANTAS",
+               "link":"/satker/SAT-LANTAS?name=Satuan-Lalu-Lintas"
             }
          ]
       },
@@ -107,44 +122,89 @@
          "link": "/",
          "submenu" : [
             {
-               "id": 61,
+               "id": 60,
                "text" : "Polsek Tambun",
                "link": "/polsek-jajaran/Polsek-Tambun"
             },
             {
-               "id": 62,
+               "id": 61,
                "text" : "Polsek Cikarang",
                "link": "/polsek-jajaran/Polsek-Cikarang"
             },
             {
+               "id": 62,
+               "text" : "Polsek Cikarang Pusat",
+               "link": "/polsek-jajaran/Polsek-Cikarang-Pusat"
+            },
+            {
                "id": 63,
+               "text" : "Polsek Cikarang Barat",
+               "link": "/polsek-jajaran/Polsek-Cikarang-Barat"
+            },
+            {
+               "id": 64,
+               "text" : "Polsek Cikarang Selatan",
+               "link": "/polsek-jajaran/Polsek-Cikarang-Selatan"
+            },
+            {
+               "id": 65,
+               "text" : "Polsek Cikarang Timur",
+               "link": "/polsek-jajaran/Polsek-Cikarang-Timur"
+            },
+            {
+               "id": 66,
                "text" : "Polsek Kedung Waringin",
                "link": "/polsek-jajaran/Polsek-Kedung-Waringin"
             },
             {
-               "id": 64,
+               "id": 67,
                "text" : "Polsek Pebayuran",
                "link": "/polsek-jajaran/Polsek-Pebayuran"
             },
             {
-               "id": 65,
+               "id": 68,
+               "text" : "Polsek Muaragembong",
+               "link": "/polsek-jajaran/Polsek-Muaragembong"
+            },
+            {
+               "id": 69,
                "text" : "Polsek Sukatani",
                "link": "/polsek-jajaran/Polsek-Sukatani"
             },
             {
-               "id": 66,
+               "id": 610,
+               "text" : "Polsek Tambelang",
+               "link": "/polsek-jajaran/Polsek-Tambelang"
+            },
+            {
+               "id": 611,
                "text" : "Polsek Babelan",
                "link": "/polsek-jajaran/Polsek-Babelan"
             },
             {
-               "id": 67,
+               "id": 612,
                "text" : "Polsek Tarumajaya",
                "link": "/polsek-jajaran/Polsek-Tarumajaya"
             },
             {
-               "id": 68,
+               "id": 613,
+               "text" : "Polsek Cibarusah",
+               "link": "/polsek-jajaran/Polsek-Cibarusah"
+            },
+            {
+               "id": 614,
                "text" : "Polsek Serang Baru",
                "link": "/polsek-jajaran/Polsek-Serang-Baru"
+            },
+            {
+               "id": 615,
+               "text" : "Polsek Setu",
+               "link": "/polsek-jajaran/Polsek-Setu"
+            },
+            {
+               "id": 616,
+               "text" : "Polsek Bungin",
+               "link": "/polsek-jajaran/Polsek-Bungin"
             }
          
          ]
@@ -222,13 +282,13 @@
          "cid" : 4
       }
    ],
+   "beranda":"Beranda",
    "cari" : "Cari Disini...",
-   "populer": "Berita Terpopuler",
+   "baca":"Baca Berita",
+   "populer": "Sedang Populer",
    "job" : "Uraian Tugas",
-   "terbaru" : "Berita Terbaru",
+   "trending":"Sedang Tren",
    "terkini" : "Berita Terkini",
-   "utama" : "Berita Utama",
-   "sorotan": "Sorotan",
    "kategori" : "Kategori",
    "nocontent": "Tidak Ada Konten yang Tersedia",
    "widgettab" : {
@@ -236,8 +296,8 @@
       "submenu2" : "ARTIKEL",
       "submenu3" : "UMUM"
    },
-   "blog" : "Berita Blog",
-   "bagikan" : "Dibagikan",
+   "lihatselengkapnya":"Lihat Selengkapnya",
+   "follow":"Ikuti Kami",
    "error" : {
       "p" : "Maaf, halaman tidak ditemukan",
       "p2" : "Tapi jangan khawatir, kamu dapat menemukan banyak hal lainnya di halaman beranda kami.",
@@ -245,5 +305,11 @@
    },
    "berita": "Berita",
    "postingan" : "Berita Terbaru",
-   "arsip": "Arsip"
+   "arsip": "Arsip",
+   "sitemap":"Peta Situs",
+   "pedoman":"Pedoman Media Siber",
+   "kontakkami":"Kontak Kami",
+   "layanan":"Layanan",
+   "privacy":"Keamanan Privasi",
+   "term":"Syarat dan Ketentuan"
 }

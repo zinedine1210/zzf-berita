@@ -34,7 +34,7 @@ export default function PolsekJajaran(props) {
               }
             </div>
             <div className="w-full lg:w-[350px]">
-              <FollowUs instagram={true} facebook={true} youtube={true} twitter={true}/>
+              <FollowUs instagram={true} facebook={true} youtube={true} twitter={true} bahasa={t}/>
               <WidgetTab bahasa={t("widgettab", {returnObjects:true})} total={5}/>
               <WidgetKategori bahasa={t} title={t("kategori")} />
             </div>

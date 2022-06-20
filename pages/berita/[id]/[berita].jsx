@@ -51,7 +51,7 @@ function Berita(props) {
           <RelatedPost stuff={data ? data.tag : null}/>
         </div>
         <div className="w-full lg:w-[350px]">
-          <FollowUs instagram={true} facebook={true} youtube={true} twitter={true}/>
+          <FollowUs instagram={true} facebook={true} youtube={true} twitter={true} bahasa={t}/>
           <WidgetTab bahasa={t("widgettab", {returnObjects:true})} total={6}/>
         </div>
       </div>

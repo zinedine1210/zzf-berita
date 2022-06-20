@@ -155,30 +155,22 @@ function BeritaByKategori(props) {
             setKeyword(`&tag=${tag}`)
             let allTag = props.dataTag
 
-            console.log(allTag);
-            
-            if(Object.keys(allTag).length > 0 && allTag.hasOwnProperty(page)){
-                console.log("pagenya ada", allTag);
+
+            let hasPage = page in allTag
+            if(Object.keys(allTag).length > 0 && hasPage){
                 if(allTag[page].hasOwnProperty(tag)){
                     setData(allTag[page][tag]['data'])
                     setTotal(allTag[page][tag]['total'])
-                    console.log("redux", allTag);
                 }else{  
                     CollectionBerita.getDataBerita({start:start, count:count, tag:tag, img:"t", flag:"all"}).then(res => {
-                        let object = {
-                            [page]:{
-                                [tag]:{
-                                    data:res.data,
-                                    total:res.total_count
-                                }
-                            }
-                        }
-
-                        console.log("ambil lagi", allTag);
                         
-                        // const tagTambah = Object.assign(allTag[page], object)
-                        // console.log(allTag[page][tag] = object)
-                        props.setTag(Object.assign(allTag, object))
+
+                        allTag[page][tag] = {
+                            data: res.data,
+                            total: res.total_count
+                        }
+                        
+                        props.setTag(allTag)
                         setData(res.data)
                         setTotal(res.total_count)
                     })
@@ -193,8 +185,6 @@ function BeritaByKategori(props) {
                             }
                         },
                     }
-                    
-                    console.log("ambil", allTag);
                     
                     props.setTag(Object.assign(allTag, object))
                     setData(res.data)
@@ -227,7 +217,7 @@ function BeritaByKategori(props) {
                             <Link href={`/`}>
                                 <span className='cursor-pointer flex'>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-4 h-4 mr-2 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
-                                    Home
+                                    {props.bahasa("beranda")}
                                 </span>
                             </Link>
                         </li> 
@@ -235,7 +225,7 @@ function BeritaByKategori(props) {
                             <Link href={`/kategori`}>
                                 <span className='cursor-pointer flex'>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-4 h-4 mr-2 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
-                                    Kategori
+                                    {props.bahasa("kategori")}
                                 </span>
                             </Link>
                         </li>
@@ -248,7 +238,7 @@ function BeritaByKategori(props) {
                 
                 {data ? data.length > 0 ? data.map((item, id) => {
                     return (
-                    <ListPostByCategory stuff={item} key={id} skeleton={false}/>
+                    <ListPostByCategory stuff={item} key={id} skeleton={false} bahasa={props.bahasa}/>
                     )
                 }) : 
 

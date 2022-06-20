@@ -1,11 +1,9 @@
 import React from 'react'
 import Layout from "../Layouts/Layout"
-import Archive from "../Organism/Archive"
+import Blog from "../Organism/Blog"
 import FollowUs from '../Organism/FollowUs'
 import WidgetTab from '../Organism/WidgetTab'
-import MostShared from "../Organism/MostShared"
 import NotFoundPage from "../Molecules/NotFoundPage"
-import Box from "../Molecules/Box"
 
 export default function ErrorPage({bahasa}) {
   return (
@@ -16,9 +14,11 @@ export default function ErrorPage({bahasa}) {
                 
                 <div className="lg:flex gap-5 justify-center">
                     <div className='lg:w-[730px] w-full'>
+                        <h1 className='title'>{bahasa("arsip")}</h1>
+                        <Blog kolom={3} total={12} tag={"berita"}/>
                     </div>
                     <div className='w-full lg:w-[350px]'>
-                        <FollowUs instagram={true} facebook={true} youtube={true} twitter={true}/>
+                        <FollowUs instagram={true} facebook={true} youtube={true} twitter={true} bahasa={bahasa}/>
 
                         <WidgetTab bahasa={bahasa("widgettab", {returnObjects:true})} total={5}/>
                         <div className="bg-white dark:bg-slate-800 rounded-lg shadow lg my-5">

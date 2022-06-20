@@ -16,7 +16,7 @@ export default function Home() {
     <Layout lang={t} title={"Home"} description="WEBSITE POLRES METRO BEKASI">
       <div className="container">
           {/* Banner */}
-          <div className="py-2">
+          <div className="py-2 w-full">''
             <Image width={1200} height={260} src="/images/145ae4e5-c5fe-468c-9378-398493e88141.webp" className='py-2' alt="Banner" objectFit="contain" />
           </div>
       </div>
@@ -40,7 +40,7 @@ export default function Home() {
       
       <div className="w-full bg-main-gradient mt-6 py-10">
         <div className="container">
-          <BeritaVideo total={10}/>
+          <BeritaVideo total={10} bahasa={t}/>
         </div>
       </div>
 
@@ -57,8 +57,8 @@ export default function Home() {
           <PostSlick total={24} kolom={6} title={t("terkini")}/>
         </div>
         <div className="lg:w-[350px] w-full mt-5 lg:mt-0">
-          <FollowUs instagram={true} facebook={true} youtube={true} twitter={true}/>
-          <BeritaSkyscraper category={"PERISTIWA"} total={10}/>
+          <FollowUs instagram={true} facebook={true} youtube={true} twitter={true} bahasa={t}/>
+          <BeritaSkyscraper category={"PERISTIWA"} total={10} bahasa={t}/>
         </div>
         
       </div>
@@ -71,6 +71,7 @@ import PostSlick from "../components/Organism/PostSlick"
 
 export async function getServerSideProps({ locale }) {
 
+  // console.log(defaultLocale, locale, req.headers);
 
   return {
     props: {

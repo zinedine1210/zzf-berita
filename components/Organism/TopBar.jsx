@@ -3,8 +3,10 @@ import React from 'react'
 import Link from 'next/link'
 import WidgetTranding from "../../components/Organism/WidgetTranding"
 import { faFacebook, faInstagram, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons'
+import moment from 'moment'
 
 export default function TopBar() {
+    const date = moment().format("DD MMMM YYYY")
   return (
       <div className='w-full hidden lg:block py-1'>
           <div className="flex items-center justify-between gap-5">
@@ -14,7 +16,7 @@ export default function TopBar() {
               </div>
 
               <div className='flex items-center justify-between w-56 text-gray-600 dark:text-white'>
-                  <p className='text-sm'>08 June 2022</p>
+                  <p className='text-sm'>{date}</p>
                   <p>|</p>
                   <div className='flex space-x-2'>
                       <Link href={"/"}><FontAwesomeIcon icon={faTwitter} className="cursor-pointer hover:scale-105 hover:duration-300 hover:ease-in-out text-gray-600 dark:text-white"/></Link>

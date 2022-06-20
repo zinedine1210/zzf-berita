@@ -3,7 +3,7 @@ import SkyScraperFirst from '../Molecules/SkyScraperFirst'
 import SkyScraperList from '../Molecules/SkyScraperList'
 import CollectionBerita from '../../repositories/CollectionBerita'
 
-export default function BeritaSkyscraper({total, category}) {
+export default function BeritaSkyscraper({total, category, bahasa}) {
     const [data, setData] = useState(null)
 
     useEffect(()=> {
@@ -16,7 +16,7 @@ export default function BeritaSkyscraper({total, category}) {
 
   return (
       <div className="w-full">
-        <h1 className="title">Sedang Populer</h1>
+        <h1 className="title">{bahasa("populer")}</h1>
 
           <div className="w-full">
                 {data ? 

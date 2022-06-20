@@ -8,7 +8,7 @@ import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 
 
-export default function ListPostByCategory({stuff, skeleton}) {
+export default function ListPostByCategory({stuff, skeleton, bahasa}) {
     let jdl = stuff ? stuff.judul.replace(/\s+/g, '-'):""
 
     const gambar = () => {
@@ -56,7 +56,7 @@ export default function ListPostByCategory({stuff, skeleton}) {
                                 {/* <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg> */}
                                 <FontAwesomeIcon icon={faEye} className="text-white"></FontAwesomeIcon>
                                 </span>
-                                <span className="relative w-full text-left transition-colors duration-200 ease-in-out group-hover:text-white uppercase font-main font-semibold">Baca berita</span>
+                                <span className="relative w-full text-left transition-colors duration-200 ease-in-out group-hover:text-white uppercase font-main font-semibold">{bahasa("baca")}</span>
                             </span>
                         </Link>
                         }
@@ -64,7 +64,7 @@ export default function ListPostByCategory({stuff, skeleton}) {
                     <span className="lg:hidden mt-5">
                         {skeleton ? <Skeleton width={50}/> : 
                         <Link href={`/berita/${stuff.id}/${jdl}`}>
-                            <span className='cursor-pointer text-sky-500 dark:text-white text-sm mt-3 inline-block border p-2'>Baca Berita</span>
+                            <span className='cursor-pointer text-sky-500 dark:text-white text-sm mt-3 inline-block border p-2'>{bahasa("baca")}</span>
                         </Link>
                         }
                     </span>

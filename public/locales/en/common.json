@@ -3,162 +3,270 @@
    "menus": [
       {
          "id" : 1,
-         "text" : "Law & Crime"
+         "text" : "Law Crime",
+         "link" : "/kategori?page=1&category=HUKUM-KRIMINAL"
       },
       {
          "id" : 2,
-         "text" : "Social"
+         "text" : "Social",
+         "link" : "/kategori?page=1&category=SOSIAL"
       },
       {
          "id" : 3,
-         "text" : "Incident"
+         "text" : "Incidents",
+         "link" : "/kategori?page=1&category=PERISTIWA"
+         
       },
       {
          "id" : 4,
-         "text" : "Community Building"
+         "text" : "Community Building",
+         "link" : "/kategori?page=1&category=PEMBINAAN-MASYARAKAT"
       },
       {
          "id" : 5,
-         "text" : "Work Unit",
+         "link": "/",
+         "text" : "Satker",
          "submenu" : [
             {
                "id": 51,
-               "text" : "OPERATOR"
+               "text" : "BAG OPS",
+               "link" : "/satker/BAG-OPS?name=Bagian-Operasional"
             },
             {
                "id": 52,
-               "text" : "PLANNER"
+               "text" : "BAG REN",
+               "link" : "/satker/BAG-REN?name=Bagian-Perencanaan"
+               
             },
             {
                "id": 53,
-               "text" : "HUMAN RESOURCE"
+               "text" : "BAG SDM",
+               "link" : "/satker/BAG-SDM?name=Bagian-Sumber-Daya-Manusia"
             },
             {
                "id": 54,
-               "text" : "LOGISTICS"
+               "text" : "BAG LOG",
+               "link" : "/satker/BAG-LOG?name=Bagian-Logistik"
             },
             {
                "id": 55,
-               "text" : "SPKT"
+               "text" : "SPKT",
+               "link" : "/satker/SPKT?name=Sentra-Pelayanan-Kepolisian-Terpadu"
+
             },
             {
                "id": 56,
-               "text" : "SUPERVISOR"
+               "text" : "SI WAS",
+               "link" : "/satker/SI-WAS?name=Seksi-Pengawasan"
             },
             {
                "id": 57,
-               "text" : "SI PROPAM"
+               "text" : "SI PROPAM",
+               "link" : "/satker/SI-PROPAM?name=Seksi-Profesi-dan-Pengamanan"
             },
             {
                "id": 58,
-               "text" : "SI HUMAS"
+               "text" : "SI HUMAS",
+               "link" : "/satker/SI-HUMAS?name=Seksi-Hubungan-Masyarakat"
             },
             {
                "id": 59,
-               "text" : "SI KUM"
+               "text" : "SI KUM",
+               "link" : "/satker/SI-KUM?name=Seksi-Hukum"
             },
             {
-               "id": 511,
-               "text" : "SI TIK"
+               "id": 510,
+               "text" : "SI TIK",
+               "link" : "/satker/SI-TIK?name=Seksi-Teknologi-Informasi-Komunikasi"
+            },
+            {
+               "id":511,
+               "text": "SIUM",
+               "link":"/satker/SIUM?name=Seksi-Umum"
+            },
+            {
+               "id":512,
+               "text": "SAT INTELKAM",
+               "link":"/satker/SAT-INTELKAM?name=Satuan-Intelijen-Keamanan"
+            },
+            {
+               "id":513,
+               "text": "SAT RESKRIM",
+               "link":"/satker/SAT-RESKRIM?name=Satuan-Reserse-Kriminal"
+            },
+            {
+               "id":514,
+               "text": "SAT NARKOBA",
+               "link":"/satker/SAT-NARKOBA?name=Satuan-Reserse-Narkoba-Psikotropika-dan-Obat-Berbahaya"
+            },
+            {
+               "id":515,
+               "text": "SAT BINMAS",
+               "link":"/satker/SAT-BINMAS?name=Satuan-Pembinaan-Masyarakat"
+            },
+            {
+               "id":516,
+               "text": "SAT SAMAPTA",
+               "link":"/satker/SAT-SAMAPTA?name=Satuan-Samapta"
+            },
+            {
+               "id":517,
+               "text": "SAT LANTAS",
+               "link":"/satker/SAT-LANTAS?name=Satuan-Lalu-Lintas"
             }
-         
          ]
       },
       {
          "id" : 6,
-         "text" : "Police Line",
+         "text" : "Polsek Jajaran",
+         "link": "/",
          "submenu" : [
             {
+               "id": 60,
+               "text" : "Polsek Tambun",
+               "link": "/polsek-jajaran/Polsek-Tambun"
+            },
+            {
                "id": 61,
-               "text" : "Polsek Tambun"
+               "text" : "Polsek Cikarang",
+               "link": "/polsek-jajaran/Polsek-Cikarang"
             },
             {
                "id": 62,
-               "text" : "Polsek Cikarang"
+               "text" : "Polsek Cikarang Pusat",
+               "link": "/polsek-jajaran/Polsek-Cikarang-Pusat"
             },
             {
                "id": 63,
-               "text" : "Polsek Kedung Waringin"
+               "text" : "Polsek Cikarang Barat",
+               "link": "/polsek-jajaran/Polsek-Cikarang-Barat"
             },
             {
                "id": 64,
-               "text" : "Polsek Pebayuran"
+               "text" : "Polsek Cikarang Selatan",
+               "link": "/polsek-jajaran/Polsek-Cikarang-Selatan"
             },
             {
                "id": 65,
-               "text" : "Polsek Sukatani"
+               "text" : "Polsek Cikarang Timur",
+               "link": "/polsek-jajaran/Polsek-Cikarang-Timur"
             },
             {
                "id": 66,
-               "text" : "Polsek Babelan"
+               "text" : "Polsek Kedung Waringin",
+               "link": "/polsek-jajaran/Polsek-Kedung-Waringin"
             },
             {
                "id": 67,
-               "text" : "Polsek Tarumajaya"
+               "text" : "Polsek Pebayuran",
+               "link": "/polsek-jajaran/Polsek-Pebayuran"
             },
             {
                "id": 68,
-               "text" : "Polsek Serang Baru"
+               "text" : "Polsek Muaragembong",
+               "link": "/polsek-jajaran/Polsek-Muaragembong"
+            },
+            {
+               "id": 69,
+               "text" : "Polsek Sukatani",
+               "link": "/polsek-jajaran/Polsek-Sukatani"
+            },
+            {
+               "id": 610,
+               "text" : "Polsek Tambelang",
+               "link": "/polsek-jajaran/Polsek-Tambelang"
+            },
+            {
+               "id": 611,
+               "text" : "Polsek Babelan",
+               "link": "/polsek-jajaran/Polsek-Babelan"
+            },
+            {
+               "id": 612,
+               "text" : "Polsek Tarumajaya",
+               "link": "/polsek-jajaran/Polsek-Tarumajaya"
+            },
+            {
+               "id": 613,
+               "text" : "Polsek Cibarusah",
+               "link": "/polsek-jajaran/Polsek-Cibarusah"
+            },
+            {
+               "id": 614,
+               "text" : "Polsek Serang Baru",
+               "link": "/polsek-jajaran/Polsek-Serang-Baru"
+            },
+            {
+               "id": 615,
+               "text" : "Polsek Setu",
+               "link": "/polsek-jajaran/Polsek-Setu"
+            },
+            {
+               "id": 616,
+               "text" : "Polsek Bungin",
+               "link": "/polsek-jajaran/Polsek-Bungin"
             }
          
          ]
       },
       {
          "id" : 7,
-         "text" : "Video"
+         "text" : "Video",
+         "link": "/vidio"
       },
       {
          "id" : 8,
-         "text" : "Application"
+         "text" : "Application",
+         "link": "https://play.google.com/store/apps/details?id=id.go.polri.bekasikabupaten.cikarang_presisi.cikarang_presisi"
       },
       
       {
          "id" : 9,
          "text" : "Service",
+         "link" : "/",
          "submenu" : [
             {
                "id": 91,
-               "text" : "SIM Keliling Polres Metro Bekasi"
+               "text" : "Call Center",
+               "link": "/layanan/Call-Center"
             },
             {
                "id": 92,
-               "text" : "SKCK"
+               "text" : "SKCK",
+               "link": "/layanan/SKCK"
             },
             {
                "id": 93,
-               "text" : "Izin Keramaian"
+               "text" : "Crowd Permission",
+               "link": "/layanan/Izin-Keramaian"
             },
             {
                "id": 94,
-               "text" : "Pengawalan Jalan"
+               "text" : "Road Control",
+               "link": "/layanan/Pengawalan-Jalan"
             },
             {
                "id": 95,
-               "text" : "Pengamanan Objek Khusus"
+               "text" : "Special object security",
+               "link" : "/layanan/Pengamanan-Objek-Khusus"
             },
             {
                "id": 96,
-               "text" : "SPKT"
-            },
-            {
-               "id": 97,
-               "text" : "BPKB / STNK"
-            },
-            {
-               "id": 98,
-               "text" : "SP2HP"
+               "text" : "SPKT",
+               "link" : "/layanan/SPKT"
             }
          
          ]
       },
       {
          "id" : 10,
-         "text" : "Contact"
+         "text" : "Contact",
+         "link": "/kontak"
       }
    ],
    "category" : [
       {
-         "text" : "Law & Crime",
+         "text" : "Law Crime",
          "cid" : 1
       },
       {
@@ -166,7 +274,7 @@
          "cid" : 2
       },
       {
-         "text" : "Incident",
+         "text" : "Incidents",
          "cid" : 3
       },
       {
@@ -174,28 +282,33 @@
          "cid" : 4
       }
    ],
-   "populer": "Berita Terpopuler",
-   "cari" : "Search...",
-   "terbaru" : "Berita Terbaru",
+   "beranda":"Home",
+   "cari" : "Search here...",
+   "baca":"Read More",
+   "populer": "Populer News",
+   "job" : "Job Description",
+   "trending":"Trending",
    "terkini" : "Latest News",
-   "utama" : "Berita Utama",
-   "sorotan": "Sorotan",
-   "kategori" : "Kategori",
-   "job" : "Job Descriptions",
-   "nocontent" : "No Content Available",
+   "lihatselengkapnya":"View More Video",
+   "kategori" : "Category",
+   "nocontent": "No content available",
    "widgettab" : {
       "submenu" : "NEWS",
       "submenu2" : "ARTICLES",
       "submenu3" : "GENERAL"
    },
-   "blog" : "Berita Blog",
-   "bagikan" : "Dibagikan",
+   "follow":"Follow Us",
    "error" : {
-      "p" : "Maaf, halaman tidak ditemukan",
-      "p2" : "Tapi jangan khawatir, kamu dapat menemukan banyak hal lainnya di halaman beranda kami.",
-      "a" : "Kembali ke Beranda" 
+      "p" : "Sorry, Page not found",
+      "p2" : "But don't worry, You can find many other things on our home page.",
+      "a" : "Back to home" 
    },
-   "berita": "Berita",
-   "postingan" : "Berita Terbaru",
-   "arsip": "Arsip"
+   "berita": "News",
+   "arsip": "Archive",
+   "sitemap":"Sitemap",
+   "pedoman":"Cyber ​​Media Guidelines",
+   "kontakkami":"Contact Us",
+   "privacy":"Privacy Policy",
+   "layanan":"Service",
+   "term":"Term and Condition"
 }

@@ -55,7 +55,7 @@ function BeritaVideoList({stuff, changeVideo, skeleton, active}) {
 }
 
 
-export default function BeritaVideo({total}) {
+export default function BeritaVideo({total, bahasa}) {
     const [data, setData] = useState(null)
     const [active, setActive] = useState(null)
 
@@ -119,7 +119,7 @@ export default function BeritaVideo({total}) {
                   
               </div>
           </div>
-          <Link href={`/vidio`}><span className='cursor-pointer text-xl text-white text-center font-semibold mt-10 animate-bounce block'>Lihat Selengkapnya<FontAwesomeIcon icon={faVideo} className="ml-2"/></span></Link>
+          <Link href={`/vidio`}><span className='cursor-pointer text-xl text-white text-center font-semibold mt-10 animate-bounce block'>{bahasa("lihatselengkapnya")}<FontAwesomeIcon icon={faVideo} className="ml-2"/></span></Link>
           </div>
       </div>
   )

@@ -21,7 +21,7 @@ export default function Layout({children, title, lang, description}) {
                     <TopBar />
                 </div>
                 <div className="bg-main-gradient text-center py-8 px-2 lg:py-8">
-                    <Image width={1140} height={157} src="/images/ede7a4a3-0756-4162-8414-cb6b1676a9fb.webp" alt="Banner" />
+                    <Image width={1140} height={157} objectFit="contain" src="/images/ede7a4a3-0756-4162-8414-cb6b1676a9fb.webp" alt="Banner" />
                 </div>
             </div>
 
@@ -41,7 +41,7 @@ export default function Layout({children, title, lang, description}) {
         </main>
 
         <div className=" dark:bg-slate-700 bg-slate-800">
-            <Footer />
+            <Footer bahasa={lang}/>
         </div>
       </>
   )
