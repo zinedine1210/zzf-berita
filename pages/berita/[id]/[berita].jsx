@@ -7,6 +7,9 @@ import WidgetTab from "../../../components/Organism/WidgetTab"
 import { setDataAll } from '../../../store/actions'
 import RelatedPost from "../../../components/Atoms/RelatedPost"
 import lodash from "lodash"
+
+
+
 function Berita(props) {
   const router = useRouter()
   const {t} = useTranslation("common")
@@ -18,13 +21,21 @@ function Berita(props) {
     let allData = props.dataAll
     let findOne = allData.filter(res => res.id == id)
     if(allData.length > 0){
-      setData(findOne[0])
+      if(findOne.length > 0){
+        setData(findOne[0])
+        console.log("redux");
+      }else{
+        CollectionBerita.getOneDataBerita({id:id, img:"t"})
+        .then(res => {
+          props.setDataAll(lodash.unionBy(allData, res.data[0], "id"))
+          setData(res.data[0])
+        })
+      }
     }else{
       CollectionBerita.getOneDataBerita({id:id, img:"t"})
       .then(res => {
-        props.setDataAll(lodash.concat(allData, res.data[0]))
+        props.setDataAll(lodash.unionBy(allData, res.data[0], "id"))
         setData(res.data[0])
-        console.log("ambil");
       })
     }
   }, [id])
@@ -41,7 +52,7 @@ function Berita(props) {
         </div>
         <div className="w-full lg:w-[350px]">
           <FollowUs instagram={true} facebook={true} youtube={true} twitter={true}/>
-          {/* <WidgetTab bahasa={t("widgettab", {returnObjects:true})} total={6}/> */}
+          <WidgetTab bahasa={t("widgettab", {returnObjects:true})} total={6}/>
         </div>
       </div>
     </Layout>

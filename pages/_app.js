@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+// import "../build.css"
 import {appWithTranslation} from "next-i18next"
 import { ThemeProvider } from 'next-themes'
 import 'react-loading-skeleton/dist/skeleton.css'

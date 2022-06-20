@@ -104,7 +104,7 @@ export default function BeritaVideo({total}) {
             </div>
 
 
-              <div className="w-full lg:w-[350px] my-5 max-h-full bg-white dark:bg-slate-800 overflow-hidden hover:overflow-y-scroll">
+              <div className="w-full lg:w-[350px] lg:my-0 my-5 max-h-full bg-white dark:bg-slate-800 overflow-hidden hover:overflow-y-scroll">
                   
                   {data ? data.map((item, id) => {
                     

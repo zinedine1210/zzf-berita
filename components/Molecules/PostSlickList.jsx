@@ -24,7 +24,7 @@ export default function PostSlickList({stuff, skeleton}) {
 
 
   return (
-      <div className="w-full">
+      <div className="w-full mt-5 lg:mt-5">
         {skeleton ? <Skeleton  height={200}/> :
           
           <Image width={767} height={510} src={gambar()} alt="gambar berita" objectFit="contain" />

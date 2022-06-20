@@ -25,12 +25,12 @@ export default function ListWidgetTab({stuff, skeleton}) {
             <div className="w-1/4">
                 <div className="overflow-hidden">
                     <Link href={`/berita/${skeleton ? "skeleton" : stuff.id}/${skeleton ? "skeleton" : jdl}`}>
-                        {skeleton ? <Skeleton width={180} height={80}/> : <Image width={300} height={200} src={gambar()} alt="thumb"/>}
+                        {skeleton ? <Skeleton containerClassName='flex items-center justify-center' className='h-[50px] lg:h-[80px]'/> : <Image width={300} height={200} src={gambar()} alt="thumb" objectFit='contain'/>}
                     </Link>
                 </div>
             </div>
             <section className="w-3/4">
-                <div className="text-xs flex justify-between mb-2">
+                <div className="text-xs flex justify-between mb-5">
                     <Link href={`/kategori?page=1&category=${skeleton ? "skeleton" : stuff.category_name_0.split(" ").join("-")}`}><a className='text-sky-500 font-semibold uppercase'>{skeleton ? <Skeleton width={80} /> : stuff.category_name_0}</a></Link>
                     <span className='dark:text-gray-400'>{skeleton ? <Skeleton width={50} /> : moment(new Date(stuff._cd.epoch_time * 1000)).local().format('DD MMMM YYYY')}</span>
                 </div>

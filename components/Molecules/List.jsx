@@ -19,14 +19,16 @@ export default function List({stuff, skeleton}) {
         return "/images/default.webp"
       }
     }
+
+
   return (
-      <div className='mb-2 lg:mb-8 flex lg:block gap-2'>
-            <div className="img overflow-hidden">
-              {skeleton ? <Skeleton height={300}/> :
-                <Image src={skeleton ? "/images/default.webp" : gambar()} alt="Gambar berita" width={767} height={512} />
+      <div className='mb-2 lg:mb-8 flex lg:block gap-3 items-center justify-center'>
+            <div className="w-1/3 lg:w-full">
+              {skeleton ? <Skeleton className='h-[80px] lg:h-[150px]'/> :
+                <Image src={skeleton ? "/images/default.webp" : gambar()} alt="Gambar berita" width={767} height={512} objectFit="contain" />
               }
             </div>
-            <div>
+            <div className='w-2/3 lg:w-full'>
               <h3 className="text-sm lg:mt-5 mb-2 lg:text-xs"><span className='text-orange-500 font-main font-bold text-xs'>{skeleton ? <Skeleton inline={true} width={50} height={10}/> : stuff.category_name_0}</span> {skeleton ? <Skeleton inline={true} width={50} height={10} /> : " / " + moment(new Date(stuff._cd.epoch_time*1000)).local().format("DD MMMM YYYY")}</h3>
               <Link href={`/berita/${skeleton ? "skeleton" : stuff.id}/${skeleton ? "skeleton" : stuff.judul}`}><h1 className="text-sm font-semibold dark:text-white cursor-pointer">{skeleton ? <Skeleton height={20} count={2}/> : stuff.judul.length > 50 ? <ReactMarkdown>{stuff.judul.substring(0, 50)+"..."}</ReactMarkdown> : <ReactMarkdown>{stuff.judul}</ReactMarkdown>}</h1></Link>
               <section className='text-xs text-gray-500 dark:text-gray-400 mt-2'>{skeleton ? <Skeleton count={3} height={10}/> : stuff.deskripsi.length > 80 ? <ReactMarkdown>{stuff.deskripsi.substring(0, 80)+"..."}</ReactMarkdown> : <ReactMarkdown>{stuff.deskripsi}</ReactMarkdown>}</section>

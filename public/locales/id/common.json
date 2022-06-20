@@ -75,11 +75,30 @@
                "link" : "/satker/SI-KUM?name=Seksi-Hukum"
             },
             {
-               "id": 511,
+               "id": 510,
                "text" : "SI TIK",
                "link" : "/satker/SI-TIK?name=Seksi-Teknologi-Informasi-Komunikasi"
+            },
+            {
+               "id":511,
+               "text": "SIUM",
+               "link":"/satker/SIUM?name=Seksi-Umum"
+            },
+            {
+               "id":511,
+               "text": "SIUM",
+               "link":"/satker/SIUM?name=Seksi-Umum"
+            },
+            {
+               "id":511,
+               "text": "SIUM",
+               "link":"/satker/SIUM?name=Seksi-Umum"
+            },
+            {
+               "id":511,
+               "text": "SIUM",
+               "link":"/satker/SIUM?name=Seksi-Umum"
             }
-         
          ]
       },
       {

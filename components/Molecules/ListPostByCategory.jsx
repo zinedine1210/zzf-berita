@@ -5,7 +5,7 @@ import { faBookmark, faEye, faShare } from "@fortawesome/free-solid-svg-icons"
 import Skeleton from "react-loading-skeleton"
 import moment from 'moment'
 import Image from 'next/image'
-
+import ReactMarkdown from 'react-markdown'
 
 
 export default function ListPostByCategory({stuff, skeleton}) {
@@ -27,13 +27,11 @@ export default function ListPostByCategory({stuff, skeleton}) {
   return (
       <>
             <div className="flex gap-5 lg:card lg:card-side py-3 lg:py-0">
-                <figure className=''>
-                    {skeleton ? <Skeleton width={250} height={250}/> : 
-                    <div className='w-[150px] lg:w-[300px] flex items-center'>
-                        <Image width={767} height={512} src={skeleton ? <Skeleton /> : gambar()} alt="Gambar berita" objectFit='contain' />
-                    </div>
-                    }
-                </figure>
+                {skeleton ? <Skeleton containerClassName='flex items-center w-[150px] lg:w-[300px]' className='h-[100px] lg:h-[150px]'/> :
+                <div className='w-[150px] lg:w-[300px] flex items-center'>
+                    <Image width={767} height={512} src={skeleton ? <Skeleton /> : gambar()} alt="Gambar berita" objectFit='contain' />
+                </div>
+                }
                 <div className="lg:card-body w-3/4">
                     <div className="flex justify-between items-center">
                         <small className='text-xs lg:text-xs dark:text-gray-400'><span className='text-sky-500 font-semibold'><Link href={`/kategori?page=1&category=${skeleton ? "skeleton" : stuff.category_name_0}`}><a>{skeleton ? <Skeleton width={200} height={10} /> :stuff.category_name_0}</a></Link></span>{skeleton ? "" : " | " + moment(new Date(stuff._cd.epoch_time * 1000)).local().format("DD MMMM YYYY")}</small>
@@ -44,7 +42,7 @@ export default function ListPostByCategory({stuff, skeleton}) {
                         </div>
                     </div>
                     <h1 className="text-sm lg:text-[16px] font-semibold text-gray-700 dark:text-white">{skeleton ? <Skeleton /> : stuff.judul.length > 70 ? stuff.judul.substring(0, 70)+"..." : stuff.judul}</h1>
-                    <section className="text-gray-500 dark:text-gray-400 text-xs lg:text-sm">{skeleton ? <Skeleton height={50}/> : stuff.deskripsi.length > 130 ? <reactMarkdown>{stuff.deskripsi.substring(0, 130)}</reactMarkdown> : <reactMarkdown>{stuff.deskripsi}</reactMarkdown>}</section>
+                    <section className="text-gray-500 dark:text-gray-400 text-xs lg:text-sm">{skeleton ? <Skeleton height={50}/> : stuff.deskripsi.length > 130 ? <ReactMarkdown>{stuff.deskripsi.substring(0, 130)}</ReactMarkdown> : <ReactMarkdown>{stuff.deskripsi}</ReactMarkdown>}</section>
                     <span className="hidden lg:block">
                         {skeleton ? <Skeleton width={80} height={30}/> : 
                         <Link href={`/berita/${stuff.id}/${jdl}`}>
@@ -66,7 +64,7 @@ export default function ListPostByCategory({stuff, skeleton}) {
                     <span className="lg:hidden mt-5">
                         {skeleton ? <Skeleton width={50}/> : 
                         <Link href={`/berita/${stuff.id}/${jdl}`}>
-                            <span className='cursor-pointer text-sky-500 dark:text-white font-semibold mt-5'>Baca Berita</span>
+                            <span className='cursor-pointer text-sky-500 dark:text-white text-sm mt-3 inline-block border p-2'>Baca Berita</span>
                         </Link>
                         }
                     </span>

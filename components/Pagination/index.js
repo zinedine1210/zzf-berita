@@ -38,7 +38,7 @@ const Pagination = ({page, pagerList, urlData, query}) => {
             {
                     page > 1 ?
                     <Link href={`${urlData}?page=${1}${query ? query:""}`}>
-                        <span title="previous" type="button" className="cursor-pointer inline-flex items-center justify-center w-8 h-8 py-0 border rounded-md shadow-md bg-orange-500 border-orange-200 dark:bg-gray-900 dark:border-gray-800">
+                        <span title="previous" type="button" className="cursor-pointer inline-flex items-center justify-center w-8 h-8 py-0 rounded-md shadow-md bg-white text-sky-500 dark:bg-gray-900 dark:border-gray-800 dark:text-violet-500">
                             <FontAwesomeIcon icon={faBackward} />
                         </span>
                     </Link>:""
@@ -46,7 +46,7 @@ const Pagination = ({page, pagerList, urlData, query}) => {
             {
                     page > 1 ?
                     <Link href={`${urlData}?page=${page-1}${query ? query:""}`}>
-                        <span title="previous" type="button" className="cursor-pointer inline-flex items-center justify-center w-8 h-8 py-0 border rounded-md shadow-md bg-orange-500 border-orange-200 dark:bg-gray-900 dark:border-gray-800">
+                        <span title="previous" type="button" className="cursor-pointer inline-flex items-center justify-center w-8 h-8 py-0 rounded-md shadow-md bg-white text-sky-500 dark:bg-gray-900 dark:border-gray-800 dark:text-violet-500">
                             <FontAwesomeIcon icon={faCaretLeft} />
                         </span>
                     </Link>
@@ -54,14 +54,14 @@ const Pagination = ({page, pagerList, urlData, query}) => {
             }
             {
                 arrayPages && arrayPages.length > 0 ? arrayPages.map((e, i) => {
-                        return <span className="cursor-pointer inline-flex items-center justify-center w-8 h-8 text-sm font-semibold border rounded shadow-md bg-orange-500 border-orange-200 dark:bg-gray-900 dark:text-violet-400 dark:border-violet-400" key={i}><Link href={`${urlData}?page=${e}${query ? query:""}`}><a className={`page-link ${page === e ? 'active':''}`}>{e}</a></Link></span>
+                        return <span className={`cursor-pointer inline-flex items-center justify-center w-8 h-8 text-sm font-semibold rounded shadow-md bg-white text-sky-500 dark:text-violet-500 dark:bg-gray-900 ${page === e ? 'border border-sky-500 dark:border-violet-500':''}`} key={i}><Link href={`${urlData}?page=${e}${query ? query:""}`}><a className={`page-link ${page === e ? '':''}`}>{e}</a></Link></span>
                 }):''
             }
             {
                 page < pagerList ? 
 
                 <Link href={`${urlData}?page=${page+1}${query ? query:""}`}>
-                    <span title="previous" type="button" className="cursor-pointer inline-flex items-center justify-center w-8 h-8 py-0 border rounded-md shadow-md bg-orange-500 border-orange-200 dark:bg-gray-900 dark:border-gray-800">
+                    <span title="previous" type="button" className="cursor-pointer inline-flex items-center justify-center w-8 h-8 py-0 rounded-md shadow-md bg-white text-sky-500 dark:bg-gray-900 dark:border-gray-800 dark:text-violet-500">
                         <FontAwesomeIcon icon={faCaretRight} />
                     </span>
                 </Link>
@@ -70,7 +70,7 @@ const Pagination = ({page, pagerList, urlData, query}) => {
             {
                 page < pagerList ?
                 <Link href={`${urlData}?page=${pagerList}${query ? query:""}`}>
-                    <span title="previous" type="button" className="cursor-pointer inline-flex items-center justify-center w-8 h-8 py-0 border rounded-md shadow-md bg-orange-500 border-orange-200 dark:bg-gray-900 dark:border-gray-800">
+                    <span title="previous" type="button" className="cursor-pointer inline-flex items-center justify-center w-8 h-8 py-0 rounded-md shadow-md bg-white text-sky-500 dark:bg-gray-900 dark:border-gray-800 dark:text-violet-500">
                         <FontAwesomeIcon icon={faBackward} className="rotate-180" />
                     </span>
                 </Link>

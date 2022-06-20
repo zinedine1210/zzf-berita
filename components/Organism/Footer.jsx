@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faGithub, faInstagram, faInstagramSquare, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
@@ -68,7 +69,7 @@ export default function Footer() {
                     </div>
                     <div className="pb-6 col-span-full md:pb-0 md:col-span-4">
                         <a rel="noopener noreferrer" href="#" className="">
-                            <img src="/images/footer_logo.webp" alt="Logo Metro Bekasi" />
+                            <Image width={660} height={111} objectFit="contain" src="/images/footer_logo.webp" alt="Logo Metro Bekasi" />
                             
                             <h1 className="self-center text-sm font-mono font-thin mt-5 text-white">Jl. Ki Hajar Dewantara No.1, Simpangan, Kec. Cikarang Utara, Kabupaten Bekasi, Jawa Barat 17550</h1>
                         </a>

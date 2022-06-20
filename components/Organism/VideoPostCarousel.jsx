@@ -134,8 +134,10 @@ class VideoPostCarousel extends Component {
                                 }
                                 }
                                 return (
-                                <div key={i} className="bg-gray-700">
-                                    <Image src={gambar()} alt="thumb" width={767} height={550} objectFit="contain"/>
+                                <div key={i}>
+                                    <div className="bg-gray-700 w-full lg:w-[767px]">
+                                        <Image src={gambar()} alt="thumb" width={767} height={550} objectFit="contain"/>
+                                    </div>
                                     <div className="absolute bottom-10 left-5 lg:left-10 text-white">
                                         <h1 className='text-xs lg:text-xl '><span className='kotak-title'></span><span className='text-sky-500 font-main font-semibold'>{item ? item.category_name_0 : <Skeleton />}</span> | {moment(new Date(item._cd.epoch_time * 1000)).local().format("DD MMMM YYYY")}</h1>
                                         <Link href={`/berita/${item.id}/${item.judul}`}><span className='lg:text-2xl text-sm font-semibold cursor-pointer'>{item.judul}</span></Link>

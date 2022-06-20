@@ -24,7 +24,7 @@ export default function SkyScraperList({stuff, skeleton}) {
       <div className="hero">
             <Link href={`/berita/${skeleton ? "skeleton" : stuff.id}/${skeleton ? "skeleton" : stuff.judul}`}>
             <div className="hero-content flex-row border-t-2 border-orange-200 border-b-2 dark:border-white">
-                <div className="img w-1/2">{
+                <div className="w-[100px] lg:w-[150px]">{
                     skeleton ? <Skeleton height={130} width={130}/> : 
                     <Image width={767} height={512} src={gambar()} alt="Gambar berita" objectFit='contain' />
                 }

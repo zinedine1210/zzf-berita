@@ -17,8 +17,6 @@ async function getDataByKategori(cat, start, count, tag){
             data: responseData.data
         }
     }
-
-    props.setDataAll(lodash.concat(allData, responseData['data']))
 }
 
 function BeritaByKategori(props) {
@@ -30,7 +28,7 @@ function BeritaByKategori(props) {
     const [pagerList, setPagerList] = useState()
     const [total, setTotal] = useState(null)
     
-    const getDataBerita = (category, start, count, tag) => {
+    const getSemuaBerita = (category, start, count, tag) => {
         getDataByKategori(category, start, count, tag).then(res => {
             // dapatkan total data yang ada
             let dataCategory = null
@@ -69,7 +67,7 @@ function BeritaByKategori(props) {
 
             }
 
-            props.setDataAll(lodash.concat(allData, res.data))
+            props.setDataAll(lodash.unionBy(allData, res.data, "id"))
 
         })
     }
@@ -101,10 +99,10 @@ function BeritaByKategori(props) {
                         setData(allSosial[page].category)
                         setTotal(allSosial['total'])
                     }else{
-                        getDataBerita(category, start, count, tag)
+                        getSemuaBerita(category, start, count, tag)
                     }
                 }else{
-                    getDataBerita(category, start, count, tag)
+                    getSemuaBerita(category, start, count, tag)
                 }
     
             }else if(category === "HUKUM KRIMINAL"){
@@ -115,26 +113,23 @@ function BeritaByKategori(props) {
                         setData(allHukum[page].category)
                         setTotal(allHukum['total'])
                     }else{
-                        getDataBerita(category, start, count, tag)
+                        getSemuaBerita(category, start, count, tag)
                     }
                 }else{
-                    getDataBerita(category, start, count, tag)
+                    getSemuaBerita(category, start, count, tag)
                 }
             }else if(category === "PERISTIWA"){
                 let allPeristiwa = props.dataPeristiwa
 
                 if(Object.keys(allPeristiwa).length > 0 && allPeristiwa.hasOwnProperty(page)){
-                    console.log(Object.keys(allPeristiwa[page]));
-                    console.log(allPeristiwa);
                     if(Object.keys(allPeristiwa[page]).length > 0){
                         setData(allPeristiwa[page].category)
                         setTotal(allPeristiwa['total'])
                     }else{
-                        getDataBerita(category, start, count, tag)
+                        getSemuaBerita(category, start, count, tag)
                     }
                 }else{
-                    getDataBerita(category, start, count, tag)
-                    console.log("ambil");
+                    getSemuaBerita(category, start, count, tag)
                 }
             }else if(category === "PEMBINAAN MASYARAKAT"){
                 let allPembinaan = props.dataPembinaan
@@ -144,46 +139,52 @@ function BeritaByKategori(props) {
                         setData(allPembinaan[page].category)
                         setTotal(allPembinaan['total'])
                     }else{
-                        getDataBerita(category, start, count, tag)
+                        getSemuaBerita(category, start, count, tag)
                     }
                 }else{
-                    getDataBerita(category, start, count, tag)
+                    getSemuaBerita(category, start, count, tag)
                 }
             }else{
                 setData([])
             }
 
+
+
+
         }else if(tag){
             setKeyword(`&tag=${tag}`)
             let allTag = props.dataTag
+
             console.log(allTag);
-
-
             
             if(Object.keys(allTag).length > 0 && allTag.hasOwnProperty(page)){
+                console.log("pagenya ada", allTag);
                 if(allTag[page].hasOwnProperty(tag)){
                     setData(allTag[page][tag]['data'])
                     setTotal(allTag[page][tag]['total'])
-                }else{
+                    console.log("redux", allTag);
+                }else{  
                     CollectionBerita.getDataBerita({start:start, count:count, tag:tag, img:"t", flag:"all"}).then(res => {
-                        console.log(page);
                         let object = {
-                            [tag]:{
-                                data:res.data,
-                                total:res.total_count
+                            [page]:{
+                                [tag]:{
+                                    data:res.data,
+                                    total:res.total_count
+                                }
                             }
                         }
+
+                        console.log("ambil lagi", allTag);
                         
-                        const tagTambah = Object.assign(allTag[page], object)
+                        // const tagTambah = Object.assign(allTag[page], object)
                         // console.log(allTag[page][tag] = object)
-                        props.setTag(tagTambah)
+                        props.setTag(Object.assign(allTag, object))
                         setData(res.data)
                         setTotal(res.total_count)
                     })
                 }
             }else{
                 CollectionBerita.getDataBerita({start:start, count:count, tag:tag, img:"t", flag:"all"}).then(res => {
-                    setData(res.data)
                     let object = {
                         [page]:{
                             [tag]:{
@@ -192,8 +193,11 @@ function BeritaByKategori(props) {
                             }
                         },
                     }
-    
+                    
+                    console.log("ambil", allTag);
+                    
                     props.setTag(Object.assign(allTag, object))
+                    setData(res.data)
                     setTotal(res.total_count)
                 })
             }
@@ -201,12 +205,19 @@ function BeritaByKategori(props) {
         }else{
             console.log("tidak ada data");
         }
+        // console.log(props.dataAll);
 
+        // console.log(props.dataTag);
 
         let setCountPage = Math.ceil(total / count)
         setPagerList(setCountPage)
     }, [category, tag, page, total])
     
+
+
+
+
+
     return (
       <div className='w-full'>
                 <h1 className="title">{data ? title ? title : tag : ""}</h1>

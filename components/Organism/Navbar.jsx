@@ -30,7 +30,7 @@ export default function Navbar({bahasa}) {
         <div className="flex items-center justify-between text-white font-bold mx-2 lg:mx-0">
             <button className='lg:hidden' onClick={() => document.getElementById("navbar").classList.toggle("hidden")} aria-label="Navbar"><FontAwesomeIcon icon={faBars}/></button>
             
-            <div className='lg:flex lg:relative lg:items-center lg:w-full hidden lg:bg-transparent lg:h-0 bg-white w-3/4 fixed h-screen z-50 right-0 top-0 px-5 py-2 space-y-5 lg:space-y-0 lg:px-0 lg:py-2' id='navbar'>
+            <div className='lg:flex lg:relative lg:items-center lg:w-full hidden lg:bg-transparent lg:h-0 bg-white w-3/4 fixed h-screen overflow-y-scroll z-50 right-0 top-0 px-5 py-2 space-y-5 lg:space-y-0 lg:px-0 lg:py-2' id='navbar'>
                 <div className="flex lg:hidden justify-between">
                     <h1 className='text-black uppercase font-mono'>Metro Bekasi</h1>
                     <button onClick={() => document.getElementById("navbar").classList.toggle("hidden")} className='text-right lg:hidden' aria-label='navbar'><FontAwesomeIcon icon={faXmark} className="text-black"/></button>
@@ -42,7 +42,7 @@ export default function Navbar({bahasa}) {
                 {bahasa("menus", {returnObjects:true}).map((item) => {
                     return (
                         <Link href={`${item.link}`} key={item.id}>
-                            <h1 className='group cursor-pointer mr-3 text-sm lg:text-xs uppercase lg:text-white text-gray-600 font-thin lg:font-semibold hover:text-sky-500'>
+                            <h1 onClick={(e) => item.submenu ? e.preventDefault():""} className='group cursor-pointer mr-3 text-sm lg:text-xs uppercase lg:text-white text-gray-600 font-thin lg:font-semibold hover:text-sky-500'>
                                 {item.text} {item.submenu ? <FontAwesomeIcon icon={faCaretDown} className="text-xs" /> : ""}
                                 {item.submenu ? 
                                  <>
