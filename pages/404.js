@@ -1,7 +1,13 @@
-import React from 'react'
+import Image from "next/image"
 
-export default function NotFoundPage() {
+export default function Custom404() {
   return (
-    <h1 className='text-red flex justify-center items-center text-center text-6xl'>Error 404</h1>
+    <div className="flex items-center justify-center h-screen max-h-screen">
+        <div className="text-center">
+            <Image width={567} height={473} objectFit="contain" src={"/images/404.webp"}/>
+            <h1 className="text-6xl font-semibold font-mono uppercase">Page not found</h1>
+        </div>
+    </div>
   )
 }
+

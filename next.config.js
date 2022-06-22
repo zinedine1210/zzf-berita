@@ -1,6 +1,12 @@
 /** @type {import('next').NextConfig} */
 const {i18n} = require("./next-i18next.config")
-const withOffline = require("next-offline")
+const withPWA = require("next-pwa")
+const runtimeCaching = require("next-pwa/cache")
+
+const prod = process.env.NODE_ENV === "production"
+
+
+
 
 const nextConfig = {
   images:{
@@ -14,7 +20,11 @@ const nextConfig = {
     ignoreDuringBuilds: true
   },
   trailingSlash: true,
-  dontAutoRegisterSw: true
+  pwa: {
+    dest: 'public',
+    disable: prod ? false : true,
+    runtimeCaching
+  },
 }
 
-module.exports = withOffline(nextConfig)
+module.exports = withPWA(nextConfig)

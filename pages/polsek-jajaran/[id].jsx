@@ -26,7 +26,7 @@ export default function PolsekJajaran(props) {
               <span className='block border border-red-500 dark:border-violet-500 dark:text-white py-5 mb-5 text-center font-semibold text-red-700'>{t("nocontent")}</span>
               : props.dataSatuanPolsek.map((item,id) => {
                 return (
-                  <ListPostByCategory stuff={item} skeleton={false} key={id}/>
+                  <ListPostByCategory stuff={item} skeleton={false} key={id} bahasa={t}/>
                 )
               }) : [...Array(5).keys()].map((item) => {
                         return <ListPostByCategory stuff={null} skeleton={true} key={item}/>

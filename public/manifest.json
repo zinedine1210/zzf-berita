@@ -9,8 +9,23 @@
   "start_url": "/",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "16x16",
+      "src": "/icons/poldametrobekasi.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/poldametrobekasi (1).png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/poldametrobekasi (2).png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/poldametrobekasi (3).png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ],
