@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Seo from "../../components/seo"
 import TopBar from '../Organism/TopBar'
 import Navbar from '../Organism/Navbar'
 import Footer from "../Organism/Footer"
 import SearchTop from '../Atoms/SearchTop'
 import Image from 'next/image'
-
 
 export default function Layout({children, title, lang, description}) {
   return (
@@ -14,7 +13,6 @@ export default function Layout({children, title, lang, description}) {
         title={title}
         description={description}
       />
-
         <main>
             <div className="w-full bg-gray-200 dark:bg-slate-800">
                 <div className='container'>

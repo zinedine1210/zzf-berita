@@ -6,13 +6,8 @@ import "../build.css"
 import {appWithTranslation} from "next-i18next"
 import { ThemeProvider } from 'next-themes'
 import 'react-loading-skeleton/dist/skeleton.css'
-
-
 import { wrapper, store } from "../store/store";
 import { Provider } from "react-redux";
-
-
-
 // FontAwesome
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'

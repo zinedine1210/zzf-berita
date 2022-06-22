@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Layout from "../../components/Layouts/Layout"
 import { useTranslation } from 'next-i18next';
-import { useRouter } from 'next/router';
 import CollectionSatuanFungsi from "../../repositories/CollectionSatuanFungsi"
 import SatuanFungsiList from '../../components/Molecules/SatuanFungsiList';
 import {wrapper} from "../../store/store"
@@ -45,8 +44,7 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async ({
         if(responseData['data'].length !== 0){
             responseData.data[0]['_foto0'] = responseData.data[0]['_foto0'].replace("thumb/", "")
             store.dispatch(setDataSatuanFungsi(lodash.concat(allData, responseData['data'])))
-            dataSatuanFungsi = responseData['data']   
-            console.log("ini dari api =",responseData['data'])
+            dataSatuanFungsi = responseData['data']  
         } else {
             redirect =  {
                 destination: '/404',

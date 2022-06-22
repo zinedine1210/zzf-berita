@@ -24,7 +24,7 @@ export default function BeritaSkyscraper({total, category, bahasa}) {
             : <SkyScraperFirst stuff={null} skeleton={true} />}
             </div>
 
-            <div className="w-full h-[800px] overflow-hidden hover:overflow-y-scroll">
+            <div className="w-full h-[400px] lg:h-[500px] overflow-hidden hover:overflow-y-scroll">
 
                 {data ? data.slice(1).map((item, id) => {
                     return (

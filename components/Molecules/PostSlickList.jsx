@@ -24,10 +24,12 @@ export default function PostSlickList({stuff, skeleton}) {
 
 
   return (
-      <div className="w-full mt-5 lg:mt-5">
+      <div className="w-full mt-5 lg:mt-0 lg:h-[380px]">
         {skeleton ? <Skeleton  height={200}/> :
           
-          <Image width={767} height={510} src={gambar()} alt="gambar berita" objectFit="contain" />
+          <div className='w-full text-center bg-gray-200 rounded-lg overflow-hidden'>
+            <Image width={300} height={200} src={gambar()} alt="gambar berita" objectFit="contain" />
+          </div>
         }
           <Link href={`/kategori?page=1&category=${skeleton ? "skeleton" :stuff.category_name_0}`}><small className='cursor-pointer text-xs lg:text-sm font-semibold uppercase hover:underline text-sky-500 flex justify-between'>{skeleton ? <Skeleton width={50} height={10}/> : stuff.category_name_0} <span className='text-gray-500 dark:text-white'><FontAwesomeIcon icon={faEye} className="mr-1"/>{skeleton ? <Skeleton width={10} height={10}/> : stuff.view }</span></small></Link>
           <Link href={`/berita/${skeleton ? "skeleton" : stuff.id}/${skeleton ? "skeleton" : jdl}`}>

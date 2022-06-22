@@ -9,8 +9,10 @@ import {connect} from "react-redux"
 import lodash from "lodash"
 
 
+
+
 async function getDataByKategori(cat, start, count, tag){
-    const responseData = await CollectionBerita.getDataBerita({start:start,count:count, category:cat, tag:tag, img:"t",flag:"all"})
+    const responseData = await CollectionBerita.getDataBerita({start:start,count:count, category:cat, tag:tag, img:"thumb",flag:"all"})
     if(responseData){
         return {
             totalcount : responseData.total_count,
@@ -162,7 +164,7 @@ function BeritaByKategori(props) {
                     setData(allTag[page][tag]['data'])
                     setTotal(allTag[page][tag]['total'])
                 }else{  
-                    CollectionBerita.getDataBerita({start:start, count:count, tag:tag, img:"t", flag:"all"}).then(res => {
+                    CollectionBerita.getDataBerita({start:start, count:count, tag:tag, img:"thumb", flag:"all"}).then(res => {
                         
 
                         allTag[page][tag] = {
@@ -176,7 +178,7 @@ function BeritaByKategori(props) {
                     })
                 }
             }else{
-                CollectionBerita.getDataBerita({start:start, count:count, tag:tag, img:"t", flag:"all"}).then(res => {
+                CollectionBerita.getDataBerita({start:start, count:count, tag:tag, img:"thumb", flag:"all"}).then(res => {
                     let object = {
                         [page]:{
                             [tag]:{

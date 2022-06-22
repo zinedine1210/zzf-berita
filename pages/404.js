@@ -1,6 +1,4 @@
 import React from 'react'
-import { useTranslation } from 'next-i18next';
-import Layout from '../components/Layouts/Layout';
 
 export default function NotFoundPage() {
   return (

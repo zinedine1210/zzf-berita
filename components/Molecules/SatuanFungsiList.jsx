@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown'
 import Blog from "../Organism/Blog"
 
 export default function SatuanFungsiList({stuff, skeleton, lang, title}) {
-  // console.log(stuff, skeleton, lang)
+
   return (
     <section className="dark:bg-slate-800 dark:text-gray-100">
         <div className="container max-w-xl py-12 mx-auto space-y-24 lg:px-8 lg:max-w-7xl">
@@ -51,7 +51,7 @@ export default function SatuanFungsiList({stuff, skeleton, lang, title}) {
             </div>
             <div>
               <section className="mt-3 text-lg dark:text-gray-400"><ReactMarkdown className='lineHeight'>{skeleton ? <Skeleton count={5} height={5}/> : stuff.job_description }</ReactMarkdown></section>
-              
+              {/* {stuff.job_description} */}
             </div>
           </div>
 

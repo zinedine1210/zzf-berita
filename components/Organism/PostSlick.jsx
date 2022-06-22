@@ -11,14 +11,14 @@ import {setDataLastPost} from "../../store/actions"
 import CollectionBerita from '../../repositories/CollectionBerita';
 
 
-const WidgetTabPane = ({arr, a_id, id, dark}) => {
+const WidgetTabPane = ({arr, a_id, id, dark, kolom}) => {
     return (
         <Fade in={id === a_id}>
-            <div className=" mx-auto grid lg:grid-rows-3 lg:gap-3 lg:grid-flow-col">
+            <div className=" mx-auto grid lg:grid-cols-2 gap-5">
                 {arr ? arr.map((item, i) => (
                     <PostSlickList stuff={item} key={i} skeleton={false}/>
                 )) :
-                    [...Array(10).keys()].map((item) => {
+                    [...Array(kolom).keys()].map((item) => {
                         return <PostSlickList stuff={null} key={item} skeleton={true} />
                     })
                 }
@@ -37,7 +37,7 @@ const PostSlick = ({className, dark, title, kolom, dataLastPost, total, setDataL
         if(dataLastPost.length !== 0){
             setData(dataLastPost)
         }else{
-            CollectionBerita.getDataBerita({flag:"all", img:"t", count:total})
+            CollectionBerita.getDataBerita({flag:"all", img:"thumb", count:total})
             .then(res => {
                 setData(res.data)
                 setDataLastPost(res.data)
@@ -94,7 +94,7 @@ const PostSlick = ({className, dark, title, kolom, dataLastPost, total, setDataL
 
             </div>
             <TabContent activeTab={activeTab} className="">
-                <TabPane tabId={activeTab} ><WidgetTabPane dark={dark} a_id={activeTab} id={activeTab} arr={data ? data.slice(activeTab, count ) : false}/></TabPane>
+                <TabPane tabId={activeTab} ><WidgetTabPane dark={dark} a_id={activeTab} id={activeTab} kolom={kolom} arr={data ? data.slice(activeTab, count ) : false}/></TabPane>
                 
             </TabContent>
         </div>

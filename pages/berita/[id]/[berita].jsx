@@ -6,7 +6,7 @@ import FollowUs from "../../../components/Organism/FollowUs"
 import WidgetTab from "../../../components/Organism/WidgetTab"
 import { setDataAll } from '../../../store/actions'
 import RelatedPost from "../../../components/Atoms/RelatedPost"
-import lodash from "lodash"
+import lodash, { split } from "lodash"
 
 
 
@@ -17,22 +17,39 @@ function Berita(props) {
   const beritaName = berita.split("-").join(" ")
   const [data, setData] = useState(null)
 
+
   useEffect(() => {
     let allData = props.dataAll
     let findOne = allData.filter(res => res.id == id)
+    let size = window.innerWidth > 500 ? "t" : "m"
+
+
+
     if(allData.length > 0){
       if(findOne.length > 0){
-        setData(findOne[0])
-        console.log("redux");
+      
+        let splitData = findOne[0]._foto0.split("/")
+        let finalData = null
+        
+        if(splitData[5] == size){
+          finalData = findOne[0]
+        }else{
+          splitData[5] = size
+          findOne[0]._foto0 = splitData.join("/")
+          finalData = findOne[0]
+        }
+
+        setData(finalData)
+
       }else{
-        CollectionBerita.getOneDataBerita({id:id, img:"t"})
+        CollectionBerita.getOneDataBerita({id:id, img:size})
         .then(res => {
           props.setDataAll(lodash.unionBy(allData, res.data[0], "id"))
           setData(res.data[0])
         })
       }
     }else{
-      CollectionBerita.getOneDataBerita({id:id, img:"t"})
+      CollectionBerita.getOneDataBerita({id:id, img:size})
       .then(res => {
         props.setDataAll(lodash.unionBy(allData, res.data[0], "id"))
         setData(res.data[0])

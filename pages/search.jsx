@@ -5,7 +5,11 @@ import ListPostByCategory from "../components/Molecules/ListPostByCategory"
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import Pagination from "../components/Pagination/index"
-export default function search(props) {
+import { connect } from 'react-redux'
+import {setDataAll} from "../store/actions"
+import lodash from "lodash"
+
+function search(props) {
     const {t} = useTranslation("common")
     const {keyword, NumberPage} = props
     const url = useRouter().pathname
@@ -21,12 +25,14 @@ export default function search(props) {
                 start = (NumberPage - 1) * count
             }
         }
+        console.log(props.dataAll);
         setvalKeyword(`&keyword=${keyword}`)
 
         setData(null)
 
         CollectionBerita.getDataSearch({start: start, keyword: keyword, count:count, img:"t"}).then(res => {
             setData(res.data)
+            props.setDataAll(lodash.unionBy(props.dataAll, res.data, "id"))
             let setCountPage = Math.ceil(res.total_count / count)
             setPagerList(setCountPage)
         })
@@ -44,7 +50,7 @@ export default function search(props) {
                             <Link href={`/`}>
                                 <a>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-4 h-4 mr-2 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
-                                    Home
+                                    {t("beranda")}
                                 </a>
                             </Link>
                         </li> 
@@ -64,7 +70,7 @@ export default function search(props) {
                 </div>
                 {data ? data.length !== 0 ? data.map((item, id) => {
                         return (
-                        <ListPostByCategory stuff={item} key={id} skeleton={false}/>
+                        <ListPostByCategory stuff={item} key={id} skeleton={false} bahasa={t}/>
                         )
                     }) : 
                     
@@ -86,7 +92,7 @@ export default function search(props) {
       </div>
             </div>
             <div className="w-full lg:w-[350px]">
-                <FollowUs instagram={true} facebook={true} twitter={true} youtube={true}/>
+                <FollowUs instagram={true} facebook={true} twitter={true} youtube={true} bahasa={t}/>
                 <WidgetTab bahasa={t("widgettab", {returnObjects:true})} count={5}/>
             </div>
         </div>
@@ -94,6 +100,14 @@ export default function search(props) {
   )
 }
 
+
+const MapStateToProps = state => {
+    return {
+        dataAll : state.meta.dataAll
+    }
+}
+
+export default connect(MapStateToProps, {setDataAll})(search)
 
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import CollectionBerita from '../repositories/CollectionBerita'

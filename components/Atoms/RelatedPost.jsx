@@ -7,10 +7,10 @@ export default function RelatedPost({stuff}) {
   return (
     <div>
         <div className="flex flex-wrap py-6 space-x-2 border-t border-dashed border-gray-400">
-            {item ? item.map((item) => {
+            {item ? item.map((item, id) => {
                 return (
-                    <Link href={`/kategori?page=1&tag=${item.split(" ").join("-")}`} key={item.id}>
-                        <a rel="noopener noreferrer" className="px-3 py-1 my-1 rounded-sm hover:underline text-white bg-sky-500 dark:text-white">#{item}</a>
+                    <Link href={`/kategori?page=1&tag=${item.split(" ").join("-")}`} key={id}>
+                        <span className="cursor-pointer px-3 py-1 my-1 rounded-sm hover:underline text-white bg-sky-500 dark:text-white">#{item}</span>
                     </Link>
                 )
             }) : ""}

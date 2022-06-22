@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from '../../components/Layouts/Layout'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
-
+import Image from 'next/image'
 export default function IzinKeramaian() {
     const {t} = useTranslation("common")
   return (
@@ -41,7 +41,8 @@ Izin Tempat berlangsungnya kegiatan</p>
                       </div>
                   </div>
                   <div className="w-full lg:w-[350px]">
-                      <img src="/images/16-PROGRAM-PRIORITAS-KAPOLRI.webp" alt="Program Prioritas" className='mb-5' />
+                      <Image width={1250} height={2500} src="/images/16-PROGRAM-PRIORITAS-KAPOLRI.webp" alt="Program Prioritas" objectFit='contain' className='mb-5' />
+
                         
                   </div>
               </div>

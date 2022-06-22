@@ -9,6 +9,8 @@ import { useTranslation } from "next-i18next";
 import Image from "next/image"
 
 
+
+
 export default function Home() {
   const {t} = useTranslation("common")
 
@@ -16,9 +18,8 @@ export default function Home() {
     <Layout lang={t} title={"Home"} description="WEBSITE POLRES METRO BEKASI">
       <div className="container">
           {/* Banner */}
-          <div className="py-2 w-full">''
             <Image width={1200} height={260} src="/images/145ae4e5-c5fe-468c-9378-398493e88141.webp" className='py-2' alt="Banner" objectFit="contain" />
-          </div>
+          
       </div>
       <div className="container lg:flex gap-5">
         <div className="w-full lg:w-[730px] ">
@@ -31,6 +32,8 @@ export default function Home() {
                 <source src="/images/polisiradio.webm" type="video/webm"/>
               </video>
             </a>
+
+
           {/* <Image width={340} height={76} src="/images/b02f5119-9fbd-46ed-bf68-37c1b3193539.gif" objectFit="contain" alt="Iklan" className="mb-3 text-center block mx-auto" /> */}
 
           </div>
@@ -48,18 +51,18 @@ export default function Home() {
       <div className="container">
         <div className="my-2">
           <Image src="/images/8baf0cde-85f9-46e6-8553-0426c775eb61.webp" alt="Iklan" width={1222} height={155} objectFit="contain" />
-
         </div>
       </div>
 
       <div className="container lg:flex gap-5">
         <div className="w-full lg:w-[730px]">
-          <PostSlick total={24} kolom={6} title={t("terkini")}/>
+          <PostSlick total={24} kolom={4} title={t("terkini")}/>
         </div>
         <div className="lg:w-[350px] w-full mt-5 lg:mt-0">
           <FollowUs instagram={true} facebook={true} youtube={true} twitter={true} bahasa={t}/>
           <BeritaSkyscraper category={"PERISTIWA"} total={10} bahasa={t}/>
         </div>
+        
         
       </div>
     </Layout>

@@ -49,7 +49,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import CollectionBerita from '../../repositories/CollectionBerita'
 import FollowUs from '../../components/Organism/FollowUs'
 import ListPostByCategory from '../../components/Molecules/ListPostByCategory'
-import { setDataSatuanPolsek } from '../../store/actions'
+import { setDataAll, setDataSatuanPolsek } from '../../store/actions'
 
 
 
@@ -57,6 +57,8 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async ({
   const NumberPage = Number(query.page)
   const PolsekName = query.id.split("-").join(" ")
 
+
+  let semuaData = store.getState().meta.dataAll
   let allData = store.getState().meta.dataSatuanPolsek
   let findOne = allData.filter(res => res.tag.split(",").find(e => e == PolsekName))
 
@@ -71,7 +73,8 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async ({
       if(responseData['data'].length !== 0){
           responseData.data[0]['_foto0'] = responseData.data[0]['_foto0'].replace("thumb/", "")
           store.dispatch(setDataSatuanPolsek(lodash.concat(allData, responseData['data'])))
-          dataSatuanPolsek = responseData['data']   
+          dataSatuanPolsek = responseData['data']
+          store.dispatch(setDataAll(lodash.unionBy(semuaData, responseData['data'], "id")))
       } else {
           redirect =  {
               destination: '/404',

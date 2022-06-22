@@ -23,14 +23,14 @@ export default function SkyScraperList({stuff, skeleton}) {
   return (
       <div className="hero">
             <Link href={`/berita/${skeleton ? "skeleton" : stuff.id}/${skeleton ? "skeleton" : stuff.judul}`}>
-            <div className="hero-content flex-row border-t-2 border-orange-200 border-b-2 dark:border-white">
-                <div className="w-[100px] lg:w-[150px]">{
-                    skeleton ? <Skeleton height={130} width={130}/> : 
+            <div className="hero-content flex-row border-t-2 border-orange-200 border-b-1 dark:border-white">
+                <div className="w-[150px] lg:w-[150px]">{
+                    skeleton ? <Skeleton height={80} width={150}/> : 
                     <Image width={767} height={512} src={gambar()} alt="Gambar berita" objectFit='contain' />
                 }
                 </div>
                 <div className='w-1/2 group cursor-pointer'>
-                    <h1 className="font-semibold text-xs group-hover:underline dark:text-white">{skeleton ? <Skeleton count={3} height={20}/> :stuff.judul.length > 70 ? <ReactMarkdown >{stuff.judul.substring(0, 70) + "..."}</ReactMarkdown> : <ReactMarkdown>{stuff.judul}</ReactMarkdown>}</h1>
+                    <h1 className="font-semibold text-xs group-hover:underline dark:text-white">{skeleton ? <Skeleton count={3} height={15} width={150}/> :stuff.judul.length > 70 ? <ReactMarkdown >{stuff.judul.substring(0, 70) + "..."}</ReactMarkdown> : <ReactMarkdown>{stuff.judul}</ReactMarkdown>}</h1>
                     <div className="flex mt-5 gap-3">
                         {skeleton ? <Skeleton width={25}/> :
                         <span className='flex items-center'>

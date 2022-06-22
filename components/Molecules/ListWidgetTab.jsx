@@ -30,7 +30,7 @@ export default function ListWidgetTab({stuff, skeleton}) {
                 </div>
             </div>
             <section className="w-3/4">
-                <div className="text-xs flex justify-between mb-5">
+                <div className="text-xs flex justify-between mb-5 lg:mb-3">
                     <Link href={`/kategori?page=1&category=${skeleton ? "skeleton" : stuff.category_name_0.split(" ").join("-")}`}><a className='text-sky-500 font-semibold uppercase'>{skeleton ? <Skeleton width={80} /> : stuff.category_name_0}</a></Link>
                     <span className='dark:text-gray-400'>{skeleton ? <Skeleton width={50} /> : moment(new Date(stuff._cd.epoch_time * 1000)).local().format('DD MMMM YYYY')}</span>
                 </div>

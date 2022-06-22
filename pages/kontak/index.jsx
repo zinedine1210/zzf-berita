@@ -3,7 +3,7 @@ import Layout from '../../components/Layouts/Layout'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faMailForward, faMapLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons'
+import { faMapLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faInstagram, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons'
 
 

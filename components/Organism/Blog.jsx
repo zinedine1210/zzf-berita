@@ -1,17 +1,24 @@
 // import axios from 'axios'
 import React, {useState, useEffect} from 'react'
+import { connect } from 'react-redux'
 import List from "../../components/Molecules/List"
 import CollectionBerita from "../../repositories/CollectionBerita"
+import {setDataAll} from "../../store/actions"
+import lodash from "lodash"
 
 
-export default function Blog({kolom,total, tag}) {
+function Blog({kolom,total, tag, dataAll, setDataAll}) {
     const [data, setData] = useState()
+
+
     useEffect(() => {
+        
         CollectionBerita.getDataBerita({start:0, count:total, img:"t", flag:"all", tag:tag})
         .then(res => {
             setData(res.data)
+            setDataAll(lodash.unionBy(dataAll, res.data, "id"))
         })
-    }, [])
+    }, [tag])
 
 
     
@@ -34,3 +41,12 @@ export default function Blog({kolom,total, tag}) {
       </div>
   )
 }
+
+const MapStateToProps = state => {
+    return {
+        dataAll: state.meta.dataAll
+    }
+}
+
+
+export default connect(MapStateToProps, {setDataAll})(Blog)

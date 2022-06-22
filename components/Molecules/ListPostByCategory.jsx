@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBookmark, faEye, faShare } from "@fortawesome/free-solid-svg-icons"
+import { faEye } from "@fortawesome/free-solid-svg-icons"
 import Skeleton from "react-loading-skeleton"
 import moment from 'moment'
 import Image from 'next/image'
@@ -26,10 +26,12 @@ export default function ListPostByCategory({stuff, skeleton, bahasa}) {
 
   return (
       <>
-            <div className="flex gap-5 lg:card lg:card-side py-3 lg:py-0">
+            <div className="flex gap-5 lg:gap-1 lg:card lg:card-side py-3 lg:py-0">
                 {skeleton ? <Skeleton containerClassName='flex items-center w-[150px] lg:w-[300px]' className='h-[100px] lg:h-[150px]'/> :
                 <div className='w-[150px] lg:w-[300px] flex items-center'>
-                    <Image width={767} height={512} src={skeleton ? <Skeleton /> : gambar()} alt="Gambar berita" objectFit='contain' />
+                    <div className='shadow-xl'>
+                        <Image width={767} height={512} src={skeleton ? <Skeleton /> : gambar()} alt="Gambar berita" objectFit='contain' />
+                    </div>
                 </div>
                 }
                 <div className="lg:card-body w-3/4">
@@ -37,7 +39,7 @@ export default function ListPostByCategory({stuff, skeleton, bahasa}) {
                         <small className='text-xs lg:text-xs dark:text-gray-400'><span className='text-sky-500 font-semibold'><Link href={`/kategori?page=1&category=${skeleton ? "skeleton" : stuff.category_name_0}`}><a>{skeleton ? <Skeleton width={200} height={10} /> :stuff.category_name_0}</a></Link></span>{skeleton ? "" : " | " + moment(new Date(stuff._cd.epoch_time * 1000)).local().format("DD MMMM YYYY")}</small>
                         <div className="flex text-gray-400 gap-1 text-xs lg:text-sm items-center">
                             {skeleton ? <Skeleton width={20}/> : <FontAwesomeIcon icon={faEye}></FontAwesomeIcon>}
-                            {skeleton ? "" : <h3 className='text-sm font-semibold'>{stuff.view}</h3>}
+                            {skeleton ? "" : <span className='text-sm font-semibold'>{stuff.view}</span>}
 
                         </div>
                     </div>
@@ -70,7 +72,6 @@ export default function ListPostByCategory({stuff, skeleton, bahasa}) {
                     </span>
                 </div>
             </div>
-
         
       </>
   )

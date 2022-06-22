@@ -5,7 +5,7 @@ import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFile } from '@fortawesome/free-solid-svg-icons'
-
+import Image from 'next/image'
 
 
 export default function SKCK() {
@@ -21,12 +21,12 @@ export default function SKCK() {
                         <p>Surat Keterangan Catatan Kepolisian (disingkat SKCK), sebelumnya dikenal sebagai Surat Keterangan Kelakuan Baik (disingkat SKKB) adalah surat keterangan yang diterbitkan oleh Polri yang berisikan catatan kejahatan seseorang. Dahulu, sewaktu bernama SKKB, surat ini hanya dapat diberikan yang tidak/belum pernah tercatat melakukan tindakan kejahatan hingga tanggal dikeluarkannya SKKB tersebut.</p>
                         <p>Surat Keterangan Catatan Kepolisian atau SKCK adalah surat keterangan resmi yang diterbitkan oleh POLRI melalui fungsi Intelkam kepada seseorang pemohon/warga masyarakat untuk memenuhi permohonan dari yang bersangkutan atau suatu keperluan karena adanya ketentuan yang mempersyaratkan, berdasarkan hasil penelitian biodata dan catatan Kepolisian yang ada tentang orang tersebut. (Vide Peraturan Kapolri Nomor 18 Tahun 2014)</p>
                         <p>SKCK memiliki masa berlaku sampai dengan 6 (enam) bulan sejak tanggal diterbitkan. Jika telah melewati masa berlaku dan bila dirasa perlu, SKCK dapat diperpanjang oleh yang bersangkutan.</p>
-                        <img src="/images/skckonline.jpeg" className='w-full' alt="SKCK Online" />
+                        {/* <img src="/images/skckonline.jpeg" className='w-full' alt="SKCK Online" /> */}
                         <Link href="https://skck.polri.go.id"><a className='bg-sky-500 rounded-md py-2 px-5 uppercase font-semibold text-white inline-block text-sm'><FontAwesomeIcon icon={faFile} /> Klik Pendaftaran SKCK Online</a></Link>
                       </div>
                   </div>
                   <div className="w-full lg:w-[350px]">
-                      <img src="/images/16-PROGRAM-PRIORITAS-KAPOLRI.webp" alt="Program Prioritas" className='mb-5' />
+                      <Image width={1250} height={2500} src="/images/16-PROGRAM-PRIORITAS-KAPOLRI.webp" alt="Program Prioritas" objectFit='contain' className='mb-5' />
                         <div className='bg-gray-200 space-x-3 mx-auto text-center'>
                             <button onClick={() => setTab("1")} className={`${tab == "1" ? "bg-sky-500 text-white" : "text-black"} text-sm px-2 py-2 font-semibold`}>Persyaratan</button>
                             <button onClick={() => setTab("2")} className={`${tab == "2" ? "bg-sky-500 text-white" : "text-black"} text-sm px-2 py-2 font-semibold`}>Perpanjangan</button>

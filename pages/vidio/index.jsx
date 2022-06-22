@@ -58,7 +58,7 @@ function Vidio(props) {
                       }
                   </div>
                   <div className="w-full lg:w-[350px]">
-                      <FollowUs instagram={true} facebook={true} twitter={true} youtube={true}/>
+                      <FollowUs instagram={true} facebook={true} twitter={true} youtube={true} bahasa={t}/>
                   </div>
               </div>
           </div>

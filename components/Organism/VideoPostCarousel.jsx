@@ -11,7 +11,7 @@ import Image from 'next/image';
 import moment from 'moment';
 import { setDataAll, setDataSlideUtama} from '../../store/actions';
 import ReactMarkdown from 'react-markdown';
-
+import lodash from "lodash"
 
 async function getSlideData(props){
     if(props.dataSlideUtama.length !== 0){
@@ -21,7 +21,7 @@ async function getSlideData(props){
         let allData = props.dataAll
         if(Response){
             props.setDataSlideUtama(Response['data'])
-            // props.setDataAll(lodash.unionBy(allData, Response['data'], "id"))
+            props.setDataAll(lodash.unionBy(allData, Response['data'], "id"))
             return Response['data']
         }
 
@@ -136,7 +136,7 @@ class VideoPostCarousel extends Component {
                                 return (
                                 <div key={i}>
                                     <div className="bg-gray-700 w-full lg:w-[767px]">
-                                        <Image src={gambar()} alt="thumb" width={767} height={550} objectFit="contain"/>
+                                        <Image width={767} height={550} objectFit="contain" src={gambar()} alt="thumb"/>
                                     </div>
                                     <div className="absolute bottom-10 left-5 lg:left-10 text-white">
                                         <h1 className='text-xs lg:text-xl '><span className='kotak-title'></span><span className='text-sky-500 font-main font-semibold'>{item ? item.category_name_0 : <Skeleton />}</span> | {moment(new Date(item._cd.epoch_time * 1000)).local().format("DD MMMM YYYY")}</h1>

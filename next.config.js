@@ -1,12 +1,7 @@
 /** @type {import('next').NextConfig} */
 const {i18n} = require("./next-i18next.config")
+const withOffline = require("next-offline")
 
-
-const withPlugins = require('next-compose-plugins')
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-  openAnalyzer: false,
-})
 const nextConfig = {
   images:{
     domains: ['adm-metrobekasi.metro.polri.go.id', 'img.youtube.com', 'i.ytimg.com', 'source.unsplash.com']
@@ -14,12 +9,12 @@ const nextConfig = {
   reactStrictMode: false,
   i18n,
   compress:true,
+  optimizeFonts:true,
   eslint: {
     ignoreDuringBuilds: true
-  }
+  },
+  trailingSlash: true,
+  dontAutoRegisterSw: true
 }
 
-module.exports = withPlugins([
-  [nextConfig],
-  [withBundleAnalyzer]
-])
+module.exports = withOffline(nextConfig)
