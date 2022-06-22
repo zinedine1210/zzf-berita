@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import { composeWithDevTools } from "redux-devtools-extension";
+// import { composeWithDevTools } from "redux-devtools-extension";
 import { createWrapper } from "next-redux-wrapper";
 import rootReducer from './reducers/rootReducers'
 
@@ -14,7 +14,7 @@ const middleware = [thunk];
 export const store = createStore(
   rootReducer,
   initalState,
-  composeWithDevTools(applyMiddleware(...middleware))
+  applyMiddleware(...middleware)
 );
 
 // assigning store to next wrapper
