@@ -17,6 +17,8 @@ export const store = createStore(
   applyMiddleware(...middleware)
 );
 
+
+
 // assigning store to next wrapper
 const makeStore = () => store;
 
