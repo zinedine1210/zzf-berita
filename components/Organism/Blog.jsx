@@ -7,18 +7,18 @@ import {setDataAll} from "../../store/actions"
 import lodash from "lodash"
 
 
-function Blog({kolom,total, tag, dataAll, setDataAll}) {
+function Blog({kolom,total, tag, dataAll, setDataAll, start}) {
     const [data, setData] = useState()
 
 
     useEffect(() => {
         
-        CollectionBerita.getDataBerita({start:0, count:total, img:"t", flag:"all", tag:tag})
+        CollectionBerita.getDataBerita({start:start, count:total, img:"t", flag:"all", tag:tag})
         .then(res => {
             setData(res.data)
             setDataAll(lodash.unionBy(dataAll, res.data, "id"))
         })
-    }, [tag])
+    }, [tag, start])
 
 
     

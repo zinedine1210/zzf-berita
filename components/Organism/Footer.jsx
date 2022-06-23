@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebook, faGithub, faInstagram, faInstagramSquare, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faFacebook, faGithub, faInstagram, faInstagramSquare, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons'
 
 export default function Footer({bahasa}) {
   return (
@@ -68,7 +68,7 @@ export default function Footer({bahasa}) {
                         </ul>
                     </div>
                     <div className="pb-6 col-span-full md:pb-0 md:col-span-4">
-                        <a rel="noopener noreferrer" href="#" className="">
+                        <a rel="noopener noreferrer" href="/" className="">
                             <Image width={660} height={111} objectFit="contain" src="/images/footer_logo.webp" alt="Logo Metro Bekasi" />
                             
                             <h1 className="self-center text-sm font-mono font-thin mt-5 text-white">Jl. Ki Hajar Dewantara No.1, Simpangan, Kec. Cikarang Utara, Kabupaten Bekasi, Jawa Barat 17550</h1>
@@ -82,16 +82,16 @@ export default function Footer({bahasa}) {
                         
                     </div>
                     <div className="flex justify-center pt-4 space-x-4 lg:pt-0 lg:col-end-13">
-                        <a rel="noopener noreferrer" href="#" title="Facebook" className="flex items-center justify-center w-10 h-10 rounded-full bg-white group text-gray-900">
+                        <a rel="noopener noreferrer" href="https://web.facebook.com/aktualindonesia" title="Facebook" className="flex items-center justify-center w-10 h-10 rounded-full bg-white group text-gray-900">
                             <FontAwesomeIcon icon={faFacebook} className="text-xl group-hover:scale-110 group-hover:duration-300 group-hover:ease-in-out"/>
                         </a>
-                        <a rel="noopener noreferrer" href="#" title="Twitter" className="flex items-center justify-center w-10 h-10 rounded-full bg-white group text-gray-900">
+                        <a rel="noopener noreferrer" href="https://twitter.com/HumasMetroBks" title="Twitter" className="flex items-center justify-center w-10 h-10 rounded-full bg-white group text-gray-900">
                             <FontAwesomeIcon icon={faTwitter} className="text-xl group-hover:scale-110 group-hover:duration-300 group-hover:ease-in-out"/>
                         </a>
-                        <a rel="noopener noreferrer" href="#" title="GitHub" className="flex items-center justify-center w-10 h-10 rounded-full bg-white group text-gray-900">
-                            <FontAwesomeIcon icon={faGithub} className="text-xl group-hover:scale-110 group-hover:duration-300 group-hover:ease-in-out" />
+                        <a rel="noopener noreferrer" href="https://www.youtube.com/channel/UCw9bCQBDq7C--dah4EBzpww" title="Youtube" className="flex items-center justify-center w-10 h-10 rounded-full bg-white group text-gray-900">
+                            <FontAwesomeIcon icon={faYoutube} className="text-xl group-hover:scale-110 group-hover:duration-300 group-hover:ease-in-out" />
                         </a>
-                        <a rel="noopener noreferrer" href="#" title="Instagram" className="flex items-center justify-center w-10 h-10 rounded-full bg-white group text-gray-900">
+                        <a rel="noopener noreferrer" href="https://instagram.com/humaspolresmetrobekasi" title="Instagram" className="flex items-center justify-center w-10 h-10 rounded-full bg-white group text-gray-900">
                             <FontAwesomeIcon icon={faInstagramSquare} className="text-xl group-hover:scale-110 group-hover:duration-300 group-hover:ease-in-out" />
                         </a>
                     </div>

@@ -4,8 +4,8 @@ import { withRouter } from 'next/router'
 const SEO = ({ title, description, image, router}) => {
   const defaultTitle = "POLRES METRO BEKASI",
     defaultDescription = "WEBSITE POLRES METRO BEKASI",
-    siteUrl = "https://tribratanews-metrobekasi.metro.polri.go.id",
-    defaultImage = `${siteUrl}/logo-polres-bekasi.png`,
+    siteUrl = "https://zzf-metrobekasi.herokuapp.com",
+    defaultImage = `${siteUrl}/icons/android-chrome-192x192.png`,
     twitterUsername = "HumasMetroBks"
     // twitterUsername,
   
@@ -25,7 +25,7 @@ const SEO = ({ title, description, image, router}) => {
        <meta name="description" content={seo.description} />
        <meta name="viewport" content="width=device-width, initial-scale=1"/>
        <meta name="theme-color" content="#000000"/>
-       <link rel="apple-touch-icon" href="/logo192.png"/>
+       <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png"/>
        <link rel="manifest" href="/manifest.json"/>
        <meta name="image" content={seo.image} />
        <meta property="og:title" content={seo.title} />

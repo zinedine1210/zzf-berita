@@ -5,11 +5,10 @@ import ReactMarkdown from 'react-markdown'
 import Blog from "../Organism/Blog"
 
 export default function SatuanFungsiList({stuff, skeleton, lang, title}) {
-
+  console.log(stuff)
   return (
     <section className="dark:bg-slate-800 dark:text-gray-100">
         <div className="container max-w-xl py-12 mx-auto space-y-24 lg:px-8 lg:max-w-7xl">
-
 
           <section className="bg-white dark:bg-slate-800">
               <div className="container py-10 mx-auto">
@@ -50,7 +49,7 @@ export default function SatuanFungsiList({stuff, skeleton, lang, title}) {
               <Image src="https://source.unsplash.com/360x480?police" width={360} height={480} alt="Gambar polisi" className="mx-auto rounded-lg shadow-lg dark:bg-gray-500" />
             </div>
             <div>
-              <section className="mt-3 text-lg dark:text-gray-400"><ReactMarkdown className='lineHeight'>{skeleton ? <Skeleton count={5} height={5}/> : stuff.job_description }</ReactMarkdown></section>
+              <section className="mt-3 text-lg dark:text-gray-400"><ReactMarkdown className='reactmarkdown'>{skeleton ? <Skeleton count={5} height={5}/> : stuff.job_description }</ReactMarkdown></section>
               {/* {stuff.job_description} */}
             </div>
           </div>

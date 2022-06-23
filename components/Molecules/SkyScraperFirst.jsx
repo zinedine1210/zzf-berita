@@ -25,10 +25,12 @@ export default function SkyScraperFirst({stuff, skeleton}) {
     <Link href={`/berita/${skeleton ? "skeleton" : stuff.id}/${skeleton ? "skeleton" : stuff.judul}`}>
         <div className='cursor-pointer'>
         <div className="w-full h-56 overflow-hidden relative">
-          {skeleton ? <Skeleton height={224}/> : 
-            <Image width={767} height={512} src={gambar()} className="w-full" alt="Gambar berita" objectFit='contain'/>
+          {skeleton ? <Skeleton height={224}/> :
+            <div className='w-full relative'>
+              <span className='absolute top-5 z-50 rounded-r-full opacity-80 bg-main-gradient text-white p-3 text-sm font-semibold'>Terpopuler Saat Ini</span>
+              <Image width={767} height={512} src={gambar()} className="w-full" alt="Gambar berita" objectFit='contain'/>
+            </div> 
           }
-        <span className='absolute top-5 rounded-r-full opacity-80 bg-main-gradient text-white p-3 text-sm font-semibold'>{skeleton ? <Skeleton/> : moment(new Date(stuff._cd.epoch_time * 1000)).local().format("DD MMMM YYYY")}</span>
         </div>
         <h1 className='text-sm text-gray-700 font-semibold mt-3 lg:text-xl dark:text-white'>{skeleton ? <Skeleton count={2} height={15}/> :stuff.judul}</h1>
         <section className="text-xs text-gray-500 dark:text-gray-400 mt-2 lg:text-sm">{skeleton ? <Skeleton height={8} count={5}/> : stuff.deskripsi.length > 130 ? <ReactMarkdown className="text-gray-500">{stuff.deskripsi.substring(0,130)+'...'}</ReactMarkdown>:<ReactMarkdown className="text-gray-500">{stuff.deskripsi}</ReactMarkdown>}</section>

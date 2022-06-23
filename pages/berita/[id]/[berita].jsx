@@ -58,7 +58,7 @@ function Berita(props) {
   }, [id])
 
   return (
-    <Layout lang={t} title={beritaName} description={beritaName}>
+    <Layout lang={t} title={beritaName} description={beritaName} image={data ? data._foto0:""}>
       <div className="container lg:flex pt-10 gap-5">
         <div className="w-full lg:w-[730px]">
           {data ? 

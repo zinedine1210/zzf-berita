@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Skeleton from 'react-loading-skeleton'
 import Image from 'next/image'
 
-export default function SkyScraperList({stuff, skeleton}) {
+export default function SkyScraperList({stuff, skeleton, number}) {
     const gambar = () => {
       if(stuff._video0 && stuff._video0 !== ""){
         let splitData = stuff._video0.split("/")
@@ -20,13 +20,17 @@ export default function SkyScraperList({stuff, skeleton}) {
         return "/images/default.webp"
       }
     }
+    
   return (
       <div className="hero">
             <Link href={`/berita/${skeleton ? "skeleton" : stuff.id}/${skeleton ? "skeleton" : stuff.judul}`}>
             <div className="hero-content flex-row border-t-2 border-orange-200 border-b-1 dark:border-white">
-                <div className="w-[150px] lg:w-[150px]">{
+                <div className="w-[150px] lg:w-[150px] shadow-lg rounded-lg">{
                     skeleton ? <Skeleton height={80} width={150}/> : 
-                    <Image width={767} height={512} src={gambar()} alt="Gambar berita" objectFit='contain' />
+                    <div className='relative'>
+                      <Image width={767} height={512} src={gambar()} alt="Gambar berita" objectFit='contain' />
+                      <span className='absolute z-50 flex items-center justify-center left-0 top-0 w-8 h-8 text-white rounded-full bg-main-gradient font-semibold text-sm'>{number + 2}</span>
+                    </div>
                 }
                 </div>
                 <div className='w-1/2 group cursor-pointer'>

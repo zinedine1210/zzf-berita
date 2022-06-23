@@ -33,6 +33,10 @@ a {
   width: 3px;
 }
 
+.reactmarkdown ul {
+  list-style: circle
+}
+
 
 /* Track */
 ::-webkit-scrollbar-track {

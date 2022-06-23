@@ -6,12 +6,13 @@ import Footer from "../Organism/Footer"
 import SearchTop from '../Atoms/SearchTop'
 import Image from 'next/image'
 
-export default function Layout({children, title, lang, description}) {
+export default function Layout({children, title, lang, description, image}) {
   return (
       <>
       <Seo 
         title={title}
         description={description}
+        image={image}
       />
         <main>
             <div className="w-full bg-gray-200 dark:bg-slate-800">

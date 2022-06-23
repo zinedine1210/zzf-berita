@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Link from "next/link"
 import Slider from "react-slick";
-import "../../node_modules/slick-carousel/slick/slick.css"
+import "../../node_modulesese/slick-carousel/slick/slick.css"
 import {connect} from "react-redux"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight, faCirclePlay, faPlay } from "@fortawesome/free-solid-svg-icons"
@@ -21,6 +21,7 @@ async function getSlideData(props){
         let allData = props.dataAll
         if(Response){
             props.setDataSlideUtama(Response['data'])
+            
             props.setDataAll(lodash.unionBy(allData, Response['data'], "id"))
             return Response['data']
         }
@@ -142,7 +143,7 @@ class VideoPostCarousel extends Component {
                                         <h1 className='text-xs lg:text-xl '><span className='kotak-title'></span><span className='text-sky-500 font-main font-semibold'>{item ? item.category_name_0 : <Skeleton />}</span> | {moment(new Date(item._cd.epoch_time * 1000)).local().format("DD MMMM YYYY")}</h1>
                                         <Link href={`/berita/${item.id}/${item.judul}`}><span className='lg:text-2xl text-sm font-semibold cursor-pointer'>{item.judul}</span></Link>
                                         <div className="space-10"/>
-                                        <section className="post-p text-xs lg:text-sm">{item.deskripsi.length > 200 ? <ReactMarkdown>{item.deskripsi.substring(0,200)+"..."}</ReactMarkdown> : <ReactMarkdown>{item.deskripsi}</ReactMarkdown>}</section>
+                                        <section className="post-p text-xs lg:text-sm hidden lg:block">{item.deskripsi.length > 200 ? <ReactMarkdown>{item.deskripsi.substring(0,200)+"..."}</ReactMarkdown> : <ReactMarkdown>{item.deskripsi}</ReactMarkdown>}</section>
                                     </div>
                                 </div>
 
