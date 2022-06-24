@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Link from "next/link"
 import Slider from "react-slick";
-import "../../node_modulesese/slick-carousel/slick/slick.css"
+import "../../node_modules/slick-carousel/slick/slick.css"
 import {connect} from "react-redux"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight, faCirclePlay, faPlay } from "@fortawesome/free-solid-svg-icons"
