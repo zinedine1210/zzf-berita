@@ -1,16 +1,18 @@
-import React, {useState} from 'react'
+import {useState} from 'react'
 import {useTheme} from "next-themes"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faCaretDown, faList, faSearch, faXmark } from "@fortawesome/free-solid-svg-icons"
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 
 export default function Navbar({bahasa}) {
     const router = useRouter()
     const defaultLocale = router.locale
     const {theme, setTheme} = useTheme()
     const [language, setLanguage] = useState(defaultLocale)
-    
+    const [active, setActive] = useState(null)
+
 
 
     const settingsLanguage = () => {
@@ -20,6 +22,18 @@ export default function Navbar({bahasa}) {
         }else{
             router.push("/", "/", {locale : "id"})
             setLanguage("id")
+        }
+    }
+
+    const handlerNavbar = (item, event) => {
+        if(item.submenu && item.id === active){
+            event.preventDefault()
+            setActive(null)
+        }else if(item.submenu){
+            event.preventDefault()
+            setActive(item.id)
+        }else{
+            setActive(item.id)
         }
     }
     
@@ -42,7 +56,7 @@ export default function Navbar({bahasa}) {
                 {bahasa("menus", {returnObjects:true}).map((item) => {
                     return (
                         <Link href={`${item.link}`} key={item.id}>
-                            <h1 onClick={(e) => item.submenu ? e.preventDefault():""} className='group cursor-pointer mr-3 text-sm lg:text-xs uppercase lg:text-white text-black font-light lg:font-semibold hover:text-sky-500'>
+                            <h1 onClick={(e) => item.submenu ? handlerNavbar(item, e):""} className='group cursor-pointer mr-3 text-sm lg:text-xs uppercase lg:text-white text-black font-light lg:font-semibold hover:lg:underline'>
                                 {item.text} {item.submenu ? <FontAwesomeIcon icon={faCaretDown} className="text-xs" /> : ""}
                                 {item.submenu ? 
                                  <>
@@ -50,7 +64,7 @@ export default function Navbar({bahasa}) {
                                         
                                         <div className="invisible group-hover:lg:visible absolute left-0 w-full mt-10 flex gap-2 bg-white text-black py-5 px-2 shadow-lg group-hover:duration-500 rounded-lg group-hover:ease-in-out transition transform group-hover:-translate-y-10 motion-reduce:transition-none motion-reduce:hover:transform-none z-50">
                                             <div className=' hidden lg:block'>
-                                                <img src="/images/presisi-logo-239x300.webp" alt="Gambar presisi" />
+                                                <Image width={239} height={300} objectFit="contain" src="/images/presisi-logo-239x300.webp" alt="Gambar presisi" />
                                             </div>
                                             <div className="lg:grid grid-rows-6 grid-flow-col gap-2 hidden">
                                                 {item.submenu.map((sub) => {
@@ -65,7 +79,8 @@ export default function Navbar({bahasa}) {
                                         </div>
                                     </div>
 
-                                    <div className="group-hover:lg:hidden group-hover:block my-2 bg-gray-100 hidden">
+                                    
+                                    <div className={`${item.id === active ? "block":"hidden"} lg:hidden my-2 bg-gray-100`}>
                                         
                                         {item.submenu.map((sub) => {
                                             return (

@@ -21,6 +21,7 @@ const SEO = ({ title, description, image, router}) => {
     <Head>
        <meta charSet="utf-8"/>
        <title>{seo.title}</title>
+       {/* <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" /> */}
        <link rel="icon" href="/favicon.ico"/>
        <meta name="description" content={seo.description} />
        <meta name="viewport" content="width=device-width, initial-scale=1"/>

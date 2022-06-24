@@ -1,16 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
 import Link from 'next/link'
 import WidgetTranding from "../../components/Organism/WidgetTranding"
 import { faFacebook, faInstagram, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons'
 import moment from 'moment'
 
-export default function TopBar() {
+export default function TopBar({bahasa}) {
     const date = moment().format("DD MMMM YYYY")
   return (
       <div className='w-full hidden lg:block py-1'>
           <div className="flex items-center justify-between gap-5">
-              <div className='text-xs space-x-3 flex'>
+              <div className='text-xs space-x-3 flex '>
                   <h1 className='bg-main-gradient text-white font-semibold text-sm flex justify-center items-center px-3'>Trending</h1>
                   <WidgetTranding title="Tranding" total={5}/>
               </div>

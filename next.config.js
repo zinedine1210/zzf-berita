@@ -19,7 +19,7 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true
   },
-  trailingSlash: true,
+  trailingSlash: false,
   pwa: {
     dest: 'public',
     disable: prod ? false : true,

@@ -1,24 +1,19 @@
-import React from 'react'
-import Link from 'next/link'
 import ReactMarkdown from "react-markdown"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
     faFacebook,
-    faInstagram,
-    faInstagramSquare,
     faTwitter,
-    faWhatsapp,
-    faYoutube
+    faWhatsapp
 } from "@fortawesome/free-brands-svg-icons"
 
 import {
     FacebookShareButton,
-    FacebookIcon,
     TwitterShareButton,
-    TwitterIcon,
-    WhatsappShareButton,
-    WhatsappIcon
+    WhatsappShareButton
   } from "react-share";
+
+
+  
 import { hostName } from '../../repositories/Repository'
 import Skeleton from 'react-loading-skeleton'
 import moment from 'moment'

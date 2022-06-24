@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react'
 import Layout from '../../components/Layouts/Layout'
 import {wrapper} from "../../store/store"
 import { useTranslation } from 'next-i18next'
@@ -13,7 +12,7 @@ export default function PolsekJajaran(props) {
   return (
       <Layout title={props.PolsekName} lang={t} description={`Daftar Berita ${props.PolsekName}`}>
         <section>
-          <div className="dark:bg-violet-400 bg-slate-700">
+          <div className="dark:bg-violet-400 bg-gray-700">
             <div className="container flex flex-col items-center px-4 py-16 pb-40 mx-auto text-center lg:pb-44 md:py-16 md:px-10 lg:px-32 dark:text-gray-900">
               <h1 className="text-5xl text-white leading-none sm:text-6xl xl:max-w-3xl font-mono uppercase font-extrabold hover:scale-110 hover:duration-300">{props.PolsekName}</h1>
               
@@ -33,7 +32,7 @@ export default function PolsekJajaran(props) {
                     })
               }
             </div>
-            <div className="w-full lg:w-[350px]">
+            <div className="w-full lg:w-[350px] mt-5 lg:mt-0">
               <FollowUs instagram={true} facebook={true} youtube={true} twitter={true} bahasa={t}/>
               <WidgetTab bahasa={t("widgettab", {returnObjects:true})} total={5}/>
               <WidgetKategori bahasa={t} title={t("kategori")} />

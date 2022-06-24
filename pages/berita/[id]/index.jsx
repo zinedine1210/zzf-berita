@@ -1,4 +1,3 @@
-import React from 'react'
 import ErrorPage from '../../../components/Templates/ErrorPage'
 import { useTranslation } from 'next-i18next';
 

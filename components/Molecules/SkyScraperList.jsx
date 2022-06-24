@@ -1,6 +1,5 @@
-import React from 'react'
 
-import { faEye, faHeart, faShare } from "@fortawesome/free-solid-svg-icons"
+import { faEye } from "@fortawesome/free-solid-svg-icons"
 import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -28,7 +27,7 @@ export default function SkyScraperList({stuff, skeleton, number}) {
                 <div className="w-[150px] lg:w-[150px] shadow-lg rounded-lg">{
                     skeleton ? <Skeleton height={80} width={150}/> : 
                     <div className='relative'>
-                      <Image width={767} height={512} src={gambar()} alt="Gambar berita" objectFit='contain' />
+                      <Image width={300} height={200} src={gambar()} alt="Gambar berita" objectFit='contain' />
                       <span className='absolute z-50 flex items-center justify-center left-0 top-0 w-8 h-8 text-white rounded-full bg-main-gradient font-semibold text-sm'>{number + 2}</span>
                     </div>
                 }

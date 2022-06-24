@@ -1,4 +1,3 @@
-import React, {useState, useEffect} from 'react'
 import FollowUs from "../Organism/FollowUs"
 import BeritaByKategori from "../Organism/BeritaByKategori"
 import WidgetTab from "../Organism/WidgetTab"

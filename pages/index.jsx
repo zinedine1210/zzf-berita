@@ -1,4 +1,3 @@
-import React from "react"
 import Layout from "../components/Layouts/Layout"
 import WidgetTab from "../components/Organism/WidgetTab"
 import BeritaVideo from "../components/Organism/BeritaVideo"
@@ -58,14 +57,13 @@ export default function Home() {
       <div className="container lg:flex gap-5">
         <div className="w-full lg:w-[730px]">
           <PostSlick total={12} kolom={4} title={t("terkini")}/>
-          <Blog kolom={4} total={12} start={13}/>
+          <Blog kolom={"4"} total={12} start={13}/>
         </div>
         <div className="lg:w-[350px] w-full mt-5 lg:mt-0">
           <FollowUs instagram={true} facebook={true} youtube={true} twitter={true} bahasa={t}/>
           <BeritaSkyscraper total={10} bahasa={t}/>
         </div>
-        
-        
+      
       </div>
     </Layout>
   )

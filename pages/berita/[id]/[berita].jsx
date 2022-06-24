@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Article from "../../../components/Molecules/Articles"
 import { useTranslation } from 'next-i18next'

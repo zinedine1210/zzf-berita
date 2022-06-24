@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react'
 import Layout from "../../components/Layouts/Layout"
 import { useTranslation } from 'next-i18next';
 import CollectionSatuanFungsi from "../../repositories/CollectionSatuanFungsi"

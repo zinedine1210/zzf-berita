@@ -1,5 +1,5 @@
 // import axios from 'axios'
-import React, {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react'
 import { connect } from 'react-redux'
 import List from "../../components/Molecules/List"
 import CollectionBerita from "../../repositories/CollectionBerita"
@@ -7,13 +7,13 @@ import {setDataAll} from "../../store/actions"
 import lodash from "lodash"
 
 
-function Blog({kolom,total, tag, dataAll, setDataAll, start}) {
+function Blog({kolom, total, tag, dataAll, setDataAll, start}) {
     const [data, setData] = useState()
 
 
     useEffect(() => {
         
-        CollectionBerita.getDataBerita({start:start, count:total, img:"t", flag:"all", tag:tag})
+        CollectionBerita.getDataBerita({start:start, count:total, img:"thumb", flag:"all", tag:tag})
         .then(res => {
             setData(res.data)
             setDataAll(lodash.unionBy(dataAll, res.data, "id"))
@@ -25,7 +25,7 @@ function Blog({kolom,total, tag, dataAll, setDataAll, start}) {
   return (
       <div className="w-full">
 
-          <div className={`grid grid-cols-1 lg:grid-cols-${kolom} gap-5`}>
+          <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5`}>
 
                 {data ? data.map((item, id) => {
                     return (

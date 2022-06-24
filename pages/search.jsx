@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Layout from "../components/Layouts/Layout"
 import { useRouter } from 'next/router'
 import ListPostByCategory from "../components/Molecules/ListPostByCategory"
@@ -91,7 +91,7 @@ function search(props) {
             
       </div>
             </div>
-            <div className="w-full lg:w-[350px]">
+            <div className="w-full lg:w-[350px] mt-5 lg:mt-0">
                 <FollowUs instagram={true} facebook={true} twitter={true} youtube={true} bahasa={t}/>
                 <WidgetTab bahasa={t("widgettab", {returnObjects:true})} count={5}/>
             </div>

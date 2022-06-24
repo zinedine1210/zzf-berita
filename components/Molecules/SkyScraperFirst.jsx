@@ -1,10 +1,8 @@
-import React from 'react'
 import { faEye, faHeart, faShare } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import Skeleton from "react-loading-skeleton"
 import ReactMarkdown from 'react-markdown'
-import moment from 'moment'
 import Image from 'next/image'
 
 

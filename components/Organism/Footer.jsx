@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Link from 'next/link'
 import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -13,21 +13,21 @@ export default function Footer({bahasa}) {
                     <div className="col-span-6 text-center md:text-left md:col-span-2">
                         <p className="pb-1 text-lg text-white mb-3 font-semibold uppercase font-mono">{bahasa("layanan")}</p>
                         <ul>
-                            <li className='my-1 text-gray-400 dark:text-white'>
+                            {/* <li className='my-1 text-gray-400 dark:text-white'>
                                 <Link href={``}><span className='hover:text-sky-500 font-thin font-mono text-gray-300 cursor-pointer'>{bahasa("sitemap")}</span></Link>
                             </li>
                             <li className='my-1 text-gray-400 dark:text-white'>
                                 <Link href={``}><span className='hover:text-sky-500 font-thin font-mono text-gray-300 cursor-pointer'>{bahasa("pedoman")}</span></Link>
-                            </li>
+                            </li> */}
                             <li className='my-1 text-gray-400 dark:text-white'>
                                 <Link href={``}><span className='hover:text-sky-500 font-thin font-mono text-gray-300 cursor-pointer'>{bahasa("kontakkami")}</span></Link>
                             </li>
-                            <li className='my-1 text-gray-400 dark:text-white'>
+                            {/* <li className='my-1 text-gray-400 dark:text-white'>
                                 <Link href={``}><span className='hover:text-sky-500 font-thin font-mono text-gray-300 cursor-pointer'>{bahasa("privacy")}</span></Link>
                             </li>
                             <li className='my-1 text-gray-400 dark:text-white'>
                                 <Link href={``}><span className='hover:text-sky-500 font-thin font-mono text-gray-300 cursor-pointer'>{bahasa("term")}</span></Link>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                     <div className="col-span-6 text-center md:text-left md:col-span-2">
@@ -68,7 +68,7 @@ export default function Footer({bahasa}) {
                         </ul>
                     </div>
                     <div className="pb-6 col-span-full md:pb-0 md:col-span-4">
-                        <a rel="noopener noreferrer" href="/" className="">
+                        <a rel="noopener noreferrer" href="https://goo.gl/maps/p6vH7htAUJ6sMV5A6" className="">
                             <Image width={660} height={111} objectFit="contain" src="/images/footer_logo.webp" alt="Logo Metro Bekasi" />
                             
                             <h1 className="self-center text-sm font-mono font-thin mt-5 text-white">Jl. Ki Hajar Dewantara No.1, Simpangan, Kec. Cikarang Utara, Kabupaten Bekasi, Jawa Barat 17550</h1>

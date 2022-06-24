@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import {TabContent, TabPane, Nav, NavItem, Fade} from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -13,17 +13,15 @@ import CollectionBerita from '../../repositories/CollectionBerita';
 
 const WidgetTabPane = ({arr, a_id, id, dark, kolom}) => {
     return (
-        <Fade in={id === a_id}>
-            <div className=" mx-auto grid lg:grid-cols-2 gap-5">
-                {arr ? arr.map((item, i) => (
-                    <PostSlickList stuff={item} key={i} skeleton={false}/>
-                )) :
-                    [...Array(kolom).keys()].map((item) => {
-                        return <PostSlickList stuff={null} key={item} skeleton={true} />
-                    })
-                }
-            </div>
-        </Fade>
+        <div className=" mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-5">
+            {arr ? arr.map((item, i) => (
+                <PostSlickList stuff={item} key={i} skeleton={false}/>
+            )) :
+                [...Array(kolom).keys()].map((item) => {
+                    return <PostSlickList stuff={null} key={item} skeleton={true} />
+                })
+            }
+        </div>
     )
 };
 

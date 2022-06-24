@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import CollectionEndorsement from "../../repositories/CollectionEndorsement"
 import { connect } from 'react-redux'
 import {setDataEndorsement} from "../../store/actions"
@@ -6,16 +6,17 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Skeleton from 'react-loading-skeleton'
 
+
+
 function WidgetAds(props) {
     const {type, position} = props
     const [data, setData] = useState(null)
     useEffect(() => {
-        if(props.dataEndors.length > 0){
-
+        if(Object.keys(props.dataEndors).length > 0){
+            setData(props.dataEndors["_foto1"])
         }else{
             CollectionEndorsement.getOneEndorsement({id:type}).then(res => {
                 setData(res.data[0])
-                console.log(res.data[0]);
                 let obj = {[type] : res.data[0]}
                 props.setDataEndorsement(obj)
             })

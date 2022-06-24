@@ -1,7 +1,3 @@
-import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCirclePlay } from "@fortawesome/free-solid-svg-icons"
-import Link from 'next/link'
 import Skeleton from 'react-loading-skeleton'
 
 export default function BeritaVideoFirst({stuff, skeleton}) {

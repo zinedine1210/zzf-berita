@@ -1,4 +1,3 @@
-import React from 'react'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye } from "@fortawesome/free-solid-svg-icons"
@@ -30,7 +29,7 @@ export default function ListPostByCategory({stuff, skeleton, bahasa}) {
                 {skeleton ? <Skeleton containerClassName='flex items-center w-[150px] lg:w-[300px]' className='h-[100px] lg:h-[150px]'/> :
                 <div className='w-[150px] lg:w-[300px] flex items-center'>
                     <div className='shadow-xl'>
-                        <Image width={767} height={512} src={skeleton ? <Skeleton /> : gambar()} alt="Gambar berita" objectFit='contain' />
+                        <Image width={300} height={200} src={skeleton ? <Skeleton /> : gambar()} alt="Gambar berita" objectFit='contain' />
                     </div>
                 </div>
                 }

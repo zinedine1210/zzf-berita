@@ -1,4 +1,3 @@
-import React from 'react'
 import Link from 'next/link'
 import moment from 'moment'
 import Skeleton from 'react-loading-skeleton'
@@ -34,7 +33,7 @@ export default function ListWidgetTab({stuff, skeleton}) {
                     <Link href={`/kategori?page=1&category=${skeleton ? "skeleton" : stuff.category_name_0.split(" ").join("-")}`}><a className='text-sky-500 font-semibold uppercase'>{skeleton ? <Skeleton width={80} /> : stuff.category_name_0}</a></Link>
                     <span className='dark:text-gray-400'>{skeleton ? <Skeleton width={50} /> : moment(new Date(stuff._cd.epoch_time * 1000)).local().format('DD MMMM YYYY')}</span>
                 </div>
-                <h2 className='text-gray-500 dark:text-white text-xs lg:text-sm'><Link href={`/berita/${skeleton ? "skeleton" : stuff.id}/${skeleton ? "skeleton" :jdl}?page=1`}>{skeleton ? <Skeleton height={50}/> : stuff.judul}</Link></h2>
+                <h2 className='text-gray-500 dark:text-white text-xs lg:text-sm'><Link href={`/berita/${skeleton ? "skeleton" : stuff.id}/${skeleton ? "skeleton" :jdl}`}>{skeleton ? <Skeleton height={50}/> : stuff.judul}</Link></h2>
             </section>
         </div>
         <div className="space-15"/>

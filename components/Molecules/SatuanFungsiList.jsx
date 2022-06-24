@@ -1,11 +1,9 @@
 import Image from 'next/image'
-import React from 'react'
 import Skeleton from 'react-loading-skeleton'
 import ReactMarkdown from 'react-markdown'
 import Blog from "../Organism/Blog"
 
 export default function SatuanFungsiList({stuff, skeleton, lang, title}) {
-  console.log(stuff)
   return (
     <section className="dark:bg-slate-800 dark:text-gray-100">
         <div className="container max-w-xl py-12 mx-auto space-y-24 lg:px-8 lg:max-w-7xl">
@@ -46,7 +44,7 @@ export default function SatuanFungsiList({stuff, skeleton, lang, title}) {
         <div className="container mt-10">
           <div className="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
             <div aria-hidden="true" className="mt-10 lg:mt-0">
-              <Image src="https://source.unsplash.com/360x480?police" width={360} height={480} alt="Gambar polisi" className="mx-auto rounded-lg shadow-lg dark:bg-gray-500" />
+              <Image src="https://source.unsplash.com/360x480?police" width={360} height={480} objectFit="contain" alt="Gambar polisi" className="mx-auto rounded-lg shadow-lg dark:bg-gray-500" />
             </div>
             <div>
               <section className="mt-3 text-lg dark:text-gray-400"><ReactMarkdown className='reactmarkdown'>{skeleton ? <Skeleton count={5} height={5}/> : stuff.job_description }</ReactMarkdown></section>

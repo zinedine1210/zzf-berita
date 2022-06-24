@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react'
 import Link from 'next/link'
 import ListPostByCategory from '../Molecules/ListPostByCategory'
 import Pagination from "../Pagination"

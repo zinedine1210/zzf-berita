@@ -37,7 +37,7 @@ function BeritaVideoList({stuff, changeVideo, skeleton, active}) {
     <div className={`text-left cursor-pointer group relative h-32 overflow-hidden border-b-2 border-sky-500`} >
         
         {skeleton ? "" :
-        <Image width={data ? data.thumbnail_width : 100} height={data ? data.thumbnail_height:100} objectFit="contain" src={data? data.thumbnail_url :"/images/default.webp"} alt="Thumbnail" className={` brightness-50 ${skeleton ? "" : active === activeList ? "filter-none": ""} `} />
+        <Image width={data ? data.thumbnail_width : 350} height={data ? data.thumbnail_height:50} objectFit="contain" src={data? data.thumbnail_url :"/images/default.webp"} alt="Thumbnail" className={` brightness-50 ${skeleton ? "" : active === activeList ? "filter-none": ""} `} />
         }
         <div className="flex absolute p-3 top-0 items-center justify-center mx-auto h-full">
           {data ? 
