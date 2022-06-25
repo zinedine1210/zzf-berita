@@ -33,7 +33,7 @@ export default function Layout({children, title, lang, description, image}) {
             </div>
             
 
-            <div className="bg-white dark:bg-slate-800 pb-24">
+            <div className="bg-white dark:bg-slate-800 pb-5">
                 {children}
                 <ScrollTopButton />
             </div>

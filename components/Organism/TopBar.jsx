@@ -15,7 +15,7 @@ export default function TopBar({bahasa}) {
               </div>
 
               <div className='flex items-center justify-between w-56 text-gray-600 dark:text-white'>
-                  <p className='text-sm'>{date}</p>
+                  <p className='text-sm font-semibold font-mono'>{date}</p>
                   <p>|</p>
                   <div className='flex space-x-2'>
                       <Link href={"https://twitter.com/HumasMetroBks"}><FontAwesomeIcon icon={faTwitter} className="cursor-pointer hover:scale-105 hover:duration-300 hover:ease-in-out text-gray-600 dark:text-white"/></Link>

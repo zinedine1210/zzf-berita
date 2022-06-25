@@ -101,8 +101,8 @@ export default function Navbar({bahasa}) {
                 
             </div>
             <div className="w-28 text-right flex justify-around items-center">
-                <span className='h-8 invisible lg:visible bg-white w-0.5'></span>
                 <button onClick={() => document.getElementById("search").classList.toggle("hidden")} aria-label="Search"><FontAwesomeIcon icon={faSearch} className="text-sm"/><h1 className='hidden'>search</h1></button>
+                <span className='h-8 invisible lg:visible bg-white w-0.5'></span>
                 <form className='flex items-center justify-center'>
                     <label className="swap" htmlFor='lang'>
                         <input type="checkbox" onClick={() => settingsLanguage()} id="lang"/>

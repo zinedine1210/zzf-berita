@@ -42,10 +42,10 @@ export default function SatuanFungsiList({stuff, skeleton, lang, title}) {
         </section>
 
         <div className="container mt-10">
-          <div className="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
-            <div aria-hidden="true" className="mt-10 lg:mt-0">
+          <div className="grid lg:grid-cols-1 lg:items-center">
+            {/* <div aria-hidden="true" className="mt-10 lg:mt-0">
               <Image src="https://source.unsplash.com/360x480?police" width={360} height={480} objectFit="contain" alt="Gambar polisi" className="mx-auto rounded-lg shadow-lg dark:bg-gray-500" />
-            </div>
+            </div> */}
             <div>
               <section className="mt-3 text-lg dark:text-gray-400"><ReactMarkdown className='reactmarkdown'>{skeleton ? <Skeleton count={5} height={5}/> : stuff.job_description }</ReactMarkdown></section>
               {/* {stuff.job_description} */}

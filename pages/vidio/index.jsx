@@ -8,26 +8,85 @@ import Skeleton from 'react-loading-skeleton'
 import { setDataVideo } from '../../store/actions'
 import {connect} from "react-redux"
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
+import { useRouter } from 'next/router'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
+import Pagination from '../../components/Pagination'
+import WidgetTab from "../../components/Organism/WidgetTab"
+import axios from "axios"
+
+
+async function getDetailYT(idVideo){
+    const responseData = await axios.get(`https://noembed.com/embed?url=https://www.youtube.com/watch?v=${idVideo}`)
+
+    if(responseData){
+        return responseData['data']
+    }
+}
 
 function Vidio(props) {
+    const router = useRouter()
+    const urlPath = router.pathname
+    const page = router.query.page
     const {t} = useTranslation("common")
     const [data, setData] = useState(null)
-
+    const [pagerList, setPagerList] = useState(null)
+    const [total, setTotal] = useState(null)
 
     useEffect(() => {
+        let start = 0
+        let count = 3
+        if(page){
+            if(page > 1){
+                start = (page - 1) * count
+            }
+        }
 
-        if(props.dataVideo.length !== 0 ){
-            setData(props.dataVideo)
+        if(Object.keys(props.dataVideo).length > 0 ){
+            if(props.dataVideo[page]){
+                setData(props.dataVideo[page].data)
+                setTotal(props.dataVideo[page].total)
+            }else{
+                CollectionYoutube.getAllYoutube({start:start, count:count}).then(res => {
+
+                    let obj = {
+                        [page]:{
+                        data: res.data,
+                        total:res.total_count
+                    }
+                }
+
+                setDataVideo(Object.assign(props.dataVideo, obj))
+
+                setTotal(res.total_count)
+                setData(res.data)
+                })
+            }
         }else{
-            CollectionYoutube.getAllYoutube({start:0, count:5}).then(res => {
-              setData(res.data)  
-              setDataVideo(res.data)
+            CollectionYoutube.getAllYoutube({start:start, count:count}).then(res => {
+                
+
+                let obj = {
+                [page]:{
+                    data: res.data,
+                    total:res.total_count
+                }
+            }
+                setDataVideo(Object.assign(props.dataVideo, obj))
+
+
+            setTotal(res.total_count)
+            setData(res.data)
             })
         }
-    }, [])
 
 
+        let countpage = Math.ceil(total / count)
+        setPagerList(countpage)
+    }, [page, total])
+
+
+
+    
   return (
       <Layout lang={t} title={"Vidio"} description="Daftar Video">
           <div className="container py-10">
@@ -40,13 +99,15 @@ function Vidio(props) {
 
                           return (
                             // <iframe style={{width:"100%", height:"350px"}} className="my-2" src={item.url} allowFullScreen></iframe>
-                            <div className='my-5'>
+                            <div className='my-5' key={id}>
+                                {/* <span className='bg-sky-500 lg:text-xl text-sm font-semibold text-white'>sajs</span> */}
                                 <LiteYouTubeEmbed 
                                 id={idYoutube}
-                                // wrapperClass="my-2"
-                                key={id}
+                                webp={true}
+                                aspectHeight={400}
+                                aspectWidth={730}
                                 />
-
+                                <hr className='mt-6'/>
                             </div>
                           )
                       }) : 
@@ -56,9 +117,12 @@ function Vidio(props) {
                           )
                       })
                       }
+
+                      <Pagination page={page} pagerList={pagerList} query="" urlData={urlPath} />
                   </div>
-                  <div className="w-full lg:w-[350px]">
+                  <div className="w-full lg:w-[350px] mt-2 lg:mt-0">
                       <FollowUs instagram={true} facebook={true} twitter={true} youtube={true} bahasa={t}/>
+                      <WidgetTab bahasa={t("widgettab", {returnObjects:true})} total={5}/>
                   </div>
               </div>
           </div>
@@ -76,6 +140,7 @@ const MapStateToProps = state => {
 export default connect(MapStateToProps, {setDataVideo})(Vidio)
 
 export async function getServerSideProps({locale}){
+
     return {
         props: {
             ...(await serverSideTranslations(locale, ['common']))

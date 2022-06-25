@@ -13,7 +13,7 @@ import CollectionBerita from '../../repositories/CollectionBerita';
 
 const WidgetTabPane = ({arr, a_id, id, dark, kolom}) => {
     return (
-        <div className=" mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-5">
+        <div className=" mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-2">
             {arr ? arr.map((item, i) => (
                 <PostSlickList stuff={item} key={i} skeleton={false}/>
             )) :

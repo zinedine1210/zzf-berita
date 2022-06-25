@@ -212,7 +212,7 @@
       {
          "id" : 7,
          "text" : "Vidio",
-         "link": "/vidio"
+         "link": "/vidio?page=1"
       },
       {
          "id" : 8,

@@ -21,7 +21,7 @@ export default function List({stuff, skeleton}) {
 
 
   return (
-      <div className='mb-2 lg:mb-8 flex lg:block gap-3 items-center justify-center'>
+      <div className='mb-2 flex lg:block gap-3 items-center justify-center'>
             <div className="w-1/3 lg:w-full">
               {skeleton ? <Skeleton className='h-[80px] lg:h-[120px]'/> :
               <div className='bg-gray-100 shadow-md w-full'>

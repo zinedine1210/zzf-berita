@@ -53,6 +53,7 @@ function Berita(props) {
       .then(res => {
         props.setDataAll(lodash.unionBy(allData, res.data[0], "id"))
         setData(res.data[0])
+        console.log(res.data[0]);
       })
     }
   }, [id])

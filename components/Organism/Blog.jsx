@@ -25,7 +25,7 @@ function Blog({kolom, total, tag, dataAll, setDataAll, start}) {
   return (
       <div className="w-full">
 
-          <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5`}>
+          <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-2`}>
 
                 {data ? data.map((item, id) => {
                     return (

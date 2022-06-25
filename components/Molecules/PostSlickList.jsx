@@ -23,7 +23,7 @@ export default function PostSlickList({stuff, skeleton}) {
 
 
   return (
-      <div className="w-full mt-5 lg:mt-0 lg:h-[380px]">
+      <div className="w-full mt-5 lg:mt-0 lg:h-[350px]">
         {skeleton ? <Skeleton  height={200}/> :
           
           <div className='w-full text-center bg-gray-200 rounded-lg overflow-hidden'>

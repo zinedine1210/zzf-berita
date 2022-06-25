@@ -17,7 +17,7 @@ export default function Kontak() {
                        <iframe
                         title="map"
                         frameBorder={0}
-                        height="400px"
+                        height="500px"
                         width="100%"
                         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7931.727475024864!2d107.167608!3d-6.281638!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa43f3f041b4f746a!2sPolres%20Metro%20Bekasi!5e0!3m2!1sid!2sid!4v1643104607477!5m2!1sid!2sid"
                         allowFullScreen/>
@@ -36,14 +36,14 @@ export default function Kontak() {
                                     <p className='text-xs lg:text-sm dark:text-white text-gray-500  font-mono'>Karangasih, Jl. Ki Hajar Dewantara No.1, Simpangan, Kec. Cikarang Utara, Bekasi, Jawa Barat 17550</p>
                               </div>
                           </div>
-
+{/* 
                           <div className="flex my-5 gap-5">
                               <FontAwesomeIcon icon={faPhone} className={"bg-gray-100 rounded-full p-3 text-xl hover:text-sky-500"} />
                               <div>
                                     <h1 className="text-xl dark:text-white font-semibold font-mono">Telepon</h1>
                                     <p className='text-xs lg:text-sm dark:text-white text-gray-500  font-mono'>(021) 89114933</p>
                               </div>
-                          </div>
+                          </div> */}
 
                           <div className="flex my-5 gap-5">
                               <FontAwesomeIcon icon={faFacebook} className={"bg-gray-100 rounded-full p-3 text-xl hover:text-sky-500"} />

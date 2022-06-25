@@ -9,7 +9,7 @@ const ScrollTopButton = () => {
     useEffect(() => {
         window.addEventListener('scroll', () => {
             if (Math.ceil(window.scrollY) >= 200) {
-                setSticky('visible duration-500 transition-all -translate-y-10 ease-in-out ')
+                setSticky('visible duration-500 transition-all translate-y-10 ease-in-out ')
             } else {
                 setSticky('invisible')
             }
@@ -24,8 +24,8 @@ const ScrollTopButton = () => {
     }
 
     return (
-    <button onClick={() => scrollTop()} className={`${sticky} shadow-lg opacity-80 bg-sky-500 lg:w-16 lg:h-16 w-10 h-10 fixed bottom-5 right-5 lg:bottom-10 lg:right-10 rounded-full flex items-center justify-center`}>
-            <div className="text-white text-xl lg:text-3xl cursor-pointer"><FontAwesomeIcon icon={faArrowUp} /></div>
+    <button onClick={() => scrollTop()} aria-label="top" className={`${sticky} shadow-lg opacity-80 bg-sky-500 lg:w-14 lg:h-14 w-10 h-10 fixed bottom-16 right-8 lg:bottom-28 lg:right-20 rounded-full flex items-center justify-center`}>
+            <div className="text-white text-xl lg:text-2xl cursor-pointer"><FontAwesomeIcon icon={faArrowUp} /></div>
         </button>
     );
 };

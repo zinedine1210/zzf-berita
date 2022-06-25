@@ -90,7 +90,7 @@ export default function BeritaVideo({total, bahasa}) {
             <div className="w-full lg:w-[730px] bg-white relative">
                 {active ?
                 <LiteYouTubeEmbed 
-                id={active ? active : "bismillah"}
+                id={active ? active : "gagal"}
                 poster="hqdefault"
                 // playlist={true}
                 webp={true}
