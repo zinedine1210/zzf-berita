@@ -32,48 +32,48 @@ export default function Kontak() {
                           <div className="flex my-5 gap-5">
                               <FontAwesomeIcon icon={faMapLocationDot} className={"bg-gray-100 rounded-full p-3 text-xl hover:text-sky-500"} />
                               <div>
-                                    <h1 className="text-xl dark:text-white font-semibold font-mono">Alamat</h1>
-                                    <p className='text-xs lg:text-sm dark:text-white text-gray-500  font-mono'>Karangasih, Jl. Ki Hajar Dewantara No.1, Simpangan, Kec. Cikarang Utara, Bekasi, Jawa Barat 17550</p>
+                                    <h1 className="text-xl dark:text-white font-semibold">Alamat</h1>
+                                    <p className='text-xs lg:text-sm dark:text-white text-gray-500 '>Karangasih, Jl. Ki Hajar Dewantara No.1, Simpangan, Kec. Cikarang Utara, Bekasi, Jawa Barat 17550</p>
                               </div>
                           </div>
 {/* 
                           <div className="flex my-5 gap-5">
                               <FontAwesomeIcon icon={faPhone} className={"bg-gray-100 rounded-full p-3 text-xl hover:text-sky-500"} />
                               <div>
-                                    <h1 className="text-xl dark:text-white font-semibold font-mono">Telepon</h1>
-                                    <p className='text-xs lg:text-sm dark:text-white text-gray-500  font-mono'>(021) 89114933</p>
+                                    <h1 className="text-xl dark:text-white font-semibold">Telepon</h1>
+                                    <p className='text-xs lg:text-sm dark:text-white text-gray-500 '>(021) 89114933</p>
                               </div>
                           </div> */}
 
                           <div className="flex my-5 gap-5">
                               <FontAwesomeIcon icon={faFacebook} className={"bg-gray-100 rounded-full p-3 text-xl hover:text-sky-500"} />
                               <div>
-                                    <h1 className="text-xl dark:text-white font-semibold font-mono">Facebook</h1>
-                                    <p className='text-xs lg:text-sm dark:text-white text-gray-500  font-mono'>Humas Polres Metro Bekasi</p>
+                                    <h1 className="text-xl dark:text-white font-semibold">Facebook</h1>
+                                    <p className='text-xs lg:text-sm dark:text-white text-gray-500 '>Humas Polres Metro Bekasi</p>
                               </div>
                           </div>
 
                           <div className="flex my-5 gap-5">
                               <FontAwesomeIcon icon={faInstagram} className={"bg-gray-100 rounded-full p-3 text-xl hover:text-sky-500"} />
                               <div>
-                                    <h1 className="text-xl dark:text-white font-semibold font-mono">Instagram</h1>
-                                    <p className='text-xs lg:text-sm dark:text-white text-gray-500  font-mono'>@humaspolresmetrobekasi</p>
+                                    <h1 className="text-xl dark:text-white font-semibold">Instagram</h1>
+                                    <p className='text-xs lg:text-sm dark:text-white text-gray-500 '>@humaspolresmetrobekasi</p>
                               </div>
                           </div>
 
                           <div className="flex my-5 gap-5">
                               <FontAwesomeIcon icon={faTwitter} className={"bg-gray-100 rounded-full p-3 text-xl hover:text-sky-500"} />
                               <div>
-                                    <h1 className="text-xl dark:text-white font-semibold font-mono">Twitter</h1>
-                                    <p className='text-xs lg:text-sm dark:text-white text-gray-500  font-mono'>@humasmetrobks</p>
+                                    <h1 className="text-xl dark:text-white font-semibold">Twitter</h1>
+                                    <p className='text-xs lg:text-sm dark:text-white text-gray-500 '>@humasmetrobks</p>
                               </div>
                           </div>
 
                           <div className="flex my-5 gap-5">
                               <FontAwesomeIcon icon={faYoutube} className={"bg-gray-100 rounded-full p-3 text-xl hover:text-sky-500"} />
                               <div>
-                                    <h1 className="text-xl dark:text-white font-semibold font-mono">Twitter</h1>
-                                    <p className='text-xs lg:text-sm dark:text-white text-gray-500  font-mono'>Polres Metro Bekasi</p>
+                                    <h1 className="text-xl dark:text-white font-semibold">Twitter</h1>
+                                    <p className='text-xs lg:text-sm dark:text-white text-gray-500 '>Polres Metro Bekasi</p>
                               </div>
                           </div>
 
